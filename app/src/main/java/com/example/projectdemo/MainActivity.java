@@ -9,30 +9,46 @@ import android.widget.Button;
 import com.example.projectdemo.recyclerview.RecyclerActivity;
 import com.example.projectdemo.txl.TxlActivity;
 import com.example.projectdemo.txl.TxlChangeActivity;
+import com.example.projectdemo.update.CheckVersion;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
+    private Button button6;
+    private Button button7;
+    private Button button8;
+    private Button button9;
+    private Button button10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button1 = findViewById(R.id.bt_1);
+        initView();
+        initEvent();
+    }
+
+    private void initView() {
+        button1 = findViewById(R.id.bt_1);
+        button2 = findViewById(R.id.bt_2);
+        button3 = findViewById(R.id.bt_3);
+        button4 = findViewById(R.id.bt_4);
+        button5 = findViewById(R.id.bt_5);
+        button6 = findViewById(R.id.bt_6);
+        button7 = findViewById(R.id.bt_7);
+    }
+
+    private void initEvent() {
         button1.setOnClickListener(this);
-
-        Button button2 = findViewById(R.id.bt_2);
         button2.setOnClickListener(this);
-
-        Button button3 = findViewById(R.id.bt_3);
         button3.setOnClickListener(this);
-
-        Button button4 = findViewById(R.id.bt_4);
         button4.setOnClickListener(this);
-
-        Button button5 = findViewById(R.id.bt_5);
         button5.setOnClickListener(this);
-
-        Button button6 = findViewById(R.id.bt_6);
         button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
     }
 
     @Override
@@ -58,6 +74,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_6:
                 TxlChangeActivity.actionStart(MainActivity.this);
+                break;
+            case R.id.bt_7:
+                CheckVersion checkVersion = new CheckVersion();
+                new Thread(checkVersion).start();
                 break;
             default:
                 break;

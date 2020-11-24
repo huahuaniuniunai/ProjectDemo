@@ -43,4 +43,10 @@
         android:layout_height="wrap_content"
         android:text="增删改查"/>
 
+    <Button
+        android:id="@+id/bt_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="检查更新"/>
+
 </LinearLayout>
