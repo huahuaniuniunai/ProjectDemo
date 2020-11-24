@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.projectdemo.paomadeng.RunHorseLampActivity;
 import com.example.projectdemo.recyclerview.RecyclerActivity;
 import com.example.projectdemo.txl.TxlActivity;
 import com.example.projectdemo.txl.TxlChangeActivity;
 import com.example.projectdemo.update.CheckVersion;
+import com.example.projectdemo.util.CommonStartActivity;
+import com.example.projectdemo.util.DynaLoadLayout;
+import com.example.projectdemo.util.LoginActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button button1;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button5 = findViewById(R.id.bt_5);
         button6 = findViewById(R.id.bt_6);
         button7 = findViewById(R.id.bt_7);
+        button8 = findViewById(R.id.bt_8);
     }
 
     private void initEvent() {
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button5.setOnClickListener(this);
         button6.setOnClickListener(this);
         button7.setOnClickListener(this);
+        button8.setOnClickListener(this);
     }
 
     @Override
@@ -78,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt_7:
                 CheckVersion checkVersion = new CheckVersion();
                 new Thread(checkVersion).start();
+                break;
+            case R.id.bt_8:
+                RunHorseLampActivity.actionStart(MainActivity.this);
                 break;
             default:
                 break;

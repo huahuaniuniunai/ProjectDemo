@@ -1,4 +1,4 @@
-package com.example.projectdemo;
+package com.example.projectdemo.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projectdemo.R;
+
 /**
  * 启动携带数据的activty的通用代码
  */
@@ -15,7 +17,7 @@ public class CommonStartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ccommonstart);
+        setContentView(R.layout.activity_commonstart);
         Bundle bundle = getIntent().getExtras();
         String param1 = bundle.getString("param1");
         int param2 = bundle.getInt("param2");

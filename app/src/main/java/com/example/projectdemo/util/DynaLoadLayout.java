@@ -1,4 +1,4 @@
-package com.example.projectdemo;
+package com.example.projectdemo.util;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.projectdemo.R;
 
 /**
  * 隐藏ActionBar

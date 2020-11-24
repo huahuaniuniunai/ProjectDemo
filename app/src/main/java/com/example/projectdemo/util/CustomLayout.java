@@ -1,4 +1,4 @@
-package com.example.projectdemo;
+package com.example.projectdemo.util;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import com.example.projectdemo.R;
 
 /**
  * 动态加载布局：通过LayoutInflater.from()来加载一个布局到当前布局上。

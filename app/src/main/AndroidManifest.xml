@@ -13,12 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".txl.TxlChangeActivity"></activity>
+        <activity android:name=".paomadeng.RunHorseLampActivity"></activity>
+        <activity android:name=".txl.TxlChangeActivity" />
         <activity android:name=".txl.TxlActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".util.LoginActivity" />
         <activity android:name=".recyclerview.RecyclerActivity" />
-        <activity android:name=".DynaLoadLayout" />
-        <activity android:name=".CommonStartActivity">
+        <activity android:name=".util.DynaLoadLayout" />
+        <activity android:name=".util.CommonStartActivity">
             <intent-filter>
                 <action android:name="com.example.firstactivity.ACTION_START" />
 
