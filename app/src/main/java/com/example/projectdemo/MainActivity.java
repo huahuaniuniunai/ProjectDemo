@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.projectdemo.paomadeng.RunHorseLampActivity;
+import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
 import com.example.projectdemo.recyclerview.RecyclerActivity;
 import com.example.projectdemo.txl.TxlActivity;
 import com.example.projectdemo.txl.TxlChangeActivity;
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button6 = findViewById(R.id.bt_6);
         button7 = findViewById(R.id.bt_7);
         button8 = findViewById(R.id.bt_8);
+        button9 = findViewById(R.id.bt_9);
     }
 
     private void initEvent() {
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button6.setOnClickListener(this);
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
+        button9.setOnClickListener(this);
     }
 
     @Override
@@ -88,6 +90,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt_8:
                 RunHorseLampActivity.actionStart(MainActivity.this);
                 break;
+//            case R.id.bt_9:
+//                DateActivity.actionStart(MainActivity.this);
+//                break;
             default:
                 break;
         }
