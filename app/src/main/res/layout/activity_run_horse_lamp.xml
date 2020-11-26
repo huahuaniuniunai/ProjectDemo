@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/gray"
     tools:context=".view.paomadeng.RunHorseLampActivity">
 
     <LinearLayout
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.example.projectdemo.view.paomadeng.SpanTextView
+        <com.example.projectdemo.view.paomadeng.horizontal.SpanTextView
             android:id="@+id/tv_spn"
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -43,7 +44,17 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/line"
+        android:background="@color/white"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"/>
+
+    <com.example.projectdemo.view.paomadeng.vertical.SwitchTextView
+        android:id="@+id/switch_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white">
+    </com.example.projectdemo.view.paomadeng.vertical.SwitchTextView>
 </LinearLayout>

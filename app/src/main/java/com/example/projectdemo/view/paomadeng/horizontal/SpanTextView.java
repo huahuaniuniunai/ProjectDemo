@@ -1,4 +1,4 @@
-package com.example.projectdemo.view.paomadeng;
+package com.example.projectdemo.view.paomadeng.horizontal;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

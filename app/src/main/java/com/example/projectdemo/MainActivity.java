@@ -63,9 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_1:
-                /**
-                 * 调用通用启动activity的方法，并携带2个不同类型的参数
-                 */
                 CommonStartActivity.actionStart(MainActivity.this, "张三", 25);
                 break;
             case R.id.bt_2:

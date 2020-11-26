@@ -10,7 +10,7 @@
         android:id="@+id/bt_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CommonStartActivity"
+        android:text="启动Activity传参"
         android:textAllCaps="false"/>
 
     <Button
@@ -41,7 +41,7 @@
         android:id="@+id/bt_6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="增删改查"/>
+        android:text="通讯录增删改查"/>
 
     <Button
         android:id="@+id/bt_7"
