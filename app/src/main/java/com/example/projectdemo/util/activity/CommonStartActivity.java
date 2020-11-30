@@ -1,4 +1,4 @@
-package com.example.projectdemo.util;
+package com.example.projectdemo.util.activity;
 
 import android.content.Context;
 import android.content.Intent;

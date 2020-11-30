@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".util.DynaLoadLayout">
+    tools:context=".util.layout.DynaLoadLayout">
 
-    <com.example.projectdemo.util.CustomLayout
+    <com.example.projectdemo.util.layout.CustomLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

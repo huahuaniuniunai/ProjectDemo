@@ -12,9 +12,9 @@ import com.example.projectdemo.recyclerview.RecyclerActivity;
 import com.example.projectdemo.txl.TxlActivity;
 import com.example.projectdemo.txl.TxlChangeActivity;
 import com.example.projectdemo.update.common.CheckVersion;
-import com.example.projectdemo.util.CommonStartActivity;
-import com.example.projectdemo.util.DynaLoadLayout;
-import com.example.projectdemo.util.LoginActivity;
+import com.example.projectdemo.util.activity.CommonStartActivity;
+import com.example.projectdemo.util.layout.DynaLoadLayout;
+import com.example.projectdemo.util.activity.LoginActivity;
 import com.xuexiang.xupdate.XUpdate;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

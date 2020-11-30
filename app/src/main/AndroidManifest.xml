@@ -17,10 +17,10 @@
         <activity android:name=".view.paomadeng.RunHorseLampActivity" />
         <activity android:name=".txl.TxlChangeActivity" />
         <activity android:name=".txl.TxlActivity" />
-        <activity android:name=".util.LoginActivity" />
+        <activity android:name=".util.activity.LoginActivity" />
         <activity android:name=".recyclerview.RecyclerActivity" />
-        <activity android:name=".util.DynaLoadLayout" />
-        <activity android:name=".util.CommonStartActivity">
+        <activity android:name=".util.layout.DynaLoadLayout" />
+        <activity android:name=".util.activity.CommonStartActivity">
             <intent-filter>
                 <action android:name="com.example.firstactivity.ACTION_START" />
 

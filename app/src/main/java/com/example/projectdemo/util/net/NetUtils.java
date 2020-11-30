@@ -1,4 +1,4 @@
-package com.example.projectdemo.util;
+package com.example.projectdemo.util.net;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

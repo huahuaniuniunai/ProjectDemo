@@ -1,4 +1,4 @@
-package com.example.projectdemo.util;
+package com.example.projectdemo.util.layout;
 
 import android.app.Activity;
 import android.content.Context;

@@ -10,7 +10,7 @@ import android.os.Message;
 import android.widget.TextView;
 
 import com.example.projectdemo.R;
-import com.example.projectdemo.util.DateFormat;
+import com.example.projectdemo.util.date.DateFormat;
 import com.example.projectdemo.view.paomadeng.horizontal.SpanTextView;
 import com.example.projectdemo.view.paomadeng.vertical.SwitchTextView;
 
