@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projectdemo.R;
 
 /**
- * 启动携带数据的activty的通用代码
+ * 启动携带数据的activity的通用代码
  */
 public class CommonStartActivity extends AppCompatActivity {
     @Override

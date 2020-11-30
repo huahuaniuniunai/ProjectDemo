@@ -59,6 +59,7 @@
         android:id="@+id/bt_9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="bt9"/>
+        android:text="XUpdate"
+        android:textAllCaps="false"/>
 
 </LinearLayout>

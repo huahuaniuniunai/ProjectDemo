@@ -1,4 +1,4 @@
-package com.example.projectdemo.update;
+package com.example.projectdemo.update.common;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -14,6 +14,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
 
+import com.example.projectdemo.application.MyApplication;
 import com.google.gson.Gson;
 
 import java.io.BufferedInputStream;

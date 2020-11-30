@@ -6,14 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.projectdemo.update.XUpdate.CustomUpdateParser;
 import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
 import com.example.projectdemo.recyclerview.RecyclerActivity;
 import com.example.projectdemo.txl.TxlActivity;
 import com.example.projectdemo.txl.TxlChangeActivity;
-import com.example.projectdemo.update.CheckVersion;
+import com.example.projectdemo.update.common.CheckVersion;
 import com.example.projectdemo.util.CommonStartActivity;
 import com.example.projectdemo.util.DynaLoadLayout;
 import com.example.projectdemo.util.LoginActivity;
+import com.xuexiang.xupdate.XUpdate;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button button1;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button button8;
     private Button button9;
     private Button button10;
+
+    private String mUpdateUrl3 = "https://gitee.com/xuexiangjys/XUpdate/raw/master/jsonapi/update_custom.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt_8:
                 RunHorseLampActivity.actionStart(MainActivity.this);
                 break;
-//            case R.id.bt_9:
-//                DateActivity.actionStart(MainActivity.this);
-//                break;
+            case R.id.bt_9:
+                XUpdate.newBuild(this)
+                        .updateUrl(mUpdateUrl3)
+                        .updateParser(new CustomUpdateParser())
+                        .update();
+                break;
             default:
                 break;
         }

@@ -7,11 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.example.projectdemo.R;
-import com.example.projectdemo.update.MyApplication;
 import com.example.projectdemo.util.DateFormat;
 import com.example.projectdemo.view.paomadeng.horizontal.SpanTextView;
 import com.example.projectdemo.view.paomadeng.vertical.SwitchTextView;

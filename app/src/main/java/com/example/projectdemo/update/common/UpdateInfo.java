@@ -1,4 +1,4 @@
-package com.example.projectdemo.update;
+package com.example.projectdemo.update.common;
 
 /**
  * 接口请求信息
