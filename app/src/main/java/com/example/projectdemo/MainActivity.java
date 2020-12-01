@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.projectdemo.permission.ActivityPermission;
 import com.example.projectdemo.update.XUpdate.CustomUpdateParser;
 import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
 import com.example.projectdemo.recyclerview.RecyclerActivity;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button7 = findViewById(R.id.bt_7);
         button8 = findViewById(R.id.bt_8);
         button9 = findViewById(R.id.bt_9);
+        button10 = findViewById(R.id.bt_10);
     }
 
     private void initEvent() {
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
         button9.setOnClickListener(this);
+        button10.setOnClickListener(this);
     }
 
     @Override
@@ -96,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .updateUrl(mUpdateUrl3)
                         .updateParser(new CustomUpdateParser())
                         .update();
+                break;
+            case R.id.bt_10:
+                ActivityPermission.actionStart(MainActivity.this);
                 break;
             default:
                 break;
