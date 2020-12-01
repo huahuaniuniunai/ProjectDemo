@@ -45,4 +45,8 @@ dependencies {
 
     //status bar
     implementation 'com.jaeger.statusbarutil:library:1.4.0'
+
+    // okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    
 }

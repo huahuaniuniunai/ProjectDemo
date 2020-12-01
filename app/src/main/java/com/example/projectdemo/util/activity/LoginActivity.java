@@ -11,11 +11,24 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projectdemo.R;
+import com.example.projectdemo.util.bytetransform.NetUtils;
+import com.example.projectdemo.util.log.LogUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText accountEt, passwordEt;
-    Button  loginBtn, cancleBtn;
+    private EditText accountEt, passwordEt;
+    private Button  loginBtn, cancleBtn;
+    private String resultCode,resultMsg;
+    private String account, pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +42,40 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String account = accountEt.getText().toString().trim();
-                String password = passwordEt.getText().toString().trim();
-                if(account.equals("admin") && password.equals("123456")){
-                    Toast.makeText(LoginActivity.this, "恭喜，登陆成功！", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(LoginActivity.this, "很遗憾，账号或密码不正确！", Toast.LENGTH_LONG).show();
+                /**
+                 * 本地验证账号密码
+                 */
+//                String account = accountEt.getText().toString().trim();
+//                String password = passwordEt.getText().toString().trim();
+//                if(account.equals("admin") && password.equals("123456")){
+//                    Toast.makeText(LoginActivity.this, "恭喜，登陆成功！", Toast.LENGTH_LONG).show();
+//                }else{
+//                    Toast.makeText(LoginActivity.this, "很遗憾，账号或密码不正确！", Toast.LENGTH_LONG).show();
+//                }
+
+                /**
+                 * 服务端验证账号密码
+                 */
+                account = accountEt.getText().toString();
+                pwd = passwordEt.getText().toString();
+                if (account.equals("") || pwd.equals("")) {
+                    Toast.makeText(getApplicationContext(), "用户名或密码为空", Toast.LENGTH_SHORT).show();
                 }
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int num = login(account, pwd);
+                        if (resultCode.equals("0")) {
+                            // 状态码为0，则表示验证成功，跳转首页
+//                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+//                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                });
+                thread.start();
             }
         });
 
@@ -48,6 +88,54 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private int login(String account, String pwd) {
+        String urlPath = "http://58.19.117.122:12706/HbHxAppService/resLogin.htm";
+        int id = 0;
+        try {
+            URL url = new URL(urlPath);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("account", account);
+            jsonObject.put("pwd", pwd);
+            //参数put到json
+            String content = String.valueOf(jsonObject);
+            //开启连接
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setRequestMethod("POST");//提交方式
+            conn.setRequestProperty("Content-Type", "application/json");
+
+            //写输出流，将要转的参数写入流
+            OutputStream os = conn.getOutputStream();
+            os.write(content.getBytes());
+            os.close();
+            int code = conn.getResponseCode();
+            if (code == 200) {
+                //读取返回的json
+                InputStream inputStream = conn.getInputStream();
+                //调用NetUtils() 将流转成String类型
+                String json = NetUtils.readString(inputStream);
+                LogUtil.d("login", json);
+                JSONObject jsonObject1 = new JSONObject(json);
+                resultCode = jsonObject1.getString("resultCode");
+                resultMsg = jsonObject1.getString("resultMsg");
+                LogUtil.d("login", "json返回状态码====" + resultCode);
+                LogUtil.d("login", "json返回消息======" + resultMsg);
+            } else {
+                Toast.makeText(getApplicationContext(), "数据提交失败", Toast.LENGTH_SHORT).show();
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
 
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);

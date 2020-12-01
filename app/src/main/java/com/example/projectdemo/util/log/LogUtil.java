@@ -15,6 +15,7 @@ public class LogUtil {
 
     public static final int level = VERBOSE;// 开发阶段将level指定成VERBOSE
 //    public static final int level = NOTHING;// 正式上线阶段将level指定成NOTHING
+
     public static void v(String tag, String msg) {
         if (level <= VERBOSE) {
             Log.v(tag, msg);
