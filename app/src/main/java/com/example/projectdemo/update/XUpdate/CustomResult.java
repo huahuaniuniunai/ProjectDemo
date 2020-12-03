@@ -10,11 +10,12 @@ public class CustomResult implements Serializable {
     /*{
         "code":"200",
         "msg":"验证成功",
-        "data":{"version":"V1.0.3",
-                "versionExplain":"版本描述",
-                "versionTime":"版本时间",
-                "downloadUrl":"下载地址",
-                "apkSize":"单位M"}
+        "data":{
+                "version":"V1.0.3",
+                "versionExplain":"\r\n1、优化api接口。\r\n2、添加使用demo演示。\r\n3、新增自定义更新服务API接口。\r\n4、优化更新提示界面。",
+                "versionTime":"2020-12-03",
+                "downloadUrl":"http://www.dothantech.com/app/android/SYDY.apk",
+                "apkSize":"4096"}
     }*/
 
     public String code;

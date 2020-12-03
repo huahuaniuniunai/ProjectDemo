@@ -34,7 +34,7 @@ import java.net.URL;
  */
 public class CheckVersion implements Runnable{
     //VERSIONINFO_URL是访问服务器拿到查询更新json数据的url,一般这个是在单独的一个数据类中写的。那样的话让CheckVersion继承自那个类。拿到url来用。现在这里设为空是为了方便看，还有以后更改url。
-    private static final String VERSIONINFO_URL = "http://192.168.222.92:7300/mock/5fc73578729289001d028930/test/check/update";
+    private static final String VERSIONINFO_URL = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
     private static final String DOWNURL = "http://www.dothantech.com/app/android/SYDY.apk";
     private static final int HAVE_NEW_VERSION = 0;
     private static final int ALREADY_NEW_VERSION = 1;

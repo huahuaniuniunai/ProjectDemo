@@ -13,7 +13,8 @@ import com.xuexiang.xutil.tip.ToastUtils;
 import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION;
 
 /**
- * 获取一个全局的context
+ * 1、初始化工作
+ * 2、获取一个全局的context
  */
 public class MyApplication extends Application {
     public static Context mContext;
@@ -22,7 +23,7 @@ public class MyApplication extends Application {
         super.onCreate();
         mContext = getApplicationContext();
 
-        initUpdate();
+        initUpdate();//初始化XUpdate
     }
 
     public static Context getContext() {
@@ -49,6 +50,5 @@ public class MyApplication extends Application {
                 .supportSilentInstall(false)                                     //设置是否支持静默安装，默认是true
                 .setIUpdateHttpService(new OKHttpUpdateHttpService())           //这个必须设置！实现网络请求功能。
                 .init(this);                                          //这个必须初始化
-
     }
 }

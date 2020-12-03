@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button button9;
     private Button button10;
 
-//    private String mUpdateUrl3 = "https://gitee.com/xuexiangjys/XUpdate/raw/master/jsonapi/update_custom.json";
-    private String mUpdateUrl3 = "http://192.168.222.92:7300/mock/5fc73578729289001d028930/test/check/update";
+    private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_9:
                 XUpdate.newBuild(this)
-                        .updateUrl(mUpdateUrl3)
+                        .updateUrl(mUpdateUrl)
                         .updateParser(new CustomUpdateParser())
                         .update();
                 break;
