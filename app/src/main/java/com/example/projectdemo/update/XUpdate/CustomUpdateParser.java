@@ -1,7 +1,10 @@
 package com.example.projectdemo.update.XUpdate;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
+import com.example.projectdemo.application.MyApplication;
 import com.xuexiang.xupdate.entity.UpdateEntity;
 import com.xuexiang.xupdate.listener.IUpdateParseCallback;
 import com.xuexiang.xupdate.proxy.IUpdateParser;
@@ -19,14 +22,17 @@ public class CustomUpdateParser implements IUpdateParser {
     private UpdateEntity getParseResult(String json) {
         CustomResult result = JsonUtil.fromJson(json, CustomResult.class);
         if (result != null) {
-            return new UpdateEntity()
-                    .setHasUpdate(result.hasUpdate)
-                    .setIsIgnorable(result.isIgnorable)
-                    .setVersionCode(result.versionCode)
-                    .setVersionName(result.versionName)
-                    .setUpdateContent(result.updateLog)
-                    .setDownloadUrl(result.apkUrl)
-                    .setSize(result.apkSize);
+            if ("200".equals(result.code)) {
+                return new UpdateEntity()
+                        .setHasUpdate(true)
+//                        .setIsIgnorable(true)
+                        .setVersionName(result.data.version)
+                        .setUpdateContent(result.data.versionExplain)
+                        .setDownloadUrl(result.data.downloadUrl)
+                        .setSize(result.data.apkSize);
+            } else {
+                Toast.makeText(MyApplication.getContext(), "验证失败！", Toast.LENGTH_SHORT).show();
+            }
         }
         return null;
     }

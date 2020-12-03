@@ -15,6 +15,7 @@ import android.os.Message;
 import android.widget.Toast;
 
 import com.example.projectdemo.application.MyApplication;
+import com.example.projectdemo.util.log.LogUtil;
 import com.google.gson.Gson;
 
 import java.io.BufferedInputStream;
@@ -33,11 +34,16 @@ import java.net.URL;
  */
 public class CheckVersion implements Runnable{
     //VERSIONINFO_URL是访问服务器拿到查询更新json数据的url,一般这个是在单独的一个数据类中写的。那样的话让CheckVersion继承自那个类。拿到url来用。现在这里设为空是为了方便看，还有以后更改url。
-    private static final String VERSIONINFO_URL = "我现在是空的，这个要自己填自己的查询url";
+    private static final String VERSIONINFO_URL = "http://192.168.222.92:7300/mock/5fc73578729289001d028930/test/check/update";
+    private static final String DOWNURL = "http://www.dothantech.com/app/android/SYDY.apk";
     private static final int HAVE_NEW_VERSION = 0;
     private static final int ALREADY_NEW_VERSION = 1;
-    private Context context = MyApplication.mContext;
+    private Context context;
     private UpdateInfo updateInfo;
+
+    public CheckVersion(Context context) {
+        this.context = context;
+    }
 
     //获取到主线程的looper,对UI操作
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
@@ -50,21 +56,30 @@ public class CheckVersion implements Runnable{
                 case ALREADY_NEW_VERSION:
                     Toast.makeText(context, "已经是最新版本", Toast.LENGTH_LONG).show();
                     break;
+                default:
+                    break;
             }
         }
     };
 
     private void openUpdateDialog() {
+        LogUtil.d("demo", "来了老弟！");
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("版本有更新");
-        builder.setMessage(updateInfo.description);
+        builder.setMessage(updateInfo.data.versionExplain);// 版本描述
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 downloadNewVersion();
             }
         });
-        builder.setNegativeButton("取消", null);
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
     }
 
     private void downloadNewVersion() {
@@ -82,7 +97,8 @@ public class CheckVersion implements Runnable{
             public void run() {
                 //这里完成下载
                 try {
-                    URL downloadUrl = new URL(updateInfo.url);
+                    URL downloadUrl = new URL(updateInfo.data.downloadUrl);// apk下载地址
+//                    URL downloadUrl = new URL(DOWNURL);// 测试下载正常
                     HttpURLConnection connection = (HttpURLConnection) downloadUrl.openConnection();
                     connection.setConnectTimeout(8000);
                     connection.setReadTimeout(8000);
@@ -105,7 +121,6 @@ public class CheckVersion implements Runnable{
                         loaded += len;
                         pd.setProgress(loaded);
                     }
-
                     installApk(file);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -126,6 +141,10 @@ public class CheckVersion implements Runnable{
 
     }
 
+    /**
+     * 安装apk
+     * @param file
+     */
     private void installApk(File file) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
@@ -149,24 +168,29 @@ public class CheckVersion implements Runnable{
             Gson gson = new Gson();
             updateInfo = gson.fromJson(br, UpdateInfo.class);
             //后台版本
-            int serverVersionCode = updateInfo.versionCode;
+            int serverVersionCode = updateInfo.data.version.charAt(0);
+            LogUtil.d("demo", "后台版本号：" + serverVersionCode);
 
             //本地版本获取
             int localVersionCode = getLocalVersionCode();
+            LogUtil.d("demo", "本地版本号：" + localVersionCode);
 
-            if (serverVersionCode > localVersionCode) {
-                //后台版本新！所以弹框提醒用户有新版本，让用户操作dialog更新
-                Message msg = new Message();
-                msg.what = HAVE_NEW_VERSION;
-                mHandler.sendMessage(msg);
+            if ("200".equals(updateInfo.code)) {
+                if (serverVersionCode > localVersionCode) {
+                    //后台版本新！所以弹框提醒用户有新版本，让用户操作dialog更新
+                    Message msg = new Message();
+                    msg.what = HAVE_NEW_VERSION;
+                    mHandler.sendMessage(msg);
 
+                } else {
+                    //后台没有新版本，所以在界面反馈用户不用更新
+                    Message msg = new Message();
+                    msg.what = ALREADY_NEW_VERSION;
+                    mHandler.sendMessage(msg);
+                }
             } else {
-                //后台没有新版本，所以在界面反馈用户不用更新
-                Message msg = new Message();
-                msg.what = ALREADY_NEW_VERSION;
-                mHandler.sendMessage(msg);
+                Toast.makeText(context, "验证失败！", Toast.LENGTH_SHORT).show();
             }
-
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
