@@ -66,6 +66,7 @@ public class CheckVersion implements Runnable{
         LogUtil.d("demo", "来了老弟！");
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("版本有更新");
+        builder.setCancelable(false);
         builder.setMessage(updateInfo.data.versionExplain);// 版本描述
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
