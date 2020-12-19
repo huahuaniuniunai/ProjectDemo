@@ -2,7 +2,7 @@ package com.example.projectdemo.util.http;
 
 import android.util.Log;
 
-import com.example.projectdemo.util.callback.HttpCallbackListener;
+import com.example.projectdemo.callback.HttpCallbackListener;
 
 import org.jetbrains.annotations.NotNull;
 

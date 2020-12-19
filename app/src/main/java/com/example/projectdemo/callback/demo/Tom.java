@@ -1,4 +1,4 @@
-package com.example.projectdemo.util.callback.demo;
+package com.example.projectdemo.callback.demo;
 
 /**
  * 学生具体对象

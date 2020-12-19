@@ -1,6 +1,4 @@
-package com.example.projectdemo.util.callback.demo;
-
-import android.util.Log;
+package com.example.projectdemo.callback.demo;
 
 import com.example.projectdemo.util.log.LogUtil;
 

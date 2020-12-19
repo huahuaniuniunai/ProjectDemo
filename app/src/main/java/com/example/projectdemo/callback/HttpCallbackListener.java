@@ -1,4 +1,4 @@
-package com.example.projectdemo.util.callback;
+package com.example.projectdemo.callback;
 
 /**
  * Java的回调监听机制

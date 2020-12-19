@@ -1,6 +1,6 @@
 package com.example.projectdemo.util.http;
 
-import com.example.projectdemo.util.callback.HttpCallbackListener;
+import com.example.projectdemo.callback.HttpCallbackListener;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
