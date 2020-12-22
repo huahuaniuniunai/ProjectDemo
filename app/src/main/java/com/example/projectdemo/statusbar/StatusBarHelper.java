@@ -1,4 +1,4 @@
-package com.example.projectdemo.util.statusbar;
+package com.example.projectdemo.statusbar;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,12 +10,17 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.core.content.ContextCompat;
 
+
 import com.example.projectdemo.R;
-import com.jaeger.library.StatusBarUtil;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+/**
+ * User: wangjian
+ * Date: 2020/10/29
+ * Time: 5:39 PM
+ */
 public class StatusBarHelper {
 
     @Retention(RetentionPolicy.SOURCE)
@@ -34,7 +39,7 @@ public class StatusBarHelper {
      * @param barType  BAR_TYPE_NO:状态栏不改变, BAR_TYPE_HOME首页, BAR_TYPE_COLOR白色, BAR_TYPE_IMAGE图片
      */
     public static void setStatusBar(Activity activity, @VZStatusBarType int barType) {
-        setStatusBar(activity, barType, StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, true);
+        setStatusBar(activity, barType, com.jaeger.library.StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, true);
     }
 
     /**
@@ -45,7 +50,7 @@ public class StatusBarHelper {
      * @param lightStatusBar 状态栏文字颜色 true文字颜色深色  false文字颜色浅色
      */
     public static void setStatusBar(Activity activity, @VZStatusBarType int barType, boolean lightStatusBar) {
-        setStatusBar(activity, barType, StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, lightStatusBar);
+        setStatusBar(activity, barType, com.jaeger.library.StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, lightStatusBar);
     }
 
     /**

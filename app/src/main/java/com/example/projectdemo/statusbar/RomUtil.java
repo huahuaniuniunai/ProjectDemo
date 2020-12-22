@@ -1,4 +1,4 @@
-package com.example.projectdemo.util.statusbar;
+package com.example.projectdemo.statusbar;
 
 import android.os.Build;
 import android.text.TextUtils;
@@ -7,6 +7,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * User: wangjian
+ * Date: 2020/10/29
+ * Time: 5:39 PM
+ */
 public class RomUtil {
 
     private static final String TAG = "Rom";

@@ -1,4 +1,4 @@
-package com.example.projectdemo.util.statusbar;
+package com.example.projectdemo.statusbar;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -14,6 +14,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+/**
+ * User: wangjian
+ * Date: 2020/10/29
+ * Time: 5:38 PM
+ */
 public class LightStatusBarCompat {
 
     interface ILightStatusBar {

@@ -1,119 +1,96 @@
 package com.example.projectdemo;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.projectdemo.permission.ActivityPermission;
-import com.example.projectdemo.update.XUpdate.CustomUpdateParser;
-import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
-import com.example.projectdemo.recyclerview.RecyclerActivity;
-import com.example.projectdemo.txl.TxlActivity;
-import com.example.projectdemo.txl.TxlChangeActivity;
-import com.example.projectdemo.update.common.CheckVersion;
+import com.example.projectdemo.mvp.BaseActivity;
+import com.example.projectdemo.pages.ContactsFragment;
+import com.example.projectdemo.pages.DynamicFragment;
+import com.example.projectdemo.pages.MessageFragment;
+import com.example.projectdemo.pages.MyFragment;
+import com.example.projectdemo.statusbar.StatusBarHelper;
 import com.example.projectdemo.util.activity.CommonStartActivity;
-import com.example.projectdemo.util.layout.DynaLoadLayout;
-import com.example.projectdemo.util.activity.LoginActivity;
-import com.xuexiang.xupdate.XUpdate;
+import com.example.projectdemo.view.tab.HomeTabItemView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.jaeger.library.StatusBarUtil;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
-    private Button button5;
-    private Button button6;
-    private Button button7;
-    private Button button8;
-    private Button button9;
-    private Button button10;
-
-    private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
+public class MainActivity extends BaseActivity {
+    private final String[] mTabsNameArray = new String[4];
+    private final int[] mTabIconArray = new int[4];
+    private ViewPager2 mViewPager2;
+    private TabLayout mTabLayout;
+    private PageAdapter mPageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
-        initEvent();
+        mViewPager2 = findViewById(R.id.view_page);
+        mTabLayout = findViewById(R.id.tab_layout);
+        initViewPage();
+        initTabLayout();
         checkPermission();
     }
 
-    private void initView() {
-        button1 = findViewById(R.id.bt_1);
-        button2 = findViewById(R.id.bt_2);
-        button3 = findViewById(R.id.bt_3);
-        button4 = findViewById(R.id.bt_4);
-        button5 = findViewById(R.id.bt_5);
-        button6 = findViewById(R.id.bt_6);
-        button7 = findViewById(R.id.bt_7);
-        button8 = findViewById(R.id.bt_8);
-        button9 = findViewById(R.id.bt_9);
-        button10 = findViewById(R.id.bt_10);
-    }
-
-    private void initEvent() {
-        button1.setOnClickListener(this);
-        button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
-        button5.setOnClickListener(this);
-        button6.setOnClickListener(this);
-        button7.setOnClickListener(this);
-        button8.setOnClickListener(this);
-        button9.setOnClickListener(this);
-        button10.setOnClickListener(this);
-    }
-
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.bt_1:
-                CommonStartActivity.actionStart(MainActivity.this, "张三", 25);
-                break;
-            case R.id.bt_2:
-                DynaLoadLayout.actionStart(MainActivity.this);
-                break;
-            case R.id.bt_3:
-                RecyclerActivity.actionStart(MainActivity.this);
-                break;
-            case R.id.bt_4:
-                LoginActivity.actionStart(MainActivity.this);
-                break;
-            case R.id.bt_5:
-                TxlActivity.actionStart(MainActivity.this);
-                break;
-            case R.id.bt_6:
-                TxlChangeActivity.actionStart(MainActivity.this);
-                break;
-            case R.id.bt_7:
-                CheckVersion checkVersion = new CheckVersion(this);
-                new Thread(checkVersion).start();
-                break;
-            case R.id.bt_8:
-                RunHorseLampActivity.actionStart(MainActivity.this);
-                break;
-            case R.id.bt_9:
-                XUpdate.newBuild(this)
-                        .updateUrl(mUpdateUrl)
-                        .updateParser(new CustomUpdateParser())
-                        .update();
-                break;
-            case R.id.bt_10:
-                ActivityPermission.actionStart(MainActivity.this);
-                break;
-            default:
-                break;
-        }
+    protected void setStatusBar() {
+        StatusBarHelper.setStatusBar(this,
+                StatusBarHelper.VZStatusBarType.BAR_TYPE_COLOR,
+                Color.parseColor("#FF393A3F"),
+                StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, false);
+    }
+
+    private void initViewPage() {
+
+        mViewPager2.setOffscreenPageLimit(4);
+        mViewPager2.setUserInputEnabled(false);
+        mPageAdapter = new PageAdapter();
+        mViewPager2.setAdapter(mPageAdapter);
+        mViewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                for (int i = 0, len = mTabLayout.getTabCount(); i < len; i++) {
+                    TabLayout.Tab itemTab = mTabLayout.getTabAt(i);
+                    if (itemTab != null) {
+                        HomeTabItemView itemTabView = (HomeTabItemView) itemTab.getCustomView();
+                        if (itemTabView != null) {
+                            itemTabView.setChoice(i == position);
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void initTabLayout() {
+        mTabsNameArray[0] = getResources().getString(R.string.home_tab_message);
+        mTabsNameArray[1] = getResources().getString(R.string.home_tab_contacts);
+        mTabsNameArray[2] = getResources().getString(R.string.home_tab_find);
+        mTabsNameArray[3] = getResources().getString(R.string.home_tab_mine);
+        mTabIconArray[0] = R.drawable.message_icon_home;
+        mTabIconArray[1] = R.drawable.contacts_icon_home;
+        mTabIconArray[2] = R.drawable.find_icon_home;
+        mTabIconArray[3] = R.drawable.mine_icon_home;
+        TabLayoutMediator mediator = new TabLayoutMediator(mTabLayout, mViewPager2, true, false, (tab, position) -> {
+            HomeTabItemView tabItemView = new HomeTabItemView(getActivity());
+            tabItemView.setTextIcon(mTabsNameArray[position], mTabIconArray[position]);
+            tab.setCustomView(tabItemView);
+        });
+        mediator.attach();
     }
 
     private void checkPermission() {
@@ -151,6 +128,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             default:
                 break;
+        }
+    }
+
+    private class PageAdapter extends FragmentStateAdapter {
+        public PageAdapter() {
+            super(getSupportFragmentManager(), getLifecycle());
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            switch (position) {
+                case 1:
+                    return new ContactsFragment();
+                case 2:
+                    return new DynamicFragment();
+                case 3:
+                    return new MyFragment();
+                default:
+                    return new MessageFragment();
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return mTabsNameArray.length;
         }
     }
 }
