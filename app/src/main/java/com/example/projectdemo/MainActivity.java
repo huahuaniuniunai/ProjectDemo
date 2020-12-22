@@ -49,14 +49,13 @@ public class MainActivity extends BaseActivity {
     protected void setStatusBar() {
         StatusBarHelper.setStatusBar(this,
                 StatusBarHelper.VZStatusBarType.BAR_TYPE_COLOR,
-                Color.parseColor("#FF393A3F"),
+                Color.parseColor("#393A3F"),
                 StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, false);
     }
 
     private void initViewPage() {
-
         mViewPager2.setOffscreenPageLimit(4);
-        mViewPager2.setUserInputEnabled(false);
+        mViewPager2.setUserInputEnabled(true);
         mPageAdapter = new PageAdapter();
         mViewPager2.setAdapter(mPageAdapter);
         mViewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -73,7 +72,6 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
-
     }
 
     private void initTabLayout() {
