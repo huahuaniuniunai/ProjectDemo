@@ -27,8 +27,7 @@ public class MessageFragment extends ImmersionFragment {
     public void initImmersionBar() {
         ImmersionBar.with(this)
                 .titleBar(view)
-                .statusBarColor(R.color.colorPrimary)
-                .autoDarkModeEnable(true)
+                .statusBarColor(R.color.gray)
                 .navigationBarColor(R.color.gray)
                 .init();
     }
