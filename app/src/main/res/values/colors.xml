@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#008577</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="tans">#00000000</color>
     <color name="white">#FFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="blue">#007AFF</color>
     <color name="line">#D8D9D9</color>
+    <color name="page">#F5F5F5</color>
     <color name="gray">#DBDBDD</color>
     <color name="black">#000000</color>
+    <color name="light_black">#393A3F</color>
+    <color name="colorBarText">#F0F5E5</color>
+
+    <!--  设置shape.xml文件的渐变色  -->
+    <color name="shape1">#5d8df7</color>
+    <color name="shape2">#5EB9F8</color>
+    <color name="shape3">#5CC2F8</color>
+
+
 </resources>

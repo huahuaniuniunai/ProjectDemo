@@ -41,7 +41,7 @@ public class HomeTabItemView extends LinearLayout {
     }
 
     public void setChoice(boolean choice) {
-        Helper.setImageTint(mIconView, choice ? 0xFF007AFF : 0xFFD8DCE0);
+        Helper.setImageTint(mIconView, choice ? 0xFF007AFF : 0x8000000);
         mTextView.setTextColor(choice ? 0xFF007AFF : 0xFF858E95);
     }
 }

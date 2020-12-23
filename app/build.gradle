@@ -37,6 +37,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
 
     //noinspection LifecycleAnnotationProcessorWithJava8
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.2.0'
@@ -55,7 +56,12 @@ dependencies {
     implementation 'com.zhy:okhttputils:2.6.2'
 
     //status bar
-    implementation 'com.jaeger.statusbarutil:library:1.4.0'
+//    implementation 'com.jaeger.statusbarutil:library:1.4.0'
+
+    // immersionbar
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // fragment快速实现（可选）
+    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
 
     // okhttp
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
@@ -63,5 +69,8 @@ dependencies {
     // viewpager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'com.google.android.material:material:1.2.1'
+
+    //下拉刷新上拉加载
+    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
 
 }

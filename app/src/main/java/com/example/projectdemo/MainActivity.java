@@ -9,10 +9,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.projectdemo.mvp.BaseActivity;
@@ -20,12 +18,10 @@ import com.example.projectdemo.pages.ContactsFragment;
 import com.example.projectdemo.pages.DynamicFragment;
 import com.example.projectdemo.pages.MessageFragment;
 import com.example.projectdemo.pages.MyFragment;
-import com.example.projectdemo.statusbar.StatusBarHelper;
-import com.example.projectdemo.util.activity.CommonStartActivity;
 import com.example.projectdemo.view.tab.HomeTabItemView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.jaeger.library.StatusBarUtil;
+import com.gyf.immersionbar.ImmersionBar;
 
 public class MainActivity extends BaseActivity {
     private final String[] mTabsNameArray = new String[4];
@@ -38,19 +34,12 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImmersionBar.with(this).init();
         mViewPager2 = findViewById(R.id.view_page);
         mTabLayout = findViewById(R.id.tab_layout);
         initViewPage();
         initTabLayout();
         checkPermission();
-    }
-
-    @Override
-    protected void setStatusBar() {
-        StatusBarHelper.setStatusBar(this,
-                StatusBarHelper.VZStatusBarType.BAR_TYPE_COLOR,
-                Color.parseColor("#393A3F"),
-                StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, false);
     }
 
     private void initViewPage() {

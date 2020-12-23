@@ -1,5 +1,6 @@
 package com.example.projectdemo.pages;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +11,25 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.projectdemo.R;
+import com.gyf.immersionbar.ImmersionBar;
+import com.gyf.immersionbar.components.ImmersionFragment;
 
-public class MessageFragment extends Fragment {
+public class MessageFragment extends ImmersionFragment {
+    private View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_message, container, false);
+        view = inflater.inflate(R.layout.fragment_message, container, false);
+        return view;
+    }
+
+    @Override
+    public void initImmersionBar() {
+        ImmersionBar.with(this)
+                .titleBar(view)
+                .statusBarColor(R.color.colorPrimary)
+                .autoDarkModeEnable(true)
+                .navigationBarColor(R.color.gray)
+                .init();
     }
 }
