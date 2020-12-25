@@ -35,8 +35,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ImmersionBar.with(this)
-                .statusBarColor(R.color.gray)
-                .navigationBarColor(R.color.gray)
                 .statusBarDarkFont(true, 0.2f)
                 .init();
         mViewPager2 = findViewById(R.id.view_page);

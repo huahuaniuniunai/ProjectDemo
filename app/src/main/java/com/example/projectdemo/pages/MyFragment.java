@@ -25,9 +25,11 @@ import com.example.projectdemo.util.activity.CommonStartActivity;
 import com.example.projectdemo.util.activity.LoginActivity;
 import com.example.projectdemo.util.layout.DynaLoadLayout;
 import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
+import com.gyf.immersionbar.ImmersionBar;
+import com.gyf.immersionbar.components.ImmersionFragment;
 import com.xuexiang.xupdate.XUpdate;
 
-public class MyFragment extends Fragment implements View.OnClickListener {
+public class MyFragment extends ImmersionFragment implements View.OnClickListener {
     private Button button1;
     private Button button2;
     private Button button3;
@@ -152,5 +154,14 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         checkPermission();
+    }
+
+    @Override
+    public void initImmersionBar() {
+        ImmersionBar.with(this)
+                .titleBar(view)
+                .statusBarColor(R.color.gray)
+                .navigationBarColor(R.color.gray)
+                .init();
     }
 }
