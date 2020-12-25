@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ImmersionBar.with(this)
-                .statusBarDarkFont(true, 0.2f)
+                .statusBarDarkFont(true)
                 .init();
         mViewPager2 = findViewById(R.id.view_page);
         mTabLayout = findViewById(R.id.tab_layout);
@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity {
 
     private void initViewPage() {
         mViewPager2.setOffscreenPageLimit(4);
-        mViewPager2.setUserInputEnabled(true);
+        mViewPager2.setUserInputEnabled(false);
         mPageAdapter = new PageAdapter();
         mViewPager2.setAdapter(mPageAdapter);
         mViewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
