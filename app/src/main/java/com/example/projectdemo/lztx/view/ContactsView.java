@@ -1,4 +1,4 @@
-package com.example.projectdemo.view.lztx;
+package com.example.projectdemo.lztx.view;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -15,15 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectdemo.R;
-import com.example.projectdemo.util.lztx.CharacterParser;
-import com.example.projectdemo.util.lztx.PinyinComparator;
-import com.example.projectdemo.util.lztx.SortModel;
+import com.example.projectdemo.lztx.util.CharacterParser;
+import com.example.projectdemo.lztx.util.PinyinComparator;
+import com.example.projectdemo.lztx.db.SortModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class ContactsView extends FrameLayout implements SideBarView.LetterTouchListener {
+public class ContactsView extends FrameLayout implements SideBarView.LetterTouchListener {
     private LinearLayout ll_top_title;
     private TextView tv_letter;
     private SideBarView sideBarView;

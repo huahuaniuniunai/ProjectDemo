@@ -16,6 +16,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/txl_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
@@ -23,11 +24,11 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/shape_seek"
-            android:cursorVisible="false"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/seek"
+            android:drawableLeft="@drawable/seek"
             android:hint="搜一搜"
             android:padding="10dp"
+            android:inputType="text"
             android:textColor="@color/light_black"
             android:textColorHint="@color/light_black"
             android:textSize="12sp" />

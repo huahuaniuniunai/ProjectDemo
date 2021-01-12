@@ -21,7 +21,7 @@
         android:textColor="@color/white"
         android:visibility="gone"/>
 
-    <com.example.projectdemo.view.lztx.SideBarView
+    <com.example.projectdemo.lztx.view.SideBarView
         android:id="@+id/view_sidebar"
         android:layout_width="10dp"
         android:layout_height="match_parent"

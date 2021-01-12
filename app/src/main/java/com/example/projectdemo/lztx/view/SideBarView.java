@@ -1,4 +1,4 @@
-package com.example.projectdemo.view.lztx;
+package com.example.projectdemo.lztx.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.example.projectdemo.R;
 
-class SideBarView extends View {
+public class SideBarView extends View {
     private Paint mPaint;
     private int mWidth, mHeight, textSize;
     private int index;

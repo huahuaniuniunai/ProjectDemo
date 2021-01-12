@@ -10,6 +10,8 @@ import com.xuexiang.xupdate.listener.OnUpdateFailureListener;
 import com.xuexiang.xupdate.utils.UpdateUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
 
+import org.litepal.LitePal;
+
 import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION;
 
 /**
@@ -24,6 +26,7 @@ public class MyApplication extends Application {
         mContext = getApplicationContext();
 
         initUpdate();//初始化XUpdate
+        LitePal.initialize(this);//初始化litepal数据库
     }
 
     public static Context getContext() {

@@ -1,10 +1,12 @@
-package com.example.projectdemo.util.lztx;
+package com.example.projectdemo.lztx.db;
 
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class SortModel implements Parcelable {
+import org.litepal.crud.LitePalSupport;
+
+public class SortModel extends LitePalSupport implements Parcelable {
     private String name;     //联系人姓名
     private String telPhone;    //电话号码
     private String letter;

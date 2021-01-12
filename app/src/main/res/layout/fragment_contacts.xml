@@ -7,7 +7,8 @@
     <include layout="@layout/title_bar_contacts" />
     <include layout="@layout/title_bar_search" />
 
-    <com.example.projectdemo.view.lztx.ContactsView
+    <com.example.projectdemo.lztx.view.ContactsView
+        android:id="@+id/contact_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

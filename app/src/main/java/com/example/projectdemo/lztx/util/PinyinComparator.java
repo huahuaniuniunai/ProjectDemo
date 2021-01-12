@@ -1,4 +1,6 @@
-package com.example.projectdemo.util.lztx;
+package com.example.projectdemo.lztx.util;
+
+import com.example.projectdemo.lztx.db.SortModel;
 
 import java.util.Comparator;
 

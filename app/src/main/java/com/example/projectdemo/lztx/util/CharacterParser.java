@@ -1,4 +1,4 @@
-package com.example.projectdemo.util.lztx;
+package com.example.projectdemo.lztx.util;
 
 import java.io.UnsupportedEncodingException;
 
