@@ -1,4 +1,4 @@
-package com.example.projectdemo.view.lztx.util;
+package com.example.projectdemo.util.lztx;
 
 
 import android.os.Parcel;

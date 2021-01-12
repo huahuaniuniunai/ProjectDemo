@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectdemo.R;
-import com.example.projectdemo.view.lztx.util.CharacterParser;
-import com.example.projectdemo.view.lztx.util.PinyinComparator;
-import com.example.projectdemo.view.lztx.util.SortModel;
+import com.example.projectdemo.util.lztx.CharacterParser;
+import com.example.projectdemo.util.lztx.PinyinComparator;
+import com.example.projectdemo.util.lztx.SortModel;
 
 import java.util.ArrayList;
 import java.util.Collections;

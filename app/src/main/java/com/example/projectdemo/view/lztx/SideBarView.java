@@ -61,7 +61,7 @@ class SideBarView extends View {
             }
             canvas.drawText(str[i], x, y, mPaint);
         }
-        invalidate();
+        invalidate();//触摸滑动刷新
     }
 
     @Override
