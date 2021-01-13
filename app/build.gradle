@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.zhy:okhttputils:2.6.2'
 
     //status bar
-//    implementation 'com.jaeger.statusbarutil:library:1.4.0'
+    implementation 'com.jaeger.statusbarutil:library:1.4.0'
 
     // immersionbar
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'

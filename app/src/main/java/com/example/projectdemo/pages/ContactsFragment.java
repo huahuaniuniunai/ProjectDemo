@@ -33,13 +33,14 @@ import com.example.projectdemo.lztx.db.SortModel;
 import com.example.projectdemo.lztx.util.RecyclerViewUtil;
 import com.example.projectdemo.lztx.view.ContactsView;
 import com.example.projectdemo.lztx.view.SideBarView;
+import com.example.projectdemo.mvp.BaseFragment;
 import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.ImmersionFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsFragment extends ImmersionFragment implements SideBarView.LetterTouchListener, View.OnClickListener {
+public class ContactsFragment extends BaseFragment implements SideBarView.LetterTouchListener, View.OnClickListener {
     private View view;
     private EditText mTxlSearch;
     private ImageView mNewPeople;
@@ -203,15 +204,6 @@ public class ContactsFragment extends ImmersionFragment implements SideBarView.L
         } else {
             return false;
         }
-    }
-
-    @Override
-    public void initImmersionBar() {
-        ImmersionBar.with(this)
-                .titleBar(view)
-                .statusBarColor(R.color.gray)
-                .navigationBarColor(R.color.gray)
-                .init();
     }
 
     @Override

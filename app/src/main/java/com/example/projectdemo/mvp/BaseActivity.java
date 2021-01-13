@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 //import com.example.projectdemo.statusbar.StatusBarHelper;
 
 import com.example.projectdemo.R;
+import com.example.projectdemo.lztx.statusbar.StatusBarHelper;
 import com.example.projectdemo.util.activity.ActivityCollector;
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -57,9 +58,6 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
 //        initCompositeDisposable();
         initMvpAfterOnCreate(savedInstanceState);
         Log.d(TAG, "当前执行的Activity:" + getClass().getSimpleName());
-
-        //初始化沉浸式
-//        initImmersionBar();
     }
 
     /**
@@ -158,20 +156,23 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
         }
     }
 
-//    @Override
-//    public void setContentView(int layoutResID) {
-//        super.setContentView(layoutResID);
-//        setStatusBar();
-//    }
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        // 设置导航栏
+        setNavigationBar();
 
-//    protected void setStatusBar() {
-//        StatusBarHelper.setStatusBar(this, StatusBarHelper.VZStatusBarType.BAR_TYPE_NO);
-//    }
+        // 设置状态栏
+        setStatusBar();
+    }
 
-//    protected void initImmersionBar() {
-//        //设置共同沉浸式样式
-//        ImmersionBar.with(this).navigationBarColor(R.color.colorPrimary).init();
-//    }
+    protected void setStatusBar() {
+        StatusBarHelper.setStatusBar(this, StatusBarHelper.VZStatusBarType.BAR_TYPE_NO);
+    }
+
+    protected void setNavigationBar() {
+        ImmersionBar.with(this).init();
+    }
 
     public void onBackButtonClick(View v) {
         finish();

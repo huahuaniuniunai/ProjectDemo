@@ -9,24 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.projectdemo.R;
+import com.example.projectdemo.mvp.BaseFragment;
 import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.ImmersionFragment;
 
-public class MessageFragment extends ImmersionFragment {
+public class MessageFragment extends BaseFragment {
     private View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_message, container, false);
         return view;
-    }
-
-    @Override
-    public void initImmersionBar() {
-        ImmersionBar.with(this)
-                .titleBar(view)
-                .statusBarColor(R.color.gray)
-                .navigationBarColor(R.color.gray)
-                .init();
     }
 }

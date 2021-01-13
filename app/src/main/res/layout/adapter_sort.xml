@@ -22,7 +22,6 @@
             android:gravity="center_vertical"
             android:text="阿妹"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="17sp" />
 
         <TextView
@@ -40,8 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="20dp"
-            android:background="@color/white"
-            android:visibility="gone"/>
+            android:background="@color/gray"/>
 
     </RelativeLayout>
 

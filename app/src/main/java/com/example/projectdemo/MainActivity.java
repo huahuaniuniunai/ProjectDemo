@@ -9,10 +9,12 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.projectdemo.lztx.statusbar.StatusBarHelper;
 import com.example.projectdemo.mvp.BaseActivity;
 import com.example.projectdemo.pages.ContactsFragment;
 import com.example.projectdemo.pages.DynamicFragment;
@@ -22,6 +24,7 @@ import com.example.projectdemo.view.tab.HomeTabItemView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.gyf.immersionbar.ImmersionBar;
+import com.jaeger.library.StatusBarUtil;
 
 public class MainActivity extends BaseActivity {
     private final String[] mTabsNameArray = new String[4];
@@ -34,14 +37,28 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImmersionBar.with(this)
-                .statusBarDarkFont(true)
-                .init();
         mViewPager2 = findViewById(R.id.view_page);
         mTabLayout = findViewById(R.id.tab_layout);
         initViewPage();
         initTabLayout();
         checkPermission();
+    }
+
+    @Override
+    protected void setStatusBar() {
+        StatusBarHelper.setStatusBar(this,
+                StatusBarHelper.VZStatusBarType.BAR_TYPE_COLOR,
+                Color.parseColor("#DBDBDD"),// 设置状态栏颜色
+                StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, true);// 设置状态栏字体是深色，flase亮色
+    }
+
+    @Override
+    protected void setNavigationBar() {
+        ImmersionBar.with(this)
+//                .statusBarDarkFont(true)// 状态栏字体是深色，不写默认为亮色
+//                .fitsSystemWindows(true)// 设置解决状态栏和布局重叠问题
+                .navigationBarColor(R.color.gray)// 设置导航栏颜色
+                .init();
     }
 
     private void initViewPage() {

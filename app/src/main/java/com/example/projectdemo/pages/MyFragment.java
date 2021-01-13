@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.projectdemo.R;
+import com.example.projectdemo.mvp.BaseFragment;
 import com.example.projectdemo.permission.ActivityPermission;
 import com.example.projectdemo.recyclerview.RecyclerActivity;
 import com.example.projectdemo.txl.TxlActivity;
@@ -29,7 +30,7 @@ import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.ImmersionFragment;
 import com.xuexiang.xupdate.XUpdate;
 
-public class MyFragment extends ImmersionFragment implements View.OnClickListener {
+public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button1;
     private Button button2;
     private Button button3;
@@ -154,14 +155,5 @@ public class MyFragment extends ImmersionFragment implements View.OnClickListene
     public void onResume() {
         super.onResume();
         checkPermission();
-    }
-
-    @Override
-    public void initImmersionBar() {
-        ImmersionBar.with(this)
-                .titleBar(view)
-                .statusBarColor(R.color.gray)
-                .navigationBarColor(R.color.gray)
-                .init();
     }
 }

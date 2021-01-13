@@ -10,10 +10,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.projectdemo.R;
+import com.example.projectdemo.mvp.BaseFragment;
 import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.ImmersionFragment;
 
-public class DynamicFragment extends ImmersionFragment {
+public class DynamicFragment extends BaseFragment {
     private View view;
     @Nullable
     @Override
@@ -22,12 +23,12 @@ public class DynamicFragment extends ImmersionFragment {
         return view;
     }
 
-    @Override
-    public void initImmersionBar() {
-        ImmersionBar.with(this)
-                .titleBar(view)
-                .statusBarColor(R.color.gray)
-                .navigationBarColor(R.color.gray)
-                .init();
-    }
+//    @Override
+//    public void initImmersionBar() {
+//        ImmersionBar.with(this)
+//                .titleBar(view)
+//                .statusBarColor(R.color.gray)
+//                .navigationBarColor(R.color.gray)
+//                .init();
+//    }
 }
