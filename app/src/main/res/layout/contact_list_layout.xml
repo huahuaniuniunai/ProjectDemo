@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/item_letter_layout" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sort_recycler_view"
         android:layout_width="match_parent"
@@ -20,6 +19,8 @@
         android:textSize="40sp"
         android:textColor="@color/white"
         android:visibility="gone"/>
+
+    <include layout="@layout/item_letter_layout" />
 
     <com.example.projectdemo.lztx.view.SideBarView
         android:id="@+id/view_sidebar"
