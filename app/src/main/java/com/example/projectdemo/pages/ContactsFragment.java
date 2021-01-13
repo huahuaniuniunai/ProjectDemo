@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,14 +42,12 @@ import java.util.List;
 public class ContactsFragment extends ImmersionFragment implements SideBarView.LetterTouchListener, View.OnClickListener {
     private View view;
     private EditText mTxlSearch;
+    private ImageView mNewPeople;
     private TextView tv_letter_show;
     private RecyclerView recyclerView;
     private ContactsView mContactsView;
     private ContactSortAdapter mAdapter = null;
     private List<SortModel> mDataList = new ArrayList<>();
-
-    public ContactsFragment() {
-    }
 
     @Nullable
     @Override
@@ -62,6 +61,7 @@ public class ContactsFragment extends ImmersionFragment implements SideBarView.L
 
     private void initView() {
         mTxlSearch = view.findViewById(R.id.txl_search);
+        mNewPeople = view.findViewById(R.id.txl_new_people);
         mContactsView = view.findViewById(R.id.contact_view);
     }
 
@@ -81,6 +81,7 @@ public class ContactsFragment extends ImmersionFragment implements SideBarView.L
 
     private void initEvent() {
         mTxlSearch.setOnClickListener(this);
+        mNewPeople.setOnClickListener(this);
         mTxlSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

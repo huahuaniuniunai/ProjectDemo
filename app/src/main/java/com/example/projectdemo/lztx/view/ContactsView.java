@@ -108,24 +108,6 @@ public class ContactsView extends FrameLayout implements SideBarView.LetterTouch
         }
     }
 
-    public List<SortModel> sortData(List<String> data) {
-        List<SortModel> list = new ArrayList<>();
-        for (int i = 0; i < data.size(); i++) {
-            SortModel sm = new SortModel();
-            sm.setName(data.get(i));
-            String pinyin = mParser.getSelling(data.get(i));
-            String sortString = pinyin.substring(0, 1).toUpperCase();
-            if (sortString.matches("[A-Z]")) {
-                sm.setLetter(sortString);
-            } else {
-                sm.setLetter("#");
-            }
-            list.add(sm);
-        }
-        Collections.sort(list, new PinyinComparator());
-        return list;
-    }
-
     public List<SortModel> sortDataByName(List<SortModel> contact) {
         List<SortModel> list = new ArrayList<>();
         for (int i = 0; i < contact.size(); i++) {
