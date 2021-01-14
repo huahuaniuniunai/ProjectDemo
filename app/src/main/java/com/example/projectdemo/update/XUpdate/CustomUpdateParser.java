@@ -24,8 +24,8 @@ public class CustomUpdateParser implements IUpdateParser {
         if (result != null) {
             if ("200".equals(result.code)) {
                 return new UpdateEntity()
-                        .setHasUpdate(true)
-                        .setIsIgnorable(true)
+                        .setHasUpdate(true)// 是否有更新
+//                        .setIsIgnorable(true)// 是否可忽略
                         .setVersionName(result.data.version)
                         .setUpdateContent(result.data.versionExplain)
                         .setDownloadUrl(result.data.downloadUrl)

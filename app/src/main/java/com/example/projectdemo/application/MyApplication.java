@@ -20,11 +20,22 @@ import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION
  */
 public class MyApplication extends Application {
     public static Context mContext;
+
+    public MyApplication() {
+    }
+
+    private static class Holder {
+        private static final MyApplication INSTANCE = new MyApplication();
+    }
+
+    public static MyApplication getInstance() {
+        return Holder.INSTANCE;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
-
         initUpdate();//初始化XUpdate
         LitePal.initialize(this);//初始化litepal数据库
     }

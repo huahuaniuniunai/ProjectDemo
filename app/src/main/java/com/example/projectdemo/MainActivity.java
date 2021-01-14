@@ -3,6 +3,7 @@ package com.example.projectdemo;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -14,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.projectdemo.application.MyApplication;
 import com.example.projectdemo.lztx.statusbar.StatusBarHelper;
 import com.example.projectdemo.mvp.BaseActivity;
 import com.example.projectdemo.pages.ContactsFragment;
@@ -162,4 +164,29 @@ public class MainActivity extends BaseActivity {
             return mTabsNameArray.length;
         }
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            if (mSplashFragment != null) {
+//                if (mSplashFragment.isFinish()) {
+//                    if (System.currentTimeMillis() - mFirstPressedTime < 2000) {
+//                        super.onBackPressed();
+//                        MyApplication.getInstance().removeAllActivity();
+//                    } else {
+//                        Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+//                        mFirstPressedTime = System.currentTimeMillis();
+//                    }
+//                } else {
+//                    super.onBackPressed();
+//                    AppManager.getInstance().removeAllActivity();
+//                }
+//            } else {
+//                super.onBackPressed();
+//                AppManager.getInstance().removeAllActivity();
+//            }
+//        }
+//    }
 }
