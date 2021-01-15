@@ -1,11 +1,9 @@
 package com.example.projectdemo;
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -65,7 +63,6 @@ public class LauncherActivity extends BaseActivity {
                 handler.sendEmptyMessage(1);
             }
         }).start();
-
 
         skip.setOnClickListener(new View.OnClickListener() {  // 设置跳过按键的监听器
             @Override

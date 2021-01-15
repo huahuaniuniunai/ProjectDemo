@@ -97,7 +97,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private int login(String account, String pwd) {
-        String urlPath = "http://58.19.117.122:12706/HbHxAppService/resLogin.htm";
+        String urlPath = "https://fc375f69-e7bc-43f7-bc68-2ade2c772305.mock.pstmn.io/login";
         int id = 0;
         try {
             URL url = new URL(urlPath);

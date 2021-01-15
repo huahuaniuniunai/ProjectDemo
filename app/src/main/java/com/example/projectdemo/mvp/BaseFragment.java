@@ -14,6 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 //import com.ctq.eqc.util.avoid.AvoidOnResult;
 
+import com.example.projectdemo.R;
+import com.gyf.immersionbar.ImmersionBar;
+import com.gyf.immersionbar.components.ImmersionFragment;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -21,7 +25,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * Date: 2020/10/29
  * Time: 5:33 PM
  */
-public class BaseFragment<V extends BasePresenter> extends Fragment {
+public class BaseFragment<V extends BasePresenter> extends ImmersionFragment {
     public static final String EXTRA_DATA = "t_extra_data";
     public static final String EXTRA_RESULT = "t_extra_result";
 
@@ -43,6 +47,7 @@ public class BaseFragment<V extends BasePresenter> extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         onCreateFromMvp(view);
+        initImmersionBar();
     }
 
     @Override
@@ -123,6 +128,16 @@ public class BaseFragment<V extends BasePresenter> extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         disposeCompositeDisposable();
+    }
+
+    @Override
+    public void initImmersionBar() {
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.gray)// 设置状态栏颜色
+                .statusBarDarkFont(true)// 状态栏字体是深色，不写默认为亮色
+                .fitsSystemWindows(true)// 设置解决状态栏和布局重叠问题
+                .navigationBarColor(R.color.gray)// 设置导航栏颜色
+                .init();
     }
 
 //    public AvoidOnResult getActivityForResult() {

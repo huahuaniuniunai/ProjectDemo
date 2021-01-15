@@ -14,6 +14,9 @@
     <color name="black">#000000</color>
     <color name="light_black">#393A3F</color>
     <color name="colorBarText">#F0F5E5</color>
+    <color name="button_normal">#67a2ea</color>
+    <color name="button_pressed">#5a92d7</color>
+    <color name="text_color">#333333</color>
 
     <!--  设置shape.xml文件的渐变色  -->
     <color name="shape1">#5d8df7</color>
