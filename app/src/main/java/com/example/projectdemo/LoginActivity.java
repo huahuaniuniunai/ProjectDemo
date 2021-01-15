@@ -1,4 +1,4 @@
-package com.example.projectdemo.util.activity;
+package com.example.projectdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.projectdemo.R;
+import com.example.projectdemo.mvp.BaseActivity;
 import com.example.projectdemo.util.bytetransform.NetUtils;
 import com.example.projectdemo.util.log.LogUtil;
 
@@ -23,7 +23,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private EditText accountEt, passwordEt;
     private Button  loginBtn, cancleBtn;

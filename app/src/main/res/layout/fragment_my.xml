@@ -83,7 +83,7 @@
                 android:id="@+id/bt_11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="启动Activity传参"
+                android:text="打开微信"
                 android:textAllCaps="false"/>
 
             <Button

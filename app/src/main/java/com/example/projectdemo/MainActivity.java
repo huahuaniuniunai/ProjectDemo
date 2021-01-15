@@ -22,6 +22,7 @@ import com.example.projectdemo.pages.ContactsFragment;
 import com.example.projectdemo.pages.DynamicFragment;
 import com.example.projectdemo.pages.MessageFragment;
 import com.example.projectdemo.pages.MyFragment;
+import com.example.projectdemo.util.activity.ActivityCollector;
 import com.example.projectdemo.view.tab.HomeTabItemView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -34,6 +35,7 @@ public class MainActivity extends BaseActivity {
     private ViewPager2 mViewPager2;
     private TabLayout mTabLayout;
     private PageAdapter mPageAdapter;
+    private long mExitTime;       //实现“再按一次退出”的记录时间变量
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,28 +167,15 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            if (mSplashFragment != null) {
-//                if (mSplashFragment.isFinish()) {
-//                    if (System.currentTimeMillis() - mFirstPressedTime < 2000) {
-//                        super.onBackPressed();
-//                        MyApplication.getInstance().removeAllActivity();
-//                    } else {
-//                        Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
-//                        mFirstPressedTime = System.currentTimeMillis();
-//                    }
-//                } else {
-//                    super.onBackPressed();
-//                    AppManager.getInstance().removeAllActivity();
-//                }
-//            } else {
-//                super.onBackPressed();
-//                AppManager.getInstance().removeAllActivity();
-//            }
-//        }
-//    }
+    @Override //再按一次退出程序
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - mExitTime < 2000) {
+            super.onBackPressed();
+        } else {
+            mExitTime = System.currentTimeMillis();
+            toast("再按一次退出!");
+            ActivityCollector.finishAll();
+        }
+    }
+
 }

@@ -58,6 +58,8 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
 //        initCompositeDisposable();
         initMvpAfterOnCreate(savedInstanceState);
         Log.d(TAG, "当前执行的Activity:" + getClass().getSimpleName());
+
+        ActivityCollector.addActivity(this);
     }
 
     /**
@@ -131,7 +133,7 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         disposeCompositeDisposable();
-        ActivityCollector.getInstance().removeActivity(this);
+        ActivityCollector.removeActivity(this);
     }
 
     public Activity getActivity() {
@@ -166,10 +168,16 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
         setStatusBar();
     }
 
+    /**
+     * 设置头部状态栏
+     */
     protected void setStatusBar() {
         StatusBarHelper.setStatusBar(this, StatusBarHelper.VZStatusBarType.BAR_TYPE_NO);
     }
 
+    /**
+     * 设置底部导航栏
+     */
     protected void setNavigationBar() {
         ImmersionBar.with(this).init();
     }

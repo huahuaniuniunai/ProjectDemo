@@ -34,7 +34,7 @@ public class ActivityCollector {
     }
 
     // 销毁管理类里所有的activity实例，点击事件调用退出程序
-    public static void finish() {
+    public static void finishAll() {
         for (Activity activity : activities) {
             if (!activity.isFinishing()) {
                 activity.finish();

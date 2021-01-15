@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".lztx.activity.NewPeopleActivity"></activity>
-        <activity android:name=".lztx.activity.PersonalDetailsActivity" /> <!-- immersion bar适配全面屏 -->
+        <activity android:name=".lztx.activity.PersonalDetailsActivity" />
+        <!-- immersion bar适配全面屏 -->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
@@ -34,7 +35,7 @@
         <activity android:name=".view.paomadeng.RunHorseLampActivity" />
         <activity android:name=".txl.TxlChangeActivity" />
         <activity android:name=".txl.TxlActivity" />
-        <activity android:name=".util.activity.LoginActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".recyclerview.RecyclerActivity" />
         <activity android:name=".util.layout.DynaLoadLayout" />
         <activity android:name=".util.activity.CommonStartActivity">
@@ -44,7 +45,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

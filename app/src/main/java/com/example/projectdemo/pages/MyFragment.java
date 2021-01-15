@@ -1,6 +1,9 @@
 package com.example.projectdemo.pages;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.example.projectdemo.R;
 import com.example.projectdemo.mvp.BaseFragment;
@@ -23,11 +25,9 @@ import com.example.projectdemo.txl.TxlChangeActivity;
 import com.example.projectdemo.update.XUpdate.CustomUpdateParser;
 import com.example.projectdemo.update.common.CheckVersion;
 import com.example.projectdemo.util.activity.CommonStartActivity;
-import com.example.projectdemo.util.activity.LoginActivity;
+import com.example.projectdemo.LoginActivity;
 import com.example.projectdemo.util.layout.DynaLoadLayout;
 import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
-import com.gyf.immersionbar.ImmersionBar;
-import com.gyf.immersionbar.components.ImmersionFragment;
 import com.xuexiang.xupdate.XUpdate;
 
 public class MyFragment extends BaseFragment implements View.OnClickListener {
@@ -41,6 +41,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button8;
     private Button button9;
     private Button button10;
+    private Button button11;
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
 
@@ -64,6 +65,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button8 = view.findViewById(R.id.bt_8);
         button9 = view.findViewById(R.id.bt_9);
         button10 = view.findViewById(R.id.bt_10);
+        button11 = view.findViewById(R.id.bt_11);
     }
 
     private void initEvent() {
@@ -77,6 +79,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button8.setOnClickListener(this);
         button9.setOnClickListener(this);
         button10.setOnClickListener(this);
+        button11.setOnClickListener(this);
     }
 
     @Override
@@ -116,6 +119,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.bt_10:
                 ActivityPermission.actionStart(getActivity());
                 break;
+            case R.id.bt_11:
+                getWechatApi();
+                break;
             default:
                 break;
         }
@@ -150,6 +156,26 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
         }
     }
+
+    /**
+     * 跳转到微信
+     */
+    private void getWechatApi() {
+        try {
+//            ClipboardManager tvCopy = (ClipboardManager) PayDiscountDetailActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
+//            tvCopy.setText(sharecode);
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            ComponentName cmp = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI");
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setComponent(cmp);
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            // TODO: handle   exception
+            toast("检查到您手机没有安装微信，请安装后使用该功能!");
+        }
+    }
+
 
     @Override
     public void onResume() {
