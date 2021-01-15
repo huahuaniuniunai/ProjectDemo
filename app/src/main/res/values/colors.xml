@@ -19,6 +19,8 @@
     <color name="shape1">#5d8df7</color>
     <color name="shape2">#5EB9F8</color>
     <color name="shape3">#5CC2F8</color>
+    <color name="start">#CE413A</color>
+    <color name="end">#F78AE0</color>
 
 
 </resources>

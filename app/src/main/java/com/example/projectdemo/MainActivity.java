@@ -9,6 +9,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -48,19 +50,20 @@ public class MainActivity extends BaseActivity {
         checkPermission();
     }
 
-    @Override
-    protected void setStatusBar() {
-        StatusBarHelper.setStatusBar(this,
-                StatusBarHelper.VZStatusBarType.BAR_TYPE_COLOR,
-                Color.parseColor("#DBDBDD"),// 设置状态栏颜色
-                StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, true);// 设置状态栏字体是深色，flase亮色
-    }
+//    @Override
+//    protected void setStatusBar() {
+//        StatusBarHelper.setStatusBar(this,
+//                StatusBarHelper.VZStatusBarType.BAR_TYPE_COLOR,
+//                Color.parseColor("#DBDBDD"),// 设置状态栏颜色
+//                StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA, true);// 设置状态栏字体是深色，flase亮色
+//    }
 
     @Override
-    protected void setNavigationBar() {
+    protected void setBar() {
         ImmersionBar.with(this)
-//                .statusBarDarkFont(true)// 状态栏字体是深色，不写默认为亮色
-//                .fitsSystemWindows(true)// 设置解决状态栏和布局重叠问题
+                .statusBarColor(R.color.gray)// 设置状态栏颜色
+                .statusBarDarkFont(true)// 状态栏字体是深色，不写默认为亮色
+                .fitsSystemWindows(true)// 设置解决状态栏和布局重叠问题
                 .navigationBarColor(R.color.gray)// 设置导航栏颜色
                 .init();
     }
@@ -171,11 +174,15 @@ public class MainActivity extends BaseActivity {
     public void onBackPressed() {
         if (System.currentTimeMillis() - mExitTime < 2000) {
             super.onBackPressed();
+            ActivityCollector.finishAll();
         } else {
             mExitTime = System.currentTimeMillis();
             toast("再按一次退出!");
-            ActivityCollector.finishAll();
         }
     }
 
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+    }
 }

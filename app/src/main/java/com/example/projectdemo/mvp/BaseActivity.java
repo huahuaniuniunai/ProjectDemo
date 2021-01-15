@@ -162,10 +162,10 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         // 设置导航栏
-        setNavigationBar();
+        setBar();
 
         // 设置状态栏
-        setStatusBar();
+//        setStatusBar();
     }
 
     /**
@@ -178,7 +178,7 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
     /**
      * 设置底部导航栏
      */
-    protected void setNavigationBar() {
+    protected void setBar() {
         ImmersionBar.with(this).init();
     }
 
