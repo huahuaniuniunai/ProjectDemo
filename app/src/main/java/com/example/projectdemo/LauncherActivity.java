@@ -23,19 +23,21 @@ public class LauncherActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+
+        setBar();
         skip = (TextView)findViewById(R.id.skip);
         // 将欢迎界面系统自带的标题栏隐藏
-        ActionBar actionBar = getActionBar();
-        if(actionBar != null) {
-            actionBar.hide();
-        }
+//        ActionBar actionBar = getActionBar();
+//        if(actionBar != null) {
+//            actionBar.hide();
+//        }
 
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 switch (msg.what) {
                     case -2:
-                        skip.setText("跳过( "+TIME+"s )");
+                        skip.setText(TIME + "s | 跳过");
                         break;
                     case 1:
                         // 这里记得要判断是否选择跳过，防止重复加载LoginActivity
@@ -78,7 +80,8 @@ public class LauncherActivity extends BaseActivity {
 
     @Override
     protected void setBar() {
-        super.setBar();
-        ImmersionBar.with(this).hideBar(BarHide.FLAG_HIDE_BAR).init();
+        ImmersionBar.with(this)
+                .hideBar(BarHide.FLAG_HIDE_BAR)// 隐藏状态栏和导航栏
+                .init();
     }
 }

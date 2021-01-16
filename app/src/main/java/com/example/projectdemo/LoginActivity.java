@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.projectdemo.mvp.BaseActivity;
 import com.example.projectdemo.util.bytetransform.NetUtils;
 import com.example.projectdemo.util.log.LogUtil;
+import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;
 
 import org.json.JSONException;
@@ -55,13 +56,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         tv_forget_password.setOnClickListener(this);
     }
 
-    public void showToast(View v){
-        Toast.makeText(this,"我被点击了",Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     protected void setBar() {
-        ImmersionBar.with(this).titleBar(R.id.tb_login).keyboardEnable(true).init();
+        ImmersionBar.with(this)
+                .titleBar(R.id.tb_login)
+                .keyboardEnable(true)
+                .navigationBarColor(R.color.page)
+                .init();
     }
 
     private int login(String account, String pwd) {

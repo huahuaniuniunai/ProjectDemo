@@ -13,6 +13,6 @@
         android:layout_marginBottom="30dp"
         android:layout_marginRight="15dp"
         android:textColor="#ffffff"
-        android:text="跳过 ( 3s )"/>
+        android:text="3s | 跳过"/>
 
 </RelativeLayout>
