@@ -22,13 +22,4 @@ public class DynamicFragment extends BaseFragment {
         view = inflater.inflate(R.layout.fragment_dynamic, container, false);
         return view;
     }
-
-//    @Override
-//    public void initImmersionBar() {
-//        ImmersionBar.with(this)
-//                .titleBar(view)
-//                .statusBarColor(R.color.gray)
-//                .navigationBarColor(R.color.gray)
-//                .init();
-//    }
 }

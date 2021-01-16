@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.projectdemo.mvp.BaseActivity;
+import com.gyf.immersionbar.BarHide;
+import com.gyf.immersionbar.ImmersionBar;
 
 public class LauncherActivity extends BaseActivity {
     private TextView skip;
@@ -72,5 +74,11 @@ public class LauncherActivity extends BaseActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void setBar() {
+        super.setBar();
+        ImmersionBar.with(this).hideBar(BarHide.FLAG_HIDE_BAR).init();
     }
 }

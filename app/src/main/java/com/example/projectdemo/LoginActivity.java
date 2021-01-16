@@ -1,7 +1,5 @@
 package com.example.projectdemo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText accountEt, passwordEt;
     private Button  loginBtn;
@@ -35,60 +33,23 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        initView();
+        initEvent();
+    }
+
+    private void initView() {
         accountEt = findViewById(R.id.et_phone);
         passwordEt = findViewById(R.id.et_password);
-        loginBtn = this.findViewById(R.id.bt_login) ;
+        loginBtn = findViewById(R.id.bt_login);
+    }
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /**
-                 * 本地验证账号密码
-                 */
-                String account = accountEt.getText().toString().trim();
-                String password = passwordEt.getText().toString().trim();
-                if(account.equals("admin") && password.equals("123456")){
-                    Toast.makeText(LoginActivity.this, "恭喜，登陆成功！", Toast.LENGTH_LONG).show();
-                    MainActivity.actionStart(LoginActivity.this);
-                }else{
-                    Toast.makeText(LoginActivity.this, "很遗憾，账号或密码不正确！", Toast.LENGTH_LONG).show();
-                }
+    private void initEvent() {
+        loginBtn.setOnClickListener(this);
+    }
 
-                /**
-                 * 服务端验证账号密码
-                 */
-//                account = accountEt.getText().toString();
-//                pwd = passwordEt.getText().toString();
-//                if (account.equals("") || pwd.equals("")) {
-//                    Toast.makeText(getApplicationContext(), "用户名或密码为空", Toast.LENGTH_SHORT).show();
-//                }
-//                Thread thread = new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        int num = login(account, pwd);
-//                        if (resultCode.equals("0")) {
-//                            // 状态码为0，则表示验证成功，跳转首页
-////                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-////                            startActivity(intent);
-//                            MainActivity.actionStart(LoginActivity.this);
-//                        } else {
-//                            Toast.makeText(getApplicationContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                });
-//                thread.start();
-            }
-        });
-//        // 点击取消后清空数据并让输入框获取焦点
-//        cancleBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                passwordEt.setText("");
-//                accountEt.setText("");
-//                accountEt.requestFocus();//让账号输入框获取焦点
-//            }
-//        });
+    public void showToast(View v){
+        Toast.makeText(this,"我被点击了",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -147,6 +108,56 @@ public class LoginActivity extends BaseActivity {
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+//            case R.id.cancleBtn:
+//                passwordEt.setText("");
+//                accountEt.setText("");
+//                accountEt.requestFocus();//点击取消让账号输入框获取焦点
+//                break;
+            case R.id.bt_login:
+                /**
+                 * 本地验证账号密码
+                 */
+                String account = accountEt.getText().toString().trim();
+                String password = passwordEt.getText().toString().trim();
+                if(account.equals("123456") && password.equals("123456")){
+                    Toast.makeText(LoginActivity.this, "恭喜，登陆成功！", Toast.LENGTH_LONG).show();
+                    MainActivity.actionStart(LoginActivity.this);
+                }else{
+                    Toast.makeText(LoginActivity.this, "很遗憾，账号或密码不正确！", Toast.LENGTH_LONG).show();
+                }
+//                /**
+//                 * 服务端验证账号密码
+//                 */
+//                account = accountEt.getText().toString();
+//                pwd = passwordEt.getText().toString();
+//                if (account.equals("") || pwd.equals("")) {
+//                    Toast.makeText(getApplicationContext(), "用户名或密码为空", Toast.LENGTH_SHORT).show();
+//                }
+//                Thread thread = new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        int num = login(account, pwd);
+//                        if (resultCode.equals("0")) {
+//                            // 状态码为0，则表示验证成功，跳转首页
+////                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+////                            startActivity(intent);
+//                            MainActivity.actionStart(LoginActivity.this);
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                });
+//                thread.start();
+                break;
+            default:
+                break;
+        }
     }
 }
 

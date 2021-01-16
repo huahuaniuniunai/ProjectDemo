@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--主题引入自定义背景图片-->
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/img_launcher">
+    android:src="@drawable/welcome">
 
 </bitmap>

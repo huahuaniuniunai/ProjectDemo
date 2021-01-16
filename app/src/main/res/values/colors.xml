@@ -17,6 +17,7 @@
     <color name="button_normal">#67a2ea</color>
     <color name="button_pressed">#5a92d7</color>
     <color name="text_color">#333333</color>
+    <color name="transparent1">#20ffffff</color>
 
     <!--  设置shape.xml文件的渐变色  -->
     <color name="shape1">#5d8df7</color>

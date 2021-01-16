@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--主题设置按钮点击时的圆角弧度，并设置按钮颜色-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
     <corners android:radius="22dp" />
-    <solid android:color="@color/button_normal_color"/>
+    <solid android:color="@color/button_pressed"/>
 
 </shape>
