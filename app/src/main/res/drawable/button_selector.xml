@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--设置选择器-->
+<!--设置Button选择器，TextView选择器需要放置在 res/corlor目录下-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--被选中时的显示效果,一定要按这个循序写，否则效果会覆盖-->

@@ -3,9 +3,11 @@ package com.example.projectdemo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectdemo.mvp.BaseActivity;
@@ -24,8 +26,9 @@ import java.net.URL;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
-    private EditText accountEt, passwordEt;
-    private Button  loginBtn;
+    private Button  bt_login;
+    private EditText et_account, et_password;
+    private TextView tv_register, tv_forget_password;
     private String resultCode,resultMsg;
     private String account, pwd;
 
@@ -39,13 +42,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void initView() {
-        accountEt = findViewById(R.id.et_phone);
-        passwordEt = findViewById(R.id.et_password);
-        loginBtn = findViewById(R.id.bt_login);
+        et_account = findViewById(R.id.et_phone);
+        et_password = findViewById(R.id.et_password);
+        bt_login = findViewById(R.id.bt_login);
+        tv_register = findViewById(R.id.tv_register);
+        tv_forget_password = findViewById(R.id.tv_forget_password);
     }
 
     private void initEvent() {
-        loginBtn.setOnClickListener(this);
+        bt_login.setOnClickListener(this);
+        tv_register.setOnClickListener(this);
+        tv_forget_password.setOnClickListener(this);
     }
 
     public void showToast(View v){
@@ -122,14 +129,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 /**
                  * 本地验证账号密码
                  */
-                String account = accountEt.getText().toString().trim();
-                String password = passwordEt.getText().toString().trim();
-                if(account.equals("123456") && password.equals("123456")){
-                    Toast.makeText(LoginActivity.this, "恭喜，登陆成功！", Toast.LENGTH_LONG).show();
-                    MainActivity.actionStart(LoginActivity.this);
-                }else{
-                    Toast.makeText(LoginActivity.this, "很遗憾，账号或密码不正确！", Toast.LENGTH_LONG).show();
+                String account = et_account.getText().toString().trim();
+                String password = et_password.getText().toString().trim();
+                if (TextUtils.isEmpty(account) || TextUtils.isEmpty(password)) {
+                    toast("账号或密码不能为空哦...亲！");
+                } else {
+                    if(account.equals("123456") && password.equals("123456")){
+                        MainActivity.actionStart(LoginActivity.this);
+                    }else{
+                        Toast.makeText(LoginActivity.this, "很遗憾，账号或密码不正确！", Toast.LENGTH_LONG).show();
+                    }
                 }
+
 //                /**
 //                 * 服务端验证账号密码
 //                 */
@@ -154,6 +165,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 //
 //                });
 //                thread.start();
+                break;
+            case R.id.tv_register:
+                toast("账号：123456，注册成功！");
+                break;
+            case R.id.tv_forget_password:
+                toast("友情提示：123456");
                 break;
             default:
                 break;
