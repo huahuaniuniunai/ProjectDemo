@@ -2,23 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include layout="@layout/title_bar_message" />
     <include layout="@layout/title_bar_search" />
 
-    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
-        android:id="@+id/refreshLayout"
+<!--    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout-->
+<!--        android:id="@+id/refreshLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+
+<!--    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>-->
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/page">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+        <TextView
+            android:id="@+id/message_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="暂无消息\n创建一个聊天吧～"
+            android:textColor="#8c8c8c"
+            android:textSize="14dp" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/message_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="15dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_message_add"
+            app:borderWidth="0dp"
+            app:elevation="8dp"
+            app:fabCustomSize="42dp"
+            app:fabSize="mini"
+            app:maxImageSize="42dp"
+            app:rippleColor="#000000"/>
+<!--        app:layout_anchor="@id/message_recycler_view"-->
+<!--        app:layout_anchorGravity="bottom|right"-->
+<!--        app:layout_behavior="com.google.android.material.floatingactionbutton.FloatingActionButton$Behavior"-->
 
-
+    </FrameLayout>
 </LinearLayout>
