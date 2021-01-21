@@ -121,15 +121,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.cancleBtn:
-//                passwordEt.setText("");
-//                accountEt.setText("");
-//                accountEt.requestFocus();//点击取消让账号输入框获取焦点
-//                break;
+            //点击取消让账号输入框获取焦点
+            /*
+            case R.id.cancleBtn:
+                passwordEt.setText("");
+                accountEt.setText("");
+                accountEt.requestFocus();//点击取消让账号输入框获取焦点
+                break;
+                */
+
             case R.id.bt_login:
-                /**
-                 * 本地验证账号密码
-                 */
+                MainActivity.actionStart(LoginActivity.this);
+
+                // 本地验证账号密码
+                /*
                 String account = et_account.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
                 if (TextUtils.isEmpty(account) || TextUtils.isEmpty(password)) {
@@ -141,31 +146,32 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         Toast.makeText(LoginActivity.this, "很遗憾，账号或密码不正确！", Toast.LENGTH_LONG).show();
                     }
                 }
+                */
 
-//                /**
-//                 * 服务端验证账号密码
-//                 */
-//                account = accountEt.getText().toString();
-//                pwd = passwordEt.getText().toString();
-//                if (account.equals("") || pwd.equals("")) {
-//                    Toast.makeText(getApplicationContext(), "用户名或密码为空", Toast.LENGTH_SHORT).show();
-//                }
-//                Thread thread = new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        int num = login(account, pwd);
-//                        if (resultCode.equals("0")) {
-//                            // 状态码为0，则表示验证成功，跳转首页
-////                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-////                            startActivity(intent);
-//                            MainActivity.actionStart(LoginActivity.this);
-//                        } else {
-//                            Toast.makeText(getApplicationContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                });
-//                thread.start();
+                // 服务端验证账号密码
+                /*
+                account = accountEt.getText().toString();
+                pwd = passwordEt.getText().toString();
+                if (account.equals("") || pwd.equals("")) {
+                    Toast.makeText(getApplicationContext(), "用户名或密码为空", Toast.LENGTH_SHORT).show();
+                }
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int num = login(account, pwd);
+                        if (resultCode.equals("0")) {
+                            // 状态码为0，则表示验证成功，跳转首页
+//                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+//                            startActivity(intent);
+                            MainActivity.actionStart(LoginActivity.this);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                });
+                thread.start();
+                */
                 break;
             case R.id.tv_register:
                 toast("账号：123456，注册成功！");

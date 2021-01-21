@@ -169,8 +169,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
      */
     private void getWechatApi() {
         try {
-//            ClipboardManager tvCopy = (ClipboardManager) PayDiscountDetailActivity.this.getSystemService(Context.CLIPBOARD_SERVICE);
-//            tvCopy.setText(sharecode);
             Intent intent = new Intent(Intent.ACTION_MAIN);
             ComponentName cmp = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI");
             intent.addCategory(Intent.CATEGORY_LAUNCHER);

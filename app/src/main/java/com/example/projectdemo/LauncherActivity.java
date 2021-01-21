@@ -26,16 +26,16 @@ public class LauncherActivity extends BaseActivity {
         setBar();
         skip = (TextView)findViewById(R.id.skip);
 
+        // 将欢迎界面系统自带的标题栏隐藏
         /*
-        将欢迎界面系统自带的标题栏隐藏
         ActionBar actionBar = getActionBar();
         if(actionBar != null) {
             actionBar.hide();
         }
         */
 
+        // 设置字符串部分字段为其他颜色
         /*
-        设置字符串部分字段为其他颜色
         final SpannableStringBuilder style = new SpannableStringBuilder();
         style.append("关于本活动更多规则，请点我查看");//设置文字
 
