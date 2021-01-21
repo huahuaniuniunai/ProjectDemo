@@ -1,6 +1,5 @@
 package com.example.projectdemo;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,11 +25,28 @@ public class LauncherActivity extends BaseActivity {
 
         setBar();
         skip = (TextView)findViewById(R.id.skip);
-        // 将欢迎界面系统自带的标题栏隐藏
-//        ActionBar actionBar = getActionBar();
-//        if(actionBar != null) {
-//            actionBar.hide();
-//        }
+
+        /*
+        将欢迎界面系统自带的标题栏隐藏
+        ActionBar actionBar = getActionBar();
+        if(actionBar != null) {
+            actionBar.hide();
+        }
+        */
+
+        /*
+        设置字符串部分字段为其他颜色
+        final SpannableStringBuilder style = new SpannableStringBuilder();
+        style.append("关于本活动更多规则，请点我查看");//设置文字
+
+        //设置"请点我查看"文字为红色
+        //Spannable. SPAN_INCLUSIVE_EXCLUSIVE：前面包括，后面不包括，即在文本前插入新的文本会应用该样式，而在文本后插入新文本不会应用该样式
+        //Spannable. SPAN_INCLUSIVE_INCLUSIVE：前面包括，后面包括，即在文本前插入新的文本会应用该样式，而在文本后插入新文本也会应用该样式
+        //Spannable. SPAN_EXCLUSIVE_EXCLUSIVE：前面不包括，后面不包括
+        //Spannable. SPAN_EXCLUSIVE_INCLUSIVE：前面不包括，后面包括
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.parseColor("#FF0000"));
+        style.setSpan(foregroundColorSpan, 11, 15, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        */
 
         final Handler handler = new Handler() {
             @Override

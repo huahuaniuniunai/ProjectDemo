@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.projectdemo.R;
+import com.example.projectdemo.activity.SeeMoreActivity;
 import com.example.projectdemo.mvp.BaseFragment;
 import com.example.projectdemo.permission.ActivityPermission;
 import com.example.projectdemo.recyclerview.RecyclerActivity;
@@ -42,6 +43,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button9;
     private Button button10;
     private Button button11;
+    private Button button12;
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
 
@@ -66,6 +68,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button9 = view.findViewById(R.id.bt_9);
         button10 = view.findViewById(R.id.bt_10);
         button11 = view.findViewById(R.id.bt_11);
+        button12 = view.findViewById(R.id.bt_12);
     }
 
     private void initEvent() {
@@ -80,6 +83,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button9.setOnClickListener(this);
         button10.setOnClickListener(this);
         button11.setOnClickListener(this);
+        button12.setOnClickListener(this);
     }
 
     @Override
@@ -121,6 +125,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.bt_11:
                 getWechatApi();
+                break;
+            case R.id.bt_12:
+                SeeMoreActivity.actionStart(getActivity());
                 break;
             default:
                 break;

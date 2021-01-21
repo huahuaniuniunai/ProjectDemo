@@ -18,9 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lztx.activity.NewPeopleActivity"></activity>
-        <activity android:name=".lztx.activity.PersonalDetailsActivity" />
-        <!-- immersion bar适配全面屏 -->
+        <activity android:name=".activity.SeeMoreActivity"></activity>
+        <activity android:name=".lztx.activity.NewPeopleActivity" />
+        <activity android:name=".lztx.activity.PersonalDetailsActivity" /> <!-- immersion bar适配全面屏 -->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
@@ -45,7 +45,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".LauncherActivity"
+        <activity
+            android:name=".LauncherActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,7 +54,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="false"
