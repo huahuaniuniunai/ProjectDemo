@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/page"
+    tools:context=".view.progressbar.loading.LoadingViewActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/down_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/shape_login"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="自定义加载动画"
+        app:titleTextColor="@android:color/white"
+        tools:ignore="MissingConstraints"
+        app:layout_scrollFlags="scroll|enterAlways|snap"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/down_refresh"
+        android:layout_marginTop="50dp">
+
+        <com.example.projectdemo.view.progressbar.loading.LoadingView
+            android:id="@+id/loading1"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <com.example.projectdemo.view.progressbar.loading.LoadingView
+            android:id="@+id/loading2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:autoStartAni="true"
+            android:layout_marginLeft="20dp" />
+
+        <com.example.projectdemo.view.progressbar.loading.LoadingView
+            android:id="@+id/loading3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

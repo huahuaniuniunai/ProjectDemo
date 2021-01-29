@@ -30,6 +30,7 @@ import com.example.projectdemo.util.activity.CommonStartActivity;
 import com.example.projectdemo.LoginActivity;
 import com.example.projectdemo.util.layout.DynaLoadLayout;
 import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
+import com.example.projectdemo.view.progressbar.loading.LoadingViewActivity;
 import com.xuexiang.xupdate.XUpdate;
 
 public class MyFragment extends BaseFragment implements View.OnClickListener {
@@ -46,6 +47,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button11;
     private Button button12;
     private Button button13;
+    private Button button14;
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
 
@@ -72,6 +74,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button11 = view.findViewById(R.id.bt_11);
         button12 = view.findViewById(R.id.bt_12);
         button13 = view.findViewById(R.id.bt_13);
+        button14 = view.findViewById(R.id.bt_14);
     }
 
     private void initEvent() {
@@ -88,6 +91,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button11.setOnClickListener(this);
         button12.setOnClickListener(this);
         button13.setOnClickListener(this);
+        button14.setOnClickListener(this);
     }
 
     @Override
@@ -135,6 +139,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.bt_13:
                 DownRefreshActivity.actionStart(getActivity());
+                break;
+            case R.id.bt_14:
+                LoadingViewActivity.actionStart(getActivity());
                 break;
             default:
                 break;

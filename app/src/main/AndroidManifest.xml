@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DownRefreshActivity"></activity>
+        <activity android:name=".view.progressbar.loading.LoadingViewActivity"></activity>
+        <activity android:name=".activity.DownRefreshActivity" />
         <activity android:name=".activity.SeeMoreActivity" />
         <activity android:name=".lztx.activity.NewPeopleActivity" />
         <activity android:name=".lztx.activity.PersonalDetailsActivity" /> <!-- immersion bar适配全面屏 -->
