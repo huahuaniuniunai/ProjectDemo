@@ -38,7 +38,7 @@ public class SideBarView extends View {
                 14, getResources().getDisplayMetrics());
         mPaint = new Paint();
         mPaint.setTextSize(textSize);
-        mPaint.setAntiAlias(true);// 抗锯齿
+        mPaint.setAntiAlias(true);// 抗锯齿,等同于Paint.ANTI_ALIAS_FLAG
         mPaint.setDither(true);// 防抖动
     }
 

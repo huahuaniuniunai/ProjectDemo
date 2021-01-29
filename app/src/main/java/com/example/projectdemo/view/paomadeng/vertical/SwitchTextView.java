@@ -1,6 +1,5 @@
 package com.example.projectdemo.view.paomadeng.vertical;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -11,8 +10,6 @@ import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-
-import com.example.projectdemo.R;
 
 import java.util.List;
 import java.util.Timer;

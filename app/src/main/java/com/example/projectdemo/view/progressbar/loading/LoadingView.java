@@ -35,7 +35,7 @@ public class LoadingView extends View {
     //圆圈边框宽度
     private int borderWidth = 8;
     //圆形的矩形轮廓
-    RectF rectF;
+    private RectF rectF;
     private int maxProgress = 100;
     private int minProgress = 0;
     //中间的图片
@@ -74,7 +74,7 @@ public class LoadingView extends View {
 
         rectF = new RectF();
 
-        centerImg = BitmapFactory.decodeResource(getResources(), R.drawable.loading);
+        centerImg = BitmapFactory.decodeResource(getResources(), R.drawable.face_right);
 
         objectAnimator = ObjectAnimator.ofFloat(
                 this,

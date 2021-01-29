@@ -23,7 +23,6 @@ public class LauncherActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
-        setBar();
         skip = (TextView)findViewById(R.id.skip);
 
         // 将欢迎界面系统自带的标题栏隐藏
