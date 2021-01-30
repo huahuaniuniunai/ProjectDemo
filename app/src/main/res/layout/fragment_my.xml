@@ -110,7 +110,7 @@
                 android:id="@+id/bt_15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="通讯录联系人"/>
+                android:text="15、引入自定义SDK"/>
 
             <Button
                 android:id="@+id/bt_16"
