@@ -26,24 +26,22 @@ android {
         }
     }
 
-    //统一JDK版本
+    // 统一JDK版本
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
     // 修改生成的apk名字格式格式
-    /*
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def formattedDate = new Date().format('yyyyMMdd-HHmm')
-            outputFileName = "LZTX_v" +
+            outputFileName = "GayHub_" +
                     variant.versionName + "_" +
                     variant.buildType.name + "_" +
                     formattedDate + ".apk"
         }
     }
-    */
 
     signingConfigs {
         release {
@@ -63,6 +61,7 @@ android {
         }
     }
 
+    // 系统在lib目录下搜索依赖
     repositories {
         flatDir {
             dirs 'libs'
