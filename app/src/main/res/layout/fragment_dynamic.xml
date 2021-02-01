@@ -6,4 +6,12 @@
 
     <include layout="@layout/title_bar_dynamic" />
 
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/git"
+        android:visibility="gone"/>
+
 </LinearLayout>
