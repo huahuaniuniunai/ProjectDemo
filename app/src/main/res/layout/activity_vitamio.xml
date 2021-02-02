@@ -8,6 +8,15 @@
     android:background="@color/page"
     tools:context=".activity.VitamioActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_login"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/shape_login"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="Vitamio"
+        app:titleTextColor="@android:color/white" />
+
     <FrameLayout
         android:id="@+id/fl_controller"
         android:layout_width="match_parent"
@@ -62,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:background="@drawable/button_common_bg"
+            android:background="@drawable/button_selector2"
             android:text="摄像头1"
             android:textColor="#fff"
             android:textSize="18sp"
@@ -72,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/button_common_bg"
+            android:background="@drawable/button_selector2"
             android:gravity="center"
             android:text="摄像头2"
             android:textColor="#fff"
@@ -84,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:background="@drawable/button_common_bg"
+            android:background="@drawable/button_selector2"
             android:text="摄像头3"
             android:textColor="#fff"
             android:textSize="18sp"

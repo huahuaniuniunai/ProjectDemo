@@ -116,13 +116,15 @@
                 android:id="@+id/bt_16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="16、Ijkplayer直播"/>
+                android:text="16、Ijkplayer直播"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/bt_17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="17、Vitamio直播"/>
+                android:text="17、Vitamio直播"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/bt_18"
