@@ -19,6 +19,8 @@ import androidx.annotation.Nullable;
 import com.example.projectdemo.R;
 import com.example.projectdemo.activity.DownRefreshActivity;
 import com.example.projectdemo.activity.SeeMoreActivity;
+import com.example.projectdemo.activity.IjkplayerActivity;
+import com.example.projectdemo.activity.VitamioActivity;
 import com.example.projectdemo.mvp.BaseFragment;
 import com.example.projectdemo.permission.ActivityPermission;
 import com.example.projectdemo.recyclerview.RecyclerActivity;
@@ -50,6 +52,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button13;
     private Button button14;
     private Button button15;
+    private Button button16;
+    private Button button17;
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
 
@@ -78,6 +82,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button13 = view.findViewById(R.id.bt_13);
         button14 = view.findViewById(R.id.bt_14);
         button15 = view.findViewById(R.id.bt_15);
+        button16 = view.findViewById(R.id.bt_16);
+        button17 = view.findViewById(R.id.bt_17);
     }
 
     private void initEvent() {
@@ -96,6 +102,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button13.setOnClickListener(this);
         button14.setOnClickListener(this);
         button15.setOnClickListener(this);
+        button16.setOnClickListener(this);
+        button17.setOnClickListener(this);
     }
 
     @Override
@@ -150,6 +158,12 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.bt_15:
                 Intent intent = new Intent(getActivity(), SdkDemoActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.bt_16:
+                IjkplayerActivity.actionStart(getActivity());
+                break;
+            case R.id.bt_17:
+                VitamioActivity.actionStart(getActivity());
                 break;
             default:
                 break;

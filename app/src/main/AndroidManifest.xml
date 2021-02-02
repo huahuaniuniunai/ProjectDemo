@@ -20,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".view.progressbar.loading.LoadingViewActivity"></activity>
+        <activity android:name=".activity.VitamioActivity"></activity>
+        <activity android:name=".activity.IjkplayerActivity" />
+        <activity android:name=".view.progressbar.loading.LoadingViewActivity" />
         <activity android:name=".activity.DownRefreshActivity" />
         <activity android:name=".activity.SeeMoreActivity" />
         <activity android:name=".lztx.activity.NewPeopleActivity" />

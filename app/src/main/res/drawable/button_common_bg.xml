@@ -3,8 +3,13 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <corners android:radius="22dp" />
-    <solid android:drawable="@drawable/shape"/>
-
+    <corners android:radius="5dp" />
+    <gradient
+        android:angle="0"
+        android:centerX="0.7"
+        android:endColor="@color/shape2"
+        android:startColor="@color/shape1"
+        android:centerColor="@color/shape3"
+        android:type="linear" />
 
 </shape>

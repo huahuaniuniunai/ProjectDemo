@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page"
+    tools:context=".activity.IjkplayerActivity">
+
+    <FrameLayout
+        android:id="@+id/fl_ijkplayer"
+        android:layout_width="match_parent"
+        android:layout_height="260dp">
+
+        <!--播放控件 IjkVideoView -->
+        <!--    <com.demo.yilv.videodemo.media.IjkVideoView-->
+        <!--        android:id="@+id/video_view"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="match_parent" />-->
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_below="@+id/fl_ijkplayer">
+        <Button
+            android:id="@+id/btn_play4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/button_common_bg"
+            android:text="摄像头1"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btn_play5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_common_bg"
+            android:gravity="center"
+            android:text="摄像头2"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btn_play6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:background="@drawable/button_common_bg"
+            android:text="摄像头3"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</RelativeLayout>
