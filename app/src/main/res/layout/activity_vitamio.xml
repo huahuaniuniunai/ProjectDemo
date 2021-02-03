@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/page"
-    tools:context=".activity.VitamioActivity">
+    tools:context=".activity.vitamio.VitamioActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_login"

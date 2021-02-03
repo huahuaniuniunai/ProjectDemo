@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/page"
-    tools:context=".activity.IjkplayerActivity">
+    tools:context=".activity.ijkplayer.IjkplayerActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_login"
@@ -20,13 +20,15 @@
         android:id="@+id/fl_ijkplayer"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:layout_below="@+id/tb_login">
+        android:layout_below="@+id/tb_login"
+        android:background="@color/black">
 
         <!--播放控件 IjkVideoView -->
-        <!--    <com.demo.yilv.videodemo.media.IjkVideoView-->
-        <!--        android:id="@+id/video_view"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="match_parent" />-->
+        <com.example.projectdemo.activity.ijkplayer.media.IjkVideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
 
     </FrameLayout>
 
@@ -38,7 +40,7 @@
         android:padding="10dp"
         android:layout_below="@+id/fl_ijkplayer">
         <Button
-            android:id="@+id/btn_play4"
+            android:id="@+id/btn_ijk1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -48,7 +50,7 @@
             android:textSize="18sp"
             android:layout_weight="1"/>
         <Button
-            android:id="@+id/btn_play5"
+            android:id="@+id/btn_ijk2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -59,7 +61,7 @@
             android:textSize="18sp"
             android:layout_weight="1"/>
         <Button
-            android:id="@+id/btn_play6"
+            android:id="@+id/btn_ijk3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

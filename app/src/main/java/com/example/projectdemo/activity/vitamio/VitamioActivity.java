@@ -1,4 +1,4 @@
-package com.example.projectdemo.activity;
+package com.example.projectdemo.activity.vitamio;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,13 +8,12 @@ import com.example.projectdemo.R;
 import com.example.projectdemo.mvp.BaseActivity;
 import com.gyf.immersionbar.ImmersionBar;
 
-public class IjkplayerActivity extends BaseActivity {
+public class VitamioActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ijkplayer);
-
+        setContentView(R.layout.activity_vitamio);
     }
 
     @Override
@@ -27,7 +26,7 @@ public class IjkplayerActivity extends BaseActivity {
     }
 
     public static void actionStart(Context context) {
-        Intent intent = new Intent(context, IjkplayerActivity.class);
+        Intent intent = new Intent(context, VitamioActivity.class);
         context.startActivity(intent);
     }
 }
