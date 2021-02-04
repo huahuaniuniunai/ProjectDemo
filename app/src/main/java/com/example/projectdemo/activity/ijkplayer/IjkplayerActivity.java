@@ -37,12 +37,13 @@ public class IjkplayerActivity extends BaseActivity implements View.OnClickListe
 
         initView();
 //        initEvent();
-        startNormal(path1);
+//        startNormal(path1);
 
-//        startHorizontal();
+        startHorizontal(path1);
     }
 
     private void initView() {
+        player = new PlayerManager(this);
         mVideoView = findViewById(R.id.video_view);
         bt_ijk1 = findViewById(R.id.btn_ijk1);
         bt_ijk2 = findViewById(R.id.btn_ijk2);
@@ -63,22 +64,21 @@ public class IjkplayerActivity extends BaseActivity implements View.OnClickListe
     }
 
     /** 调用startHorizontal()方法滑动控制的话解开注释 **/
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        if (player.gestureDetector.onTouchEvent(event))
-//            return true;
-//        return super.onTouchEvent(event);
-//    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (player.gestureDetector.onTouchEvent(event))
+            return true;
+        return super.onTouchEvent(event);
+    }
 
     /**
      * 可左半屏滑动控制亮度  右半屏控制音量  双击切换比例  （无提示）
      */
     private void startHorizontal(String url) {
-        player = new PlayerManager(this);
-        player.setFullScreenOnly(true);
+        player.setFullScreenOnly(false);// 设置是否隐藏actionbar
         player.live(true);
         player.setScaleType(PlayerManager.SCALETYPE_WRAPCONTENT);
-        player.playInFullScreen(true);
+        player.playInFullScreen(true);// 设置视频无旋转感应
         player.setPlayerStateListener(new PlayerManager.PlayerStateListener() {
             @Override
             public void onComplete() {
@@ -135,17 +135,20 @@ public class IjkplayerActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_ijk1:
-                startNormal(path1);
-                break;
-            case R.id.btn_ijk2:
-                startNormal(path2);
-                break;
-            case R.id.btn_ijk3:
-                startNormal(path3);
-                break;
-            default:
-                break;
+//            case R.id.btn_ijk1:
+//                player.onDestroy();
+//                startNormal(path1);
+//                break;
+//            case R.id.btn_ijk2:
+//                player.onDestroy();
+//                startNormal(path2);
+//                break;
+//            case R.id.btn_ijk3:
+//                player.onDestroy();
+//                startNormal(path3);
+//                break;
+//            default:
+//                break;
         }
     }
 }

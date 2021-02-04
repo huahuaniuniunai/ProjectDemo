@@ -662,7 +662,7 @@ public class PlayerManager {
 
     public PlayerManager playInFullScreen(boolean fullScreen){
         if (fullScreen) {
-            activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         }
         return this;
     }
