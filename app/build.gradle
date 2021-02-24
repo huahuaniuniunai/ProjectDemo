@@ -142,4 +142,7 @@ dependencies {
     implementation 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.8'
     implementation 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.8'
 
+    // vitamio播放器
+    implementation 'me.neavo:vitamio:4.2.2'
+
 }
