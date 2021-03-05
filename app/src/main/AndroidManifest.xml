@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".activity.ijkplayer.core_module.CoreModuleActivity"></activity>
+        <activity android:name=".util.activity.MoonActivity"></activity>
+        <activity android:name=".activity.ijkplayer.core_module.CoreModuleActivity" />
         <activity android:name=".activity.vitamio.VitamioActivity" />
         <activity android:name=".activity.ijkplayer.IjkplayerActivity" />
         <activity android:name=".view.progressbar.loading.LoadingViewActivity" />
