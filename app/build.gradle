@@ -67,6 +67,13 @@ android {
             dirs 'libs'
         }
     }
+
+    // AS不支持自动添加 .so文件（Eclipse是支持的），所以我们需要手动加载libs下的.so的动态库
+//    sourceSets {
+//        main() {
+//            jniLibs.srcDirs = ['jniLibs']
+//        }
+//    }
 }
 
 dependencies {

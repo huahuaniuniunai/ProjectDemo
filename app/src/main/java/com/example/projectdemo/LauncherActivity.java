@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 
@@ -46,6 +48,25 @@ public class LauncherActivity extends BaseActivity {
         ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.parseColor("#FF0000"));
         style.setSpan(foregroundColorSpan, 11, 15, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         */
+
+        //渐变展示启动屏
+        View view = View.inflate(this, R.layout.activity_launcher, null);
+        AlphaAnimation aa = new AlphaAnimation(0.1f,1.0f);
+        aa.setDuration(3000);
+        view.startAnimation(aa);
+        aa.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                //动画结束，跳转activity
+            }
+
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+        });
 
         final Handler handler = new Handler() {
             @Override
