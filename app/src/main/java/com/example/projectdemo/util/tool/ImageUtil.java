@@ -191,7 +191,7 @@ public class ImageUtil {
 		canvas.translate(10, bitmapHeight - textHeight - 15);//写字的位置
 		layout.draw(canvas);
 		
-		canvas.save(Canvas.ALL_SAVE_FLAG);
+//		canvas.save(Canvas.ALL_SAVE_FLAG);
 		canvas.restore();
 		return bmp;
 	}

@@ -1,5 +1,6 @@
 package com.example.projectdemo.util.tool;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -21,8 +22,6 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
-
-import com.sunshion.sys.service.CoreService;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -50,7 +49,7 @@ public class ComUtil {
 			try{
 
 
-				String deviceId = telephonemanage.getDeviceId();
+				@SuppressLint("MissingPermission") String deviceId = telephonemanage.getDeviceId();
                 //android 10以上已经获取不了imei了 用 android id代替
 				if(TextUtils.isEmpty(deviceId)){
 					deviceId = Settings.System.getString(
@@ -62,13 +61,13 @@ public class ComUtil {
 				Globals.log("获取手机IMEI号", e, context);
 				return "";
 			}
-		}		 
+		}
 		return "";
 	}
 
 	/**开启定时器*/
 	public static void startAlarm(long intervalMillis, int requestCode, Class<?> clsReceiver, Context context){
-		
+
 	}
 	/**是否存在SD卡*/
 	public static boolean existsSdCard(){
@@ -94,7 +93,7 @@ public class ComUtil {
 			launch.addCategory(Intent.CATEGORY_LAUNCHER);
 			launch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_SINGLE_TOP);
 			context.startActivity(launch);
-			
+
 			//自动隐藏
 			if(hidden){
 				Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -136,47 +135,47 @@ public class ComUtil {
 		return PackageManager.PERMISSION_GRANTED == status;
 	}
 	//android版本大于或等于19，检查是否授权
-	public static boolean isPermissionGranted(Context context, int op){
-		 final int version = Build.VERSION.SDK_INT;
-			if (version >= 19){
-				Object object = context.getSystemService("appops");
-				Class c = object.getClass();
-				try {
-					Class[] cArg = new Class[3];
-					cArg[0] = int.class;
-					cArg[1] = int.class;
-					cArg[2] = String.class;
-					Method lMethod = c.getDeclaredMethod("checkOp", cArg);
-					int mode= (Integer) lMethod.invoke(object, op, Binder.getCallingUid(), context.getPackageName());
-					if(mode==0){
-						  return true;
-					}else {
-						return false;
-					}
-
-				} catch(NoSuchMethodException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					e.printStackTrace();
-				}
-			}
-			return false;
-	}
+//	public static boolean isPermissionGranted(Context context, int op){
+//		 final int version = Build.VERSION.SDK_INT;
+//			if (version >= 19){
+//				Object object = context.getSystemService("appops");
+//				Class c = object.getClass();
+//				try {
+//					Class[] cArg = new Class[3];
+//					cArg[0] = int.class;
+//					cArg[1] = int.class;
+//					cArg[2] = String.class;
+//					Method lMethod = c.getDeclaredMethod("checkOp", cArg);
+//					int mode= (Integer) lMethod.invoke(object, op, Binder.getCallingUid(), context.getPackageName());
+//					if(mode==0){
+//						  return true;
+//					}else {
+//						return false;
+//					}
+//
+//				} catch(NoSuchMethodException e) {
+//					e.printStackTrace();
+//				} catch (IllegalAccessException e) {
+//					e.printStackTrace();
+//				} catch (IllegalArgumentException e) {
+//					e.printStackTrace();
+//				} catch (InvocationTargetException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//			return false;
+//	}
 	private static WakeLock mWakeLock=null;
 	//申请设备电源锁
-	public static void acquireWakeLock( Context context){
-		if (null == mWakeLock) {
-			PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
-			mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK| PowerManager.ON_AFTER_RELEASE,"");
-			if (null != mWakeLock){
-				mWakeLock.acquire();
-			}
-		}
-	}
+//	public static void acquireWakeLock( Context context){
+//		if (null == mWakeLock) {
+//			PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+//			mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK| PowerManager.ON_AFTER_RELEASE,"");
+//			if (null != mWakeLock){
+//				mWakeLock.acquire();
+//			}
+//		}
+//	}
 	//释放设备电源锁
 	public static void  releaseWakeLock(){
 		if (null != mWakeLock){
@@ -193,9 +192,9 @@ public class ComUtil {
 	}
 	//判断APP是否安装
 	public static boolean isAppInstalled(Context context, String packageName) {
-		boolean hasInstalled = false;       
+		boolean hasInstalled = false;
 		PackageManager pm = context.getPackageManager();
-		List<PackageInfo> list = pm.getInstalledPackages(PackageManager.PERMISSION_GRANTED);
+		@SuppressLint("WrongConstant") List<PackageInfo> list = pm.getInstalledPackages(PackageManager.PERMISSION_GRANTED);
 		for (PackageInfo p : list) {
 			if (packageName != null && packageName.equals(p.packageName)) {
 				hasInstalled = true;
@@ -217,7 +216,7 @@ public class ComUtil {
 	 * @return
 	 */
 	public static String getDeviceUUID(Context context){
-		SharedPreferences preferences = context.getSharedPreferences("appRunInfo", com.sunshion.sys.util.ComUtil.getSharedPreferencesMode());
+		SharedPreferences preferences = context.getSharedPreferences("appRunInfo", ComUtil.getSharedPreferencesMode());
 		String deviceUUID = StringUtil.null2String(preferences.getString("deviceUUID", "")).trim();
 		if(deviceUUID.length() == 0){
 			deviceUUID = CodeGenerator.getUUID();
@@ -233,7 +232,7 @@ public class ComUtil {
 	 * @return
 	 */
 	public static String getLoginToken(Context context){
-		SharedPreferences preferences = context.getSharedPreferences("appRunInfo", com.sunshion.sys.util.ComUtil.getSharedPreferencesMode());
+		SharedPreferences preferences = context.getSharedPreferences("appRunInfo", ComUtil.getSharedPreferencesMode());
 		String loginToken = StringUtil.null2String(preferences.getString("loginToken", "")).trim();
 		return loginToken;
 	}
@@ -243,42 +242,42 @@ public class ComUtil {
 	 * @return
 	 */
 	public static void setLoginToken(Context context, String loginToken){
-		SharedPreferences preferences = context.getSharedPreferences("appRunInfo", com.sunshion.sys.util.ComUtil.getSharedPreferencesMode());
+		SharedPreferences preferences = context.getSharedPreferences("appRunInfo", ComUtil.getSharedPreferencesMode());
 		Editor editor = preferences.edit();
 		editor.putString("loginToken", loginToken);
 		editor.commit();
 	}
-	/** 
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素) 
-     */  
+	/**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
     public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;  
+        final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
-    }  
-  
-    /** 
-     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp 
-     */  
+    }
+
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     */
     public static int px2dip(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;  
-        return (int) (pxValue / scale + 0.5f);  
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
     }
     //验证包是否有效
-	public static void validatePackage(final Activity context) throws Exception {
-		if(Globals.debug == true){
-//			Toast.makeText(context, "登陆成功", Toast.LENGTH_SHORT).show();
-			return ;
-		}
-		String sha1 = StringUtil.null2String(getSignSHA1(context)).trim();
-		if(sha1.equals("4F:BC:BC:6E:1C:E5:7B:16:2F:A5:7A:A1:20:6E:B8:0A:53:F1:5D:CF")){//合法签名
-			return ;
-		}
-		CoreService.mHandler.postDelayed(new Runnable() {
-			public void run() {
-				context.finish();
-			}
-		}, 200);
-	}
+//	public static void validatePackage(final Activity context) throws Exception {
+//		if(Globals.debug == true){
+////			Toast.makeText(context, "登陆成功", Toast.LENGTH_SHORT).show();
+//			return ;
+//		}
+//		String sha1 = StringUtil.null2String(getSignSHA1(context)).trim();
+//		if(sha1.equals("4F:BC:BC:6E:1C:E5:7B:16:2F:A5:7A:A1:20:6E:B8:0A:53:F1:5D:CF")){//合法签名
+//			return ;
+//		}
+//		CoreService.mHandler.postDelayed(new Runnable() {
+//			public void run() {
+//				context.finish();
+//			}
+//		}, 200);
+//	}
 	public static String getSignSHA1(Activity context) throws Exception {
 		PackageManager pm = context.getPackageManager();
 		PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
@@ -297,7 +296,7 @@ public class ComUtil {
 		//Log.e("SDL", "pubKey:" + pubKey);
 		//Log.e("SDL", "signNumber:" + signNumber);
 		//Log.e("SDL", "subjectDN:"+cert.getSubjectDN().toString());
-		
+
 		String hexString = null;
 		//加密算法的类，这里的参数可以使MD4,MD5等加密算法
 		MessageDigest md = MessageDigest.getInstance("SHA1");
@@ -348,7 +347,7 @@ public class ComUtil {
 	  }
 	  return md5StrBuff.toString();
 	}
-	
+
 	 /**
 	  * 加载本地图片
 	 * @param url
