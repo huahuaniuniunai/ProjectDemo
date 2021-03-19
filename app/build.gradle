@@ -89,8 +89,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.0.0'
 
-    // 加载本地jar包
-//    implementation files('libs\\JCSDK.jar')
+    // 加载本地解压工具jar包
+    implementation files('libs\\ant.jar')
+    implementation files('libs\\sun.misc.BASE64Decoder.jar')
 
     // 加载本地arr包
     implementation (name:'sdk-demo', ext:'aar')

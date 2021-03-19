@@ -1,4 +1,4 @@
-package com.example.projectdemo.util;
+package com.example.projectdemo.util.tool;
 
 import android.content.Context;
 import android.content.SharedPreferences;
