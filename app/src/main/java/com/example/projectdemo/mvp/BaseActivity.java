@@ -8,20 +8,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.MainThread;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
 //import com.ctq.eqc.util.avoid.AvoidOnResult;
 //import com.example.projectdemo.statusbar.StatusBarHelper;
 
-import com.example.projectdemo.R;
 import com.example.projectdemo.lztx.statusbar.StatusBarHelper;
-import com.example.projectdemo.util.activity.ActivityCollector;
+import com.example.projectdemo.util.activity.ActivityManager;
 import com.gyf.immersionbar.ImmersionBar;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -59,7 +54,7 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
         initMvpAfterOnCreate(savedInstanceState);
         Log.d(TAG, "当前执行的Activity:" + getClass().getSimpleName());
 
-        ActivityCollector.addActivity(this);
+        ActivityManager.addActivity(this);
     }
 
     /**
@@ -133,7 +128,7 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         disposeCompositeDisposable();
-        ActivityCollector.removeActivity(this);
+        ActivityManager.removeActivity(this);
     }
 
     public Activity getActivity() {

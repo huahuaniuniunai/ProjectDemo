@@ -3,7 +3,6 @@ package com.example.projectdemo;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -12,24 +11,20 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.projectdemo.application.MyApplication;
-import com.example.projectdemo.lztx.statusbar.StatusBarHelper;
 import com.example.projectdemo.mvp.BaseActivity;
 import com.example.projectdemo.pages.ContactsFragment;
 import com.example.projectdemo.pages.DynamicFragment;
 import com.example.projectdemo.pages.MessageFragment;
 import com.example.projectdemo.pages.MyFragment;
-import com.example.projectdemo.util.activity.ActivityCollector;
+import com.example.projectdemo.util.activity.ActivityManager;
 import com.example.projectdemo.view.tab.HomeTabItemView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.gyf.immersionbar.ImmersionBar;
-import com.jaeger.library.StatusBarUtil;
 
 public class MainActivity extends BaseActivity {
     private final String[] mTabsNameArray = new String[4];
@@ -174,7 +169,7 @@ public class MainActivity extends BaseActivity {
     public void onBackPressed() {
         if (System.currentTimeMillis() - mExitTime < 2000) {
             super.onBackPressed();
-            ActivityCollector.finishAll();
+            ActivityManager.finishAll();
         } else {
             mExitTime = System.currentTimeMillis();
             toast("再按一次退出!");
