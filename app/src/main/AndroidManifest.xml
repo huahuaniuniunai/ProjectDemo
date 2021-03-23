@@ -31,6 +31,7 @@
         <activity android:name=".activity.SeeMoreActivity" />
         <activity android:name=".lztx.activity.NewPeopleActivity" />
         <activity android:name=".lztx.activity.PersonalDetailsActivity" /> <!-- immersion bar适配全面屏 -->
+
         <meta-data
             android:name="android.max_aspect"
             android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
@@ -40,6 +41,11 @@
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
+
+        <!-- 1、多渠道打包配置动态渠道变量 -->
+        <meta-data
+            android:name="BaiduMobAd_CHANNEL"
+            android:value="${BAIDU_CHANNEL_VALUE}" />
 
         <activity android:name=".permission.ActivityPermission" />
         <activity android:name=".view.paomadeng.RunHorseLampActivity" />

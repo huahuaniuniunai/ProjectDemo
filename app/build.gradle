@@ -12,7 +12,10 @@ android {
         versionName "V1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
+
+        // 2、多渠道打包配置同一维度
+        flavorDimensions "versionCode"
+        multiDexEnabled true// 为了解决方法数大于65k的问题
         ndk {
             //设置支持的SO库架构
             abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'x86'
@@ -58,6 +61,31 @@ android {
         }
         release {
             signingConfig signingConfigs.release
+        }
+    }
+
+    // 3、多渠道打包配置小米、华为、应用宝、360手机助手、魅族应用市场、华为应用市场、自动更新
+    productFlavors {
+        xiaomi {
+            manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "xiaomi"]
+        }
+        baidu {
+            manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "baidu"]
+        }
+        yingyongbao {
+            manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "应用宝"]
+        }
+        qh360 {
+            manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "360手机助手"]
+        }
+        meizu {
+            manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "魅族应用市场"]
+        }
+        huawei {
+            manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "华为应用市场"]
+        }
+        autoUpdate {
+            manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "应用内更新"]
         }
     }
 
