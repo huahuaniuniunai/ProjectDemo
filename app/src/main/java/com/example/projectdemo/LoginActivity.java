@@ -2,10 +2,13 @@ package com.example.projectdemo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,30 +32,42 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private Button  bt_login;
     private EditText et_account, et_password;
-    private TextView tv_register, tv_forget_password;
+    private CheckBox remember;
+    private TextView tv_forget_password;
     private String resultCode,resultMsg;
     private String account, pwd;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
         initView();
         initEvent();
+
+        boolean isRemember = pref.getBoolean("remember_password", false);
+        if (isRemember) {
+            // 将账号和密码都设置到文本框中
+            String account = pref.getString("account", "");
+            String password = pref.getString("password", "");
+            et_account.setText(account);
+            et_password.setText(password);
+            remember.setChecked(true);
+        }
     }
 
     private void initView() {
         et_account = findViewById(R.id.et_phone);
         et_password = findViewById(R.id.et_password);
         bt_login = findViewById(R.id.bt_login);
-        tv_register = findViewById(R.id.tv_register);
+        remember = findViewById(R.id.tv_remember);
         tv_forget_password = findViewById(R.id.tv_forget_password);
     }
 
     private void initEvent() {
         bt_login.setOnClickListener(this);
-        tv_register.setOnClickListener(this);
         tv_forget_password.setOnClickListener(this);
     }
 
@@ -131,22 +146,30 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 */
 
             case R.id.bt_login:
-                MainActivity.actionStart(LoginActivity.this);
+//                MainActivity.actionStart(LoginActivity.this);
 
                 // 本地验证账号密码
-                /*
                 String account = et_account.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
                 if (TextUtils.isEmpty(account) || TextUtils.isEmpty(password)) {
                     toast("账号或密码不能为空哦...亲！");
                 } else {
                     if(account.equals("123456") && password.equals("123456")){
+                        editor = pref.edit();
+                        if (remember.isChecked()) {
+                            editor.putBoolean("remember_password", true);
+                            editor.putString("account", account);
+                            editor.putString("password", password);
+                        } else {
+                            editor.clear();
+                        }
+                        editor.apply();
                         MainActivity.actionStart(LoginActivity.this);
+                        finish();
                     }else{
                         Toast.makeText(LoginActivity.this, "很遗憾，账号或密码不正确！", Toast.LENGTH_LONG).show();
                     }
                 }
-                */
 
                 // 服务端验证账号密码
                 /*
@@ -173,11 +196,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 thread.start();
                 */
                 break;
-            case R.id.tv_register:
-                toast("账号：123456，注册成功！");
-                break;
             case R.id.tv_forget_password:
-                toast("友情提示：123456");
+                toast("账号和密码同为：123456");
                 break;
             default:
                 break;

@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- 当前APP主题 -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <!--标题栏背景颜色-->
@@ -10,10 +10,11 @@
         <item name="colorPrimaryDark">@color/black</item>
         <item name="android:navigationBarColor">@color/black</item>
         <!--控制各个控件被选中时的颜色，如：光标、单选框、复选框等-->
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/gray</item>
         <item name="android:windowBackground">@drawable/welcome</item>
     </style>
 
+    <!--自定义主题-->
     <style name="MyTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--标题栏背景颜色-->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -32,6 +33,12 @@
         <!--各个控制控件的默认颜色-->
         <item name="android:colorControlNormal">@color/colorPrimary</item>
     </style>
+
+    <!--单独设置复选框-->
+        <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+            <item name="colorControlNormal">@color/light_black</item>
+            <item name="colorControlActivated">@color/end</item>
+        </style>
 
     <style name="LauncherTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
