@@ -21,7 +21,7 @@ public class MoonActivity extends Activity implements View.OnClickListener{
         initEvent();
 
         String name = getIntent().getStringExtra("name");
-        int age = getIntent().getIntExtra("age", 0);
+        int age = getIntent().getIntExtra("age", 0);// 如果取不到age的值，就使用默认值
         mTextView.setText("你好，我叫" + name + "今年" + age + "岁，来自地球！");
     }
 
