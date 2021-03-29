@@ -15,7 +15,15 @@
         app:title="GayHub"
         app:titleTextColor="@android:color/white" />
 
+    <!--  当之有一个EditText或者AutoCompleteTextView的时候，进入画面时是默认得到焦点的。 要想去除焦点，可以在auto之前加一个0像素的layout，并设置他先得到焦点。 -->
+<!--    <LinearLayout-->
+<!--        android:layout_width="0px"-->
+<!--        android:layout_height="0px"-->
+<!--        android:focusable="true"-->
+<!--        android:focusableInTouchMode="true"/>-->
+
     <ScrollView
+        android:id="@+id/layout_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/page"
@@ -180,6 +188,12 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
             </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/layout_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

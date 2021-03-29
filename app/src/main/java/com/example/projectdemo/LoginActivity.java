@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import com.example.projectdemo.mvp.BaseActivity;
 import com.example.projectdemo.util.bytetransform.NetUtils;
 import com.example.projectdemo.util.log.LogUtil;
+import com.example.projectdemo.util.tool.KeyBoardHelperUtil;
 import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -38,6 +41,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private String account, pwd;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
+    private int bottomHeight;
+    private KeyBoardHelperUtil boardHelper;
+    private View layoutBottom;
+    private View layoutContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +71,57 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         bt_login = findViewById(R.id.bt_login);
         remember = findViewById(R.id.tv_remember);
         tv_forget_password = findViewById(R.id.tv_forget_password);
+
+        //为 Activity 指定 windowSoftInputMode
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        layoutContent = findViewById(R.id.layout_content);
+        layoutBottom = findViewById(R.id.layout_bottom);
     }
 
     private void initEvent() {
         bt_login.setOnClickListener(this);
         tv_forget_password.setOnClickListener(this);
+
+        boardHelper = new KeyBoardHelperUtil(this);
+        boardHelper.onCreate();
+        boardHelper.setOnKeyBoardStatusChangeListener(onKeyBoardStatusChangeListener);
+        layoutBottom.post(new Runnable() {
+            @Override
+            public void run() {
+                bottomHeight = layoutBottom.getHeight();
+            }
+        });
     }
+
+    private KeyBoardHelperUtil.OnKeyBoardStatusChangeListener onKeyBoardStatusChangeListener = new KeyBoardHelperUtil.OnKeyBoardStatusChangeListener() {
+        @Override
+        public void OnKeyBoardPop(int keyBoardheight) {
+
+            final int height = keyBoardheight;
+            if (bottomHeight > height) {//底部空白区域高度大于软键盘高度，没遮住
+                layoutBottom.setVisibility(View.GONE);
+            } else {
+                int offset = bottomHeight - height;
+                final ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) layoutContent
+                        .getLayoutParams();
+                lp.topMargin = offset;
+                layoutContent.setLayoutParams(lp);
+            }
+        }
+
+        @Override
+        public void OnKeyBoardClose(int oldKeyBoardheight) {
+            if (View.VISIBLE != layoutBottom.getVisibility()) {
+                layoutBottom.setVisibility(View.VISIBLE);
+            }
+            final ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) layoutContent
+                    .getLayoutParams();
+            if (lp.topMargin != 0) {
+                lp.topMargin = 0;
+                layoutContent.setLayoutParams(lp);
+            }
+        }
+    };
 
     @Override
     protected void setBar() {
