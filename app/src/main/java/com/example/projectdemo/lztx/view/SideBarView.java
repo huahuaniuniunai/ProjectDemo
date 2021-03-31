@@ -67,7 +67,7 @@ public class SideBarView extends View {
             }
             canvas.drawText(str[i], x, y, mPaint);
         }
-        invalidate();//触摸滑动刷新
+        invalidate();//触摸滑动刷新,invalidate是在UI线程中使用刷新view，postInvalidate是在非UI线程中使用
     }
 
     @Override
