@@ -48,10 +48,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("539815xyz.keystore")
-            storePassword "539815xyz"
-            keyAlias "sas"
-            keyPassword "539815xyz"
+            storeFile file(KEY_PATH)
+            storePassword KEY_PASS
+            keyAlias ALIAS_NAME
+            keyPassword ALIAS_PASS
         }
     }
 
@@ -75,7 +75,7 @@ android {
         yingyongbao {
             manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "应用宝"]
         }
-        qh360 {
+        qh360 { //gradle中的配置规定不能以数字开头
             manifestPlaceholders = [BAIDU_CHANNEL_VALUE: "360手机助手"]
         }
         meizu {
