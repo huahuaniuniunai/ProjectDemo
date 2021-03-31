@@ -13,6 +13,9 @@ import androidx.annotation.Nullable;
 
 import com.example.projectdemo.R;
 
+/**
+ * 自定义View标准写法
+ */
 public class SideBarView extends View {
     private Paint mPaint;
     private int mWidth, mHeight, textSize;
@@ -24,19 +27,22 @@ public class SideBarView extends View {
             "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
             "X", "Y", "Z", "#"};
 
-//    public SideBarView(Context context) {
-//        this(context, null);
-//    }
+    // 第一个构造函数：在代码中直接new一个调用，并通过this关键字调用第二个构造函数
+    public SideBarView(Context context) {
+        this(context, null);
+    }
 
+    // 第二个构造函数：在xml布局文件中调用，并通过this关键字调用第三个关键字
     public SideBarView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
+    // 第三个构造函数：在这里进行初始化画布、画笔
     public SideBarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         textSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                14, getResources().getDisplayMetrics());
-        mPaint = new Paint();
+                14, getResources().getDisplayMetrics());// 画布
+        mPaint = new Paint();// 画笔
         mPaint.setTextSize(textSize);
         mPaint.setAntiAlias(true);// 抗锯齿,等同于Paint.ANTI_ALIAS_FLAG
         mPaint.setDither(true);// 防抖动
