@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import com.example.projectdemo.R;
 
 /**
- * 动态加载布局：通过LayoutInflater.from()来加载一个布局到当前布局上。
+ * 动态加载自定义布局：通过LayoutInflater.from()来加载一个布局到当前布局上。
  * 1、新建一个动态加载的xml布局title，并定义好控件；
  * 2、新建一个自定义布局的类CustomLayout，并继承LinearLayout；
  * 3、新建一个activity活动DynaLoadLayout,并通过actionBar.hide()使系统自带的标题栏隐藏；
