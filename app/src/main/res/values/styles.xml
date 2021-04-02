@@ -36,8 +36,9 @@
 
     <!--单独设置复选框-->
         <style name="MyCheckBox" parent="Theme.AppCompat.Light">
-            <item name="colorControlNormal">@color/light_black</item>
+            <item name="colorControlNormal">@color/line</item>
             <item name="colorControlActivated">@color/end</item>
+<!--            <item name="android:colorForeground">#FF2F2F2F</item> SwitchCompat开关控件还需增加该属性-->
         </style>
 
     <style name="LauncherTheme" parent="Theme.AppCompat.Light.DarkActionBar">

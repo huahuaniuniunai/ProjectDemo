@@ -70,29 +70,35 @@ public class SideBarView extends View {
         invalidate();//触摸滑动刷新,invalidate是在UI线程中使用刷新view，postInvalidate是在非UI线程中使用
     }
 
+    /**
+     * 触摸滑动事件
+     * @param event
+     * @return
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float y = event.getY();
         index = (int) (y / mHeight * str.length);
         switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_DOWN:// 按下View（所有事件的开始）
                 mTouchListener.setLetterVisibility(View.VISIBLE);
                 mTouchListener.setLetter(str[index]);
                 choose = index;
                 mFlag = true;
                 break;
-            case MotionEvent.ACTION_MOVE:
+            case MotionEvent.ACTION_MOVE:// 滑动View
                 if (index > -1 && index < str.length) {
                     mTouchListener.setLetter(str[index]);
                     choose = index;
                     mFlag = true;
                 }
                 break;
-            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_UP:// 抬起View（与DOWN对应）
                 mTouchListener.setLetterVisibility(View.GONE);
                 choose = -1;
                 mFlag = false;
                 break;
+                // MotionEvent.ACTION_CANCEL：结束事件
         }
         return true;
     }
