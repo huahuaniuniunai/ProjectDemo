@@ -46,6 +46,9 @@ public class SideBarView extends View {
         mPaint.setTextSize(textSize);
         mPaint.setAntiAlias(true);// 抗锯齿,等同于Paint.ANTI_ALIAS_FLAG
         mPaint.setDither(true);// 防抖动
+//        mPaint.setColor(Color.BLACK);       //设置画笔颜色
+//        mPaint.setStyle(Paint.Style.FILL);  //设置画笔模式为填充
+//        mPaint.setStrokeWidth(10f);         //设置画笔宽度为10px
     }
 
     @Override

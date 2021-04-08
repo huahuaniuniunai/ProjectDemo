@@ -172,7 +172,7 @@ public class MainActivity extends BaseActivity {
             ActivityManager.finishAll();
         } else {
             mExitTime = System.currentTimeMillis();
-            toast("再按一次退出!");
+            toast("再按一次退出");
         }
     }
 

@@ -17,10 +17,10 @@
 <!--            android:id="@+id/rv"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent" />-->
-
 <!--    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>-->
 
-    <FrameLayout
+<!--    CoordinatorLayout协调布局相当于一个加强版的Fragment布局，保证悬浮按钮自动移动而不被遮挡    -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/page">
@@ -59,5 +59,5 @@
 <!--        app:layout_anchorGravity="bottom|right"-->
 <!--        app:layout_behavior="com.google.android.material.floatingactionbutton.FloatingActionButton$Behavior"-->
 
-    </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

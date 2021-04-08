@@ -19,6 +19,8 @@ import androidx.annotation.Nullable;
 import com.example.projectdemo.R;
 import com.example.projectdemo.activity.DownRefreshActivity;
 import com.example.projectdemo.activity.SeeMoreActivity;
+import com.example.projectdemo.activity.TimeActivity;
+import com.example.projectdemo.activity.cardview.CollapsbleToolbarActivity;
 import com.example.projectdemo.activity.ijkplayer.IjkplayerActivity;
 import com.example.projectdemo.activity.vitamio.VitamioActivity;
 import com.example.projectdemo.mvp.BaseFragment;
@@ -35,6 +37,10 @@ import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
 import com.example.projectdemo.view.progressbar.loading.LoadingViewActivity;
 import com.example.sdk.SdkDemoActivity;
 import com.xuexiang.xupdate.XUpdate;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button1;
@@ -54,6 +60,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button15;
     private Button button16;
     private Button button17;
+    private Button button18;
+    private Button button19;
+    private Button button20;
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
 
@@ -61,6 +70,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my, container, false);
+        ButterKnife.bind(getActivity());
         initView();
         initEvent();
         return view;
@@ -84,6 +94,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button15 = view.findViewById(R.id.bt_15);
         button16 = view.findViewById(R.id.bt_16);
         button17 = view.findViewById(R.id.bt_17);
+        button18 = view.findViewById(R.id.bt_18);
+        button19 = view.findViewById(R.id.bt_19);
+        button20 = view.findViewById(R.id.bt_20);
     }
 
     private void initEvent() {
@@ -104,6 +117,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button15.setOnClickListener(this);
         button16.setOnClickListener(this);
         button17.setOnClickListener(this);
+        button18.setOnClickListener(this);
+        button19.setOnClickListener(this);
+        button20.setOnClickListener(this);
     }
 
     @Override
@@ -164,6 +180,15 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.bt_17:
                 VitamioActivity.actionStart(getActivity());
+                break;
+            case R.id.bt_18:
+                TimeActivity.actionStart(getActivity());
+                break;
+            case R.id.bt_19:
+                // TODO
+                break;
+            case R.id.bt_20:
+                CollapsbleToolbarActivity.actionStart(getActivity());
                 break;
             default:
                 break;

@@ -22,7 +22,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".util.activity.MoonActivity"></activity>
+        <activity android:name=".activity.TimeActivity"></activity>
+        <activity android:name=".activity.cardview.DetailActivity" />
+        <activity android:name=".activity.cardview.CollapsbleToolbarActivity" />
+        <activity android:name=".util.activity.MoonActivity" />
         <activity android:name=".activity.ijkplayer.core_module.CoreModuleActivity" />
         <activity android:name=".activity.vitamio.VitamioActivity" />
         <activity android:name=".activity.ijkplayer.IjkplayerActivity" />
@@ -31,7 +34,6 @@
         <activity android:name=".activity.SeeMoreActivity" />
         <activity android:name=".lztx.activity.NewPeopleActivity" />
         <activity android:name=".lztx.activity.PersonalDetailsActivity" /> <!-- immersion bar适配全面屏 -->
-
         <meta-data
             android:name="android.max_aspect"
             android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
@@ -40,9 +42,7 @@
             android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
         <meta-data
             android:name="notch.config"
-            android:value="portrait|landscape" />
-
-        <!-- 1、多渠道打包配置动态渠道变量 -->
+            android:value="portrait|landscape" /> <!-- 1、多渠道打包配置动态渠道变量 -->
         <meta-data
             android:name="BaiduMobAd_CHANNEL"
             android:value="${BAIDU_CHANNEL_VALUE}" />

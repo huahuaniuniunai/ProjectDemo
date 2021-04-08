@@ -19,6 +19,7 @@
         app:titleTextColor="@android:color/white"
         tools:ignore="MissingConstraints"
         app:layout_scrollFlags="scroll|enterAlways|snap"/>
+<!--    app:layout_scrollFlags表示向上滚动隐藏Toolbar,向下滚动显示Toolbar,自动选择显示或隐藏Toolbar  -->
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
