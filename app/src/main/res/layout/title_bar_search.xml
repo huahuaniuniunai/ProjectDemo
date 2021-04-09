@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="?actionBarSize"
-    android:background="@color/gray"
-    app:contentInsetStart="0dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:orientation="horizontal">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
         <EditText
             android:id="@+id/txl_search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
@@ -32,5 +18,4 @@
             android:textColor="@color/light_black"
             android:textColorHint="@color/light_black"
             android:textSize="12sp" />
-    </LinearLayout>
-</androidx.appcompat.widget.Toolbar>
+</merge>
