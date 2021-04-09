@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 29
@@ -195,7 +195,7 @@ dependencies {
     implementation 'me.neavo:vitamio:4.2.2'
 
     // view注入框架
-    implementation 'com.jakewharton:butterknife:10.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+//    implementation 'com.jakewharton:butterknife:10.2.3'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
 }

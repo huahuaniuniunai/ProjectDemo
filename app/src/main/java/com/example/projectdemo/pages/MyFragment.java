@@ -38,10 +38,6 @@ import com.example.projectdemo.view.progressbar.loading.LoadingViewActivity;
 import com.example.sdk.SdkDemoActivity;
 import com.xuexiang.xupdate.XUpdate;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button1;
     private Button button2;
@@ -70,7 +66,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my, container, false);
-        ButterKnife.bind(getActivity());
         initView();
         initEvent();
         return view;

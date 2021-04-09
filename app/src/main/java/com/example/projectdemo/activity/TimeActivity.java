@@ -14,8 +14,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import butterknife.BindView;
-
 public class TimeActivity extends AppCompatActivity {
 
     TextView mTime;
