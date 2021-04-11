@@ -70,6 +70,4 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
     public FruitAdapter(List<Fruit> mFruitList) {
         this.mFruitList = mFruitList;
     }
-
-
 }

@@ -30,7 +30,7 @@ public class CollapsbleToolbarActivity extends BaseActivity {
             , new Fruit("Cheery", R.drawable.cherry_pic)
             , new Fruit("Mango", R.drawable.mango_pic)};
 
-    private List<Fruit> fruitList = new ArrayList<>();
+    List<Fruit> fruitList = new ArrayList<>();
     private FruitAdapter adapter;
 
     @Override

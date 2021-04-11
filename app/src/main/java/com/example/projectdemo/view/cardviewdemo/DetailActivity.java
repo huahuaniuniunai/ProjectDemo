@@ -1,8 +1,6 @@
 package com.example.projectdemo.view.cardviewdemo;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -10,19 +8,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.projectdemo.R;
+import com.example.projectdemo.mvp.BaseActivity;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends BaseActivity {
     public static final String FRUIT_NAME = "fruit_name";
     public static final String FRUIT_IMAGE_ID = "fruit_image_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar bar = getSupportActionBar();
-        if (bar != null) {
-            bar.hide();
-        }
         setContentView(R.layout.activity_detail);
         Intent intent = getIntent();
         String fruitName = intent.getStringExtra(FRUIT_NAME);
@@ -32,7 +27,7 @@ public class DetailActivity extends AppCompatActivity {
         ImageView fruitImageView = findViewById(R.id.fruit_image_view);
         TextView fruitContentText = findViewById(R.id.fruit_content_text);
 //        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
