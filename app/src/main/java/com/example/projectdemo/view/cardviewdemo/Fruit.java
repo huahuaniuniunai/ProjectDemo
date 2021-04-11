@@ -1,4 +1,4 @@
-package com.example.projectdemo.activity.cardview;
+package com.example.projectdemo.view.cardviewdemo;
 
 public class Fruit {
     private String name;

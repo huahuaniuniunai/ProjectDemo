@@ -143,7 +143,15 @@
                 android:id="@+id/bt_20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="20、可折叠式标题栏"/>
+                android:text="20、Collapsble可折叠式标题栏"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/bt_21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="21、GridView网格布局"
+                android:textAllCaps="false"/>
 
         </LinearLayout>
 

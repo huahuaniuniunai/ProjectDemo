@@ -1,8 +1,7 @@
-package com.example.projectdemo.activity.cardview;
+package com.example.projectdemo.view.cardviewdemo;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,15 +19,19 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar bar = getSupportActionBar();
+        if (bar != null) {
+            bar.hide();
+        }
         setContentView(R.layout.activity_detail);
         Intent intent = getIntent();
         String fruitName = intent.getStringExtra(FRUIT_NAME);
         int fruitImageId = intent.getIntExtra(FRUIT_IMAGE_ID, 0);
-        Toolbar toolbar = findViewById(R.id.detail_toolbar);
+//        Toolbar toolbar = findViewById(R.id.detail_toolbar);
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         ImageView fruitImageView = findViewById(R.id.fruit_image_view);
         TextView fruitContentText = findViewById(R.id.fruit_content_text);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);

@@ -22,8 +22,8 @@
         android:theme="@style/AppTheme"
         tools:replace="android:label">
         <activity android:name=".activity.TimeActivity"></activity>
-        <activity android:name=".activity.cardview.DetailActivity" />
-        <activity android:name=".activity.cardview.CollapsbleToolbarActivity" />
+        <activity android:name=".view.cardviewdemo.DetailActivity" />
+        <activity android:name=".view.cardviewdemo.CollapsbleToolbarActivity" />
         <activity android:name=".util.activity.MoonActivity" />
         <activity android:name=".activity.ijkplayer.core_module.CoreModuleActivity" />
         <activity android:name=".activity.vitamio.VitamioActivity" />
@@ -33,6 +33,7 @@
         <activity android:name=".activity.SeeMoreActivity" />
         <activity android:name=".lztx.activity.NewPeopleActivity" />
         <activity android:name=".lztx.activity.PersonalDetailsActivity" /> <!-- immersion bar适配全面屏 -->
+        <activity android:name=".view.gridviewdemo.GridViewActivity"/>
         <meta-data
             android:name="android.max_aspect"
             android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->

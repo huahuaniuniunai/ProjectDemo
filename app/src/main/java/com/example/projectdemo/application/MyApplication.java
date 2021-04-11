@@ -21,23 +21,23 @@ import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION
  * 2、获取一个全局的context
  */
 public class MyApplication extends Application {
-    public static Context mContext;
+    private static Context mContext;
 
-    public MyApplication() {
-    }
-
-    private static class Holder {
-        private static final MyApplication INSTANCE = new MyApplication();
-    }
-
-    public static MyApplication getInstance() {
-        return Holder.INSTANCE;
-    }
+//    private MyApplication() {
+//    }
+//
+//    private static class Holder {
+//        private static final MyApplication INSTANCE = new MyApplication();
+//    }
+//
+//    public static MyApplication getInstance() {
+//        return Holder.INSTANCE;
+//    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = getApplicationContext();
+        mContext = getApplicationContext();// 获取应用程序级别的context
         initUpdate();//初始化XUpdate
         LitePal.initialize(this);//初始化litepal数据库
     }

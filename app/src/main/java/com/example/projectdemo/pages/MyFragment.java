@@ -20,7 +20,7 @@ import com.example.projectdemo.R;
 import com.example.projectdemo.activity.DownRefreshActivity;
 import com.example.projectdemo.activity.SeeMoreActivity;
 import com.example.projectdemo.activity.TimeActivity;
-import com.example.projectdemo.activity.cardview.CollapsbleToolbarActivity;
+import com.example.projectdemo.view.cardviewdemo.CollapsbleToolbarActivity;
 import com.example.projectdemo.activity.ijkplayer.IjkplayerActivity;
 import com.example.projectdemo.activity.vitamio.VitamioActivity;
 import com.example.projectdemo.mvp.BaseFragment;
@@ -33,6 +33,7 @@ import com.example.projectdemo.update.common.CheckVersion;
 import com.example.projectdemo.util.activity.CommonStartActivity;
 import com.example.projectdemo.LoginActivity;
 import com.example.projectdemo.util.layout.DynaLoadLayout;
+import com.example.projectdemo.view.gridviewdemo.GridViewActivity;
 import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
 import com.example.projectdemo.view.progressbar.loading.LoadingViewActivity;
 import com.example.sdk.SdkDemoActivity;
@@ -59,6 +60,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button18;
     private Button button19;
     private Button button20;
+    private Button button21;
+
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
 
@@ -66,6 +69,12 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my, container, false);
+        /**
+         * 1.在Activity中使用：ButterKnife.bind(this);建议在BaseActivity中完成绑定。
+         * 2.在Fragment中使用：ButterKnife.bind(this, view); 在onDestroyView回调中调用它的unbind方法进行Fragment解绑。
+         * 3.在ViewHolder中使用：ButterKnife.bind(this, view);在ViewHolder中加一个含参数view的构造方法，并在构造方法中绑定。
+         */
+//        ButterKnife.bind(this, view);
         initView();
         initEvent();
         return view;
@@ -92,6 +101,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button18 = view.findViewById(R.id.bt_18);
         button19 = view.findViewById(R.id.bt_19);
         button20 = view.findViewById(R.id.bt_20);
+        button21 = view.findViewById(R.id.bt_21);
     }
 
     private void initEvent() {
@@ -115,6 +125,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button18.setOnClickListener(this);
         button19.setOnClickListener(this);
         button20.setOnClickListener(this);
+        button21.setOnClickListener(this);
     }
 
     @Override
@@ -185,6 +196,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.bt_20:
                 CollapsbleToolbarActivity.actionStart(getActivity());
                 break;
+            case R.id.bt_21:
+                GridViewActivity.actionStart(getActivity());
+                break;
             default:
                 break;
         }
@@ -243,4 +257,10 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         super.onResume();
         checkPermission();
     }
+
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        ButterKnife.bind(this, view).unbind();
+//    }
 }

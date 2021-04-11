@@ -1,4 +1,4 @@
-package com.example.projectdemo.activity.cardview;
+package com.example.projectdemo.view.cardviewdemo;
 
 import android.content.Context;
 import android.content.Intent;
