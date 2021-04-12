@@ -7,10 +7,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +44,7 @@ import com.example.sdk.SdkDemoActivity;
 import com.xuexiang.xupdate.XUpdate;
 
 public class MyFragment extends BaseFragment implements View.OnClickListener {
+    private EditText et_search;
     private Button button1;
     private Button button2;
     private Button button3;
@@ -81,6 +86,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void initView() {
+        et_search = view.findViewById(R.id.search);
         button1 = view.findViewById(R.id.bt_1);
         button2 = view.findViewById(R.id.bt_2);
         button3 = view.findViewById(R.id.bt_3);
@@ -126,6 +132,18 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button19.setOnClickListener(this);
         button20.setOnClickListener(this);
         button21.setOnClickListener(this);
+
+        et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    String key = v.getText().toString().trim();// 获取输入框内容
+                    // TODO
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

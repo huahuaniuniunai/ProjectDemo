@@ -164,6 +164,7 @@ public class HandlerActivity extends AppCompatActivity {
         super.onDestroy();
         if(mHandler != null){
             mHandler.removeCallbacksAndMessages(null);
+            mHandler = null;//防止内存泄漏
         }
     }
 

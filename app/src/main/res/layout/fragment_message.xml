@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <include layout="@layout/title_bar_message" />
-    <include layout="@layout/title_bar_search" />
 
 <!--    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout-->
 <!--        android:id="@+id/refreshLayout"-->
