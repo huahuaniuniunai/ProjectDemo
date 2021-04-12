@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".activity.TimeActivity"></activity>
+        <activity android:name=".handler.HandlerActivity"></activity>
+        <activity android:name=".activity.TimeActivity" />
         <activity android:name=".view.cardviewdemo.DetailActivity" />
         <activity android:name=".view.cardviewdemo.CollapsbleToolbarActivity" />
         <activity android:name=".util.activity.MoonActivity" />
@@ -33,7 +34,8 @@
         <activity android:name=".activity.SeeMoreActivity" />
         <activity android:name=".lztx.activity.NewPeopleActivity" />
         <activity android:name=".lztx.activity.PersonalDetailsActivity" /> <!-- immersion bar适配全面屏 -->
-        <activity android:name=".view.gridviewdemo.GridViewActivity"/>
+        <activity android:name=".view.gridviewdemo.GridViewActivity" />
+
         <meta-data
             android:name="android.max_aspect"
             android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
