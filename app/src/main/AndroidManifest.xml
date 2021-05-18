@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".handler.HandlerActivity"></activity>
+        <activity android:name=".http.async.AskActivity"></activity>
+        <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".activity.TimeActivity" />
         <activity android:name=".view.cardviewdemo.DetailActivity" />
         <activity android:name=".view.cardviewdemo.CollapsbleToolbarActivity" />
