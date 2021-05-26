@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.ConnectionPool;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -15,32 +17,24 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * 封装OkHttp单例
+ */
 public class HttpUtil {
-//    private HttpUtil() {
-//    }
-//
-//    private static class HttpUtilHolder {
-//        private static final OkHttpClient CLIENT = new OkHttpClient();
-//    }
-//
-//    private static OkHttpClient getInstance() {
-//        return HttpUtilHolder.CLIENT;
-//    }
-
     /**
      * get请求
      * @param url
      */
     public void get(String url){
         // 1 获取OkHttpClient对象
-        OkHttpClient client = new OkHttpClient();
+//        OkHttpClient client = new OkHttpClient();
         // 2 设置请求
         Request request = new Request.Builder()
                 .get()// 默认get方式可以省略
                 .url(url)
                 .build();
         // 3 封装call
-        Call call = client.newCall(request);
+        Call call = OkHttpUtil.getInstance().newCall(request);
         // 4 异步调用,并设置回调函数
         call.enqueue(new Callback() {
             @Override
@@ -69,7 +63,7 @@ public class HttpUtil {
      * @param callback 回调
      */
     public static void sendJsonPost(String url, String token, String json, okhttp3.Callback callback) {
-        OkHttpClient client = new OkHttpClient();
+//        OkHttpClient client = new OkHttpClient();
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
 //        如果是json字符串，替换请求媒体类型即可
 //        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain;charset=utf-8"), "{username:admin;password:admin}");
@@ -78,7 +72,7 @@ public class HttpUtil {
                 .url(url)
                 .post(requestBody)
                 .build();
-        client.newCall(request).enqueue(callback);
+        OkHttpUtil.getInstance().newCall(request).enqueue(callback);
     }
 
     /**
@@ -90,7 +84,7 @@ public class HttpUtil {
      */
     public static void sendFormPost(String url, String token, FormBody formBody, okhttp3.Callback callback) {
         // 1 获取OkHttpClient对象
-        OkHttpClient client = new OkHttpClient();
+//        OkHttpClient client = new OkHttpClient();
         // 2 构建参数
 //        FormBody formBody = new FormBody.Builder()
 //                .add("username", "admin")
@@ -104,7 +98,7 @@ public class HttpUtil {
                 .post(formBody)
                 .build();
         // 4 将Request封装为Call
-        Call call = client.newCall(request);
+        Call call = OkHttpUtil.getInstance().newCall(request);
         // 5 异步调用
         call.enqueue(callback);
     }
@@ -117,13 +111,13 @@ public class HttpUtil {
      */
     private void download(String url, String target, String fileName){
         // 1 获取OkHttpClient对象
-        OkHttpClient client = new OkHttpClient();
+//        OkHttpClient client = new OkHttpClient();
         // 2构建 request
         Request request = new Request.Builder()
                 .url(url)
                 .build();
         // 3 异步调用
-        client.newCall(request).enqueue(new Callback() {
+        OkHttpUtil.getInstance().newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -179,7 +173,7 @@ public class HttpUtil {
             System.out.println("文件不存在");
         }else{
             // 获取OkHttpClient对象
-            OkHttpClient client = new OkHttpClient();
+//            OkHttpClient client = new OkHttpClient();
             // 2封装参数以 form形式
             RequestBody requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
@@ -193,7 +187,7 @@ public class HttpUtil {
                     .post(requestBody)
                     .build();
             // 4 异步回调
-            client.newCall(request).enqueue(new Callback() {
+            OkHttpUtil.getInstance().newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     e.printStackTrace();
