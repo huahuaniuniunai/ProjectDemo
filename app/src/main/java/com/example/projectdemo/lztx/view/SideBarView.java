@@ -13,9 +13,6 @@ import androidx.annotation.Nullable;
 
 import com.example.projectdemo.R;
 
-/**
- * 自定义View标准写法
- */
 public class SideBarView extends View {
     private Paint mPaint;
     private int mWidth, mHeight, textSize;
