@@ -46,7 +46,7 @@ public class EvaluateActivity extends AppCompatActivity {
         String token = PreferenceUtil.get().getCacheString("token", "");
         String json = new Gson().toJson(new EndBean("1", userId, "555555555", evaluationOpinion, "无", score));
         url = "http://www.baidu.com";
-        HttpUtil.sendOkHttpRequest(url, token, json, new Callback() {
+        HttpUtil.sendJsonPost(url, token, json, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 EvaluateActivity.this.runOnUiThread(new Runnable() {
