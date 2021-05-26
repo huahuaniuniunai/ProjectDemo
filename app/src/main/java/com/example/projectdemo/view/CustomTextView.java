@@ -21,7 +21,7 @@ import com.example.projectdemo.R;
 @SuppressLint("AppCompatCustomView")
 public class CustomTextView extends TextView {
     private Paint mTextPaint;
-    private String mText = "";
+    private String mText;
     private int mTextColor = Color.BLACK;
     private int mTextSize = 15;
 
@@ -84,9 +84,9 @@ public class CustomTextView extends TextView {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 break;
-            case MotionEvent.ACTION_HOVER_MOVE:
+            case MotionEvent.ACTION_MOVE:
                 break;
-            case MotionEvent.ACTION_POINTER_UP:
+            case MotionEvent.ACTION_UP:
                 break;
             case MotionEvent.ACTION_CANCEL:
                 break;
