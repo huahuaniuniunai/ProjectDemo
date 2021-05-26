@@ -80,7 +80,9 @@ public class SideBarView extends View {
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        // 获取当前手指触摸的Y位置
         float y = event.getY();
+        // 根据当前触摸的位置计算出，当前字母的位置
         index = (int) (y / mHeight * str.length);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:// 按下View（所有事件的开始）
