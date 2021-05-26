@@ -9,7 +9,7 @@
     android:orientation="horizontal"
     android:padding="10dp" >
 
-    <com.chinanet.ah.chat.ui.widget.CircleProgressBar
+    <com.example.projectdemo.view.progressbar.funny.CircleProgressBar
         android:id="@+id/ios_progressbar"
         app:mlpb_progress_stoke_width="5dp"
         app:mlpb_progress_color="#566da9"
