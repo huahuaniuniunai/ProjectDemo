@@ -40,6 +40,7 @@ import com.example.projectdemo.util.layout.DynaLoadLayout;
 import com.example.projectdemo.view.gridviewdemo.GridViewActivity;
 import com.example.projectdemo.view.paomadeng.RunHorseLampActivity;
 import com.example.projectdemo.view.progressbar.loading.LoadingViewActivity;
+import com.example.projectdemo.view.treelist.TreeListActivity;
 import com.example.sdk.SdkDemoActivity;
 import com.xuexiang.xupdate.XUpdate;
 
@@ -66,6 +67,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button19;
     private Button button20;
     private Button button21;
+    private Button button22;
 
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
@@ -108,6 +110,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button19 = view.findViewById(R.id.bt_19);
         button20 = view.findViewById(R.id.bt_20);
         button21 = view.findViewById(R.id.bt_21);
+        button22 = view.findViewById(R.id.bt_22);
     }
 
     private void initEvent() {
@@ -132,6 +135,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button19.setOnClickListener(this);
         button20.setOnClickListener(this);
         button21.setOnClickListener(this);
+        button22.setOnClickListener(this);
 
         et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -216,6 +220,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.bt_21:
                 GridViewActivity.actionStart(getActivity());
+                break;
+            case R.id.bt_22:
+                TreeListActivity.actionStart(getActivity());
                 break;
             default:
                 break;

@@ -202,4 +202,7 @@ dependencies {
 
     // android-async-http
     implementation 'com.loopj.android:android-async-http:1.4.11'
+
+    // 树状折叠列表
+    implementation 'com.github.DasinWong:TreeListView:1.1'
 }

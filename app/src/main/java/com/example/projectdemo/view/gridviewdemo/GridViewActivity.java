@@ -1,5 +1,6 @@
 package com.example.projectdemo.view.gridviewdemo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import com.example.projectdemo.mvp.BaseActivity;
 
 import java.util.ArrayList;
 
-public class GridViewActivity extends BaseActivity {
+public class GridViewActivity extends Activity {
 
     private Context mContext;
     private GridView grid_photo;

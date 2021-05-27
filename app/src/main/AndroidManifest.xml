@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".http.okhttp.EvaluateActivity"></activity>
+        <activity android:name=".view.treelist.TreeListActivity"></activity>
+        <activity android:name=".http.okhttp.EvaluateActivity" />
         <activity android:name=".http.async.AskActivity" />
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".activity.TimeActivity" />
