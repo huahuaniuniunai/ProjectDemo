@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:background="@color/page">
 
     <include layout="@layout/title_bar_dynamic" />
@@ -13,5 +15,15 @@
         android:layout_centerInParent="true"
         android:src="@drawable/git"
         android:visibility="gone"/>
+
+
+    <com.example.projectdemo.view.CustomTextView
+        app:customText="自定义CustomTextView"
+        app:customTextSize="20sp"
+        app:customTextColor="@color/red"
+        android:padding="10dp"
+        android:background="@color/blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

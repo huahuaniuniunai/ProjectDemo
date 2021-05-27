@@ -74,7 +74,7 @@ public class CustomTextView extends TextView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // heightMeasureSpec是32位的值
-        // 获取宽高的模式(前2位)
+        // 获取宽高的模式(前2位)     3种测量模式：AT_MOST、EXACTLY、UNSPEC
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
@@ -86,20 +86,22 @@ public class CustomTextView extends TextView {
         // 前2位是MeasureSpec.AT_MOST，后30位是Integer.MAX_VALUE
 //        heightMeasureSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
 
-        // 计算控件宽度
+        // 计算控件宽高
         if (widthMode == MeasureSpec.AT_MOST) {
             Rect rect = new Rect();
             mTextPaint.getTextBounds(mText, 0, mText.length(), rect);
             // getPaddingLeft()和getPaddingRight()在XML设置padding才会生效
             widthSize = rect.width() + getPaddingLeft() + getPaddingRight();
-        }
-        // 计算控件高度
-        if (widthMode == MeasureSpec.AT_MOST) {
-            Rect rect = new Rect();
-            mTextPaint.getTextBounds(mText, 0, mText.length(), rect);
             // getPaddingTop()和getPaddingBottom()在XML设置padding才会生效
             heightSize = rect.height() + getPaddingTop() + getPaddingBottom();
         }
+        // 计算控件高度
+//        if (widthMode == MeasureSpec.AT_MOST) {
+//            Rect rect = new Rect();
+//            mTextPaint.getTextBounds(mText, 0, mText.length(), rect);
+//            // getPaddingTop()和getPaddingBottom()在XML设置padding才会生效
+//            heightSize = rect.height() + getPaddingTop() + getPaddingBottom();
+//        }
         // 设置控件的宽高
         setMeasuredDimension(widthSize, heightSize);
     }

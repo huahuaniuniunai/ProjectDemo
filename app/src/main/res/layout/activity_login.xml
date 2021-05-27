@@ -44,16 +44,6 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <com.example.projectdemo.view.CustomTextView
-                    app:customText="自定义CustomTextView"
-                    app:customTextSize="20sp"
-                    app:customTextColor="@color/red"
-                    android:padding="10dp"
-                    android:background="@color/blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
