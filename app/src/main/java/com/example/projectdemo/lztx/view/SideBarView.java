@@ -53,19 +53,35 @@ public class SideBarView extends View {
         super.onDraw(canvas);
         mWidth = getWidth();
         mHeight = getHeight();
+        // 获取一个字的高度
+        float singleHeight = (float) mHeight / str.length;
         for (int i = 0; i < str.length; i++) {
             /**
              * 获取字符串宽度：mPaint.measureText()和mPaint.getTextBound()
              * getTextBounds()得到的宽度总是比 measureText() 得到的宽度要小一点，是因为两种方法测量的方式不一样。
              */
-            float x = (mWidth - mPaint.measureText(str[i])) / 2;
-            float y = (mHeight / str.length) * (i + 1);
+            // 方法一：只适用此场景
+//            float x = (mWidth - mPaint.measureText(str[i])) / 2;
+//            float y = (mHeight / str.length) * (i + 1);
+
+            // 方法二：通用场景
+            // 获取字体的宽度
+            float measureTextWidth = mPaint.measureText(str[i]);
+//          // 获取内容的宽度（如果有就减去左右的padding距离，此处都为0）
+            int contentWidth = getWidth() - getPaddingLeft() - getPaddingRight();
+            float x = getPaddingLeft() + (contentWidth - measureTextWidth) / 2;
+
+            Paint.FontMetrics fontMetricsInt = mPaint.getFontMetrics();
+            // 中线到基线的距离
+            float dy = (fontMetricsInt.bottom - fontMetricsInt.top)/2 -fontMetricsInt.bottom;
+            // 获取每个字基线的y值
+            float baseLine = singleHeight/2 + dy + (singleHeight * i);
             if (choose == i) {
                 mPaint.setColor(getResources().getColor(R.color.red));
             } else {
                 mPaint.setColor(getResources().getColor(R.color.blue));
             }
-            canvas.drawText(str[i], x, y, mPaint);
+            canvas.drawText(str[i], x, baseLine, mPaint);
         }
         invalidate();//触摸滑动刷新,invalidate是在UI线程中使用刷新view，postInvalidate是在非UI线程中使用
     }

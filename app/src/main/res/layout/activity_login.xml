@@ -15,7 +15,8 @@
         app:title="GayHub"
         app:titleTextColor="@android:color/white" />
 
-    <!--  当之有一个EditText或者AutoCompleteTextView的时候，进入画面时是默认得到焦点的。 要想去除焦点，可以在auto之前加一个0像素的layout，并设置他先得到焦点。 -->
+    <!--  当之有一个EditText或者AutoCompleteTextView的时候，进入画面时是默认得到焦点的。
+    要想去除焦点，可以在auto之前加一个0像素的layout，并设置他先得到焦点。 -->
 <!--    <LinearLayout-->
 <!--        android:layout_width="0px"-->
 <!--        android:layout_height="0px"-->
@@ -42,6 +43,16 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
+
+                <com.example.projectdemo.view.CustomTextView
+                    app:customText="自定义CustomTextView"
+                    app:customTextSize="20sp"
+                    app:customTextColor="@color/red"
+                    android:padding="10dp"
+                    android:background="@color/blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="150dp"
