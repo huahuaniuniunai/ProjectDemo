@@ -1,12 +1,13 @@
 package com.example.projectdemo.view.treelist;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dasinwong.treelistview.adapter.TreeAdapter;
 import com.dasinwong.treelistview.bean.TreeNode;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TreeListActivity extends Activity {
+public class TreeListActivity extends AppCompatActivity {
     private TreeListView mTreeListView;
     private List<TreeNode> treeNodeList = new ArrayList<>();
 

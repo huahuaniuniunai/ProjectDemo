@@ -1,4 +1,4 @@
-package com.example.projectdemo.view;
+package com.example.projectdemo.customview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -30,7 +30,7 @@ public class CustomTextView extends TextView {
     private Paint mTextPaint;
     private String mText;
     private int mTextColor = Color.BLACK;
-    private int mTextSize = 15;
+    private int mTextSize = 15;// 像素px
 
     public CustomTextView(Context context) {
         this(context, null);
@@ -48,7 +48,7 @@ public class CustomTextView extends TextView {
         mText = array.getString(R.styleable.CustomTextView_customText);
         // 获取文字颜色
         mTextColor = array.getColor(R.styleable.CustomTextView_customTextColor, mTextColor);
-        // 获取文字大小   15sp
+        // 获取文字大小
         mTextSize = array.getDimensionPixelSize(R.styleable.CustomTextView_customTextSize, mTextSize);
         // 回收
         array.recycle();
@@ -88,8 +88,8 @@ public class CustomTextView extends TextView {
 
         // 计算控件宽高
         if (widthMode == MeasureSpec.AT_MOST) {
-            Rect rect = new Rect();
-            mTextPaint.getTextBounds(mText, 0, mText.length(), rect);
+            Rect rect = new Rect();// 创建一个矩形控件, 宽、高：rect.width()、rect.height()
+            mTextPaint.getTextBounds(mText, 0, mText.length(), rect);// 给rect控件赋值
             // getPaddingLeft()和getPaddingRight()在XML设置padding才会生效
             widthSize = rect.width() + getPaddingLeft() + getPaddingRight();
             // getPaddingTop()和getPaddingBottom()在XML设置padding才会生效

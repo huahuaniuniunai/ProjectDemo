@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:background="@color/page">
 
     <include layout="@layout/title_bar_dynamic" />
@@ -16,8 +17,7 @@
         android:src="@drawable/git"
         android:visibility="gone"/>
 
-
-    <com.example.projectdemo.view.CustomTextView
+    <com.example.projectdemo.customview.CustomTextView
         app:customText="自定义CustomTextView"
         app:customTextSize="20sp"
         app:customTextColor="@color/red"
@@ -25,5 +25,15 @@
         android:background="@color/blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <com.example.projectdemo.customview.StepAnimatorView
+        android:id="@+id/step_animator_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:outerColor="@color/red"
+        app:innerColor="@color/colorPrimary"
+        app:borderWidth="50px"
+        app:stepTextColor="@color/colorAccent"
+        app:stepTextSize="60sp"/>
 
 </LinearLayout>

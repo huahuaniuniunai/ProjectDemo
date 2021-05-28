@@ -160,6 +160,13 @@
                 android:text="22、树状列表"
                 android:textAllCaps="false"/>
 
+            <Button
+                android:id="@+id/bt_23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="23、自定义动画"
+                android:textAllCaps="false"/>
+
         </LinearLayout>
 
     </ScrollView>

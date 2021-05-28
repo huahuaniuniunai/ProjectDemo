@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.projectdemo.R;
+import com.example.projectdemo.activity.AnimatorActivity;
 import com.example.projectdemo.activity.DownRefreshActivity;
 import com.example.projectdemo.activity.SeeMoreActivity;
 import com.example.projectdemo.activity.TimeActivity;
@@ -68,6 +69,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button20;
     private Button button21;
     private Button button22;
+    private Button button23;
 
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
@@ -111,6 +113,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button20 = view.findViewById(R.id.bt_20);
         button21 = view.findViewById(R.id.bt_21);
         button22 = view.findViewById(R.id.bt_22);
+        button23 = view.findViewById(R.id.bt_23);
     }
 
     private void initEvent() {
@@ -136,6 +139,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button20.setOnClickListener(this);
         button21.setOnClickListener(this);
         button22.setOnClickListener(this);
+        button23.setOnClickListener(this);
 
         et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -223,6 +227,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.bt_22:
                 TreeListActivity.actionStart(getActivity());
+                break;
+            case R.id.bt_23:
+                AnimatorActivity.actionStart(getActivity());
                 break;
             default:
                 break;

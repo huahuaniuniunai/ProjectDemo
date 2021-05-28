@@ -10,12 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.projectdemo.R;
 import com.example.projectdemo.mvp.BaseActivity;
 
 import java.util.ArrayList;
 
-public class GridViewActivity extends Activity {
+public class GridViewActivity extends AppCompatActivity {
 
     private Context mContext;
     private GridView grid_photo;
