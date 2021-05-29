@@ -25,6 +25,7 @@ import com.example.projectdemo.activity.AnimatorActivity;
 import com.example.projectdemo.activity.DownRefreshActivity;
 import com.example.projectdemo.activity.SeeMoreActivity;
 import com.example.projectdemo.activity.TimeActivity;
+import com.example.projectdemo.broadcast.DynBroadcastActivity;
 import com.example.projectdemo.view.cardviewdemo.CollapsbleToolbarActivity;
 import com.example.projectdemo.activity.ijkplayer.IjkplayerActivity;
 import com.example.projectdemo.activity.vitamio.VitamioActivity;
@@ -70,6 +71,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button21;
     private Button button22;
     private Button button23;
+    private Button button24;
 
     private View view;
     private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
@@ -114,6 +116,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button21 = view.findViewById(R.id.bt_21);
         button22 = view.findViewById(R.id.bt_22);
         button23 = view.findViewById(R.id.bt_23);
+        button24 = view.findViewById(R.id.bt_24);
     }
 
     private void initEvent() {
@@ -140,6 +143,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button21.setOnClickListener(this);
         button22.setOnClickListener(this);
         button23.setOnClickListener(this);
+        button24.setOnClickListener(this);
 
         et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -230,6 +234,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.bt_23:
                 AnimatorActivity.actionStart(getActivity());
+                break;
+            case R.id.bt_24:
+                DynBroadcastActivity.actionStart(getActivity());
                 break;
             default:
                 break;

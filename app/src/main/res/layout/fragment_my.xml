@@ -167,6 +167,13 @@
                 android:text="23、自定义动画"
                 android:textAllCaps="false"/>
 
+            <Button
+                android:id="@+id/bt_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="24、动态广播强制下线"
+                android:textAllCaps="false"/>
+
         </LinearLayout>
 
     </ScrollView>

@@ -20,6 +20,7 @@ public class AnimatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animator);
 
+        // 设置动画效果
         setAnimationEffect();
     }
 
@@ -30,15 +31,15 @@ public class AnimatorActivity extends AppCompatActivity {
         ValueAnimator valueAnimator = ObjectAnimator.ofFloat(0, 3000);// 设置值0-3000
         valueAnimator.setDuration(1000);// 1秒内
         valueAnimator.setInterpolator(new DecelerateInterpolator());// 设置后面速度
-        // 1秒内从0到3000不断变化
+        // 设置1秒内从0到3000不断获取当前值
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float currentStep = (float) animation.getAnimatedValue();// 查值器来获取animation当前的值
-                stepAnimatorView.setCurrentStep((int) currentStep);
+                stepAnimatorView.setCurrentStep((int) currentStep);// 设置当前值，并触发重绘
             }
         });
-        valueAnimator.start();
+        valueAnimator.start();// 开始动画
     }
 
     public static void actionStart(Context context) {

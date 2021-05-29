@@ -48,6 +48,7 @@ public class ContactsView extends FrameLayout implements SideBarView.LetterTouch
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+                //悬浮条的高度，悬浮条最底部的y
                 mLetterHeight = ll_top_title.getHeight();
             }
 
@@ -55,13 +56,17 @@ public class ContactsView extends FrameLayout implements SideBarView.LetterTouch
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 mLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                //获取最顶部的item
                 View view = mLayoutManager.findViewByPosition(mCurrentPosition + 1);
-                if (view != null && view.getTop() <= mLetterHeight && view.findViewById(R.id.tv_letter).getVisibility() == View.VISIBLE) {
+                //获取到的view顶部坐标小于悬浮条最底部的y轴坐标就是要重叠了
+                if (view != null &&
+                        view.getTop() <= mLetterHeight &&
+                        view.findViewById(R.id.tv_letter).getVisibility() == View.VISIBLE) {
                     ll_top_title.setY((float) (-(mLetterHeight - view.getTop())));
                 } else {
                     ll_top_title.setY(0f);
                 }
-
+                //mCurrentPosition 不是 当前显示最顶部的position
                 if (mCurrentPosition != mLayoutManager.findFirstVisibleItemPosition()) {
                     ll_top_title.setY(0f);
                     updateLetter();
