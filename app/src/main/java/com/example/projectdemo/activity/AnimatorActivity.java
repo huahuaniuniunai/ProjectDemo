@@ -13,6 +13,8 @@ import com.example.projectdemo.R;
 import com.example.projectdemo.customview.StepAnimatorView;
 import com.example.projectdemo.view.treelist.TreeListActivity;
 
+import java.util.List;
+
 public class AnimatorActivity extends AppCompatActivity {
 
     @Override

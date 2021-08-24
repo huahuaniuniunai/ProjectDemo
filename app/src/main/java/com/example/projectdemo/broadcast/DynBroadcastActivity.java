@@ -29,15 +29,17 @@ public class DynBroadcastActivity extends AppCompatActivity implements View.OnCl
         button.setOnClickListener(this);
     }
 
+    // 保证只有处于栈顶的activity才能接收这条广播来执行强制下线，非栈顶的activity不应该也没必要接收这条广播
     @Override
     protected void onResume() {
         super.onResume();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.example.broadcastbestpractice.FORCE_OFFLINE");
+        intentFilter.addAction("com.example.projectdemo.FORCE_OFFLINE");
         receiver = new ForceOfflineReceiver();
         registerReceiver(receiver, intentFilter);
     }
 
+    // 当一个activity失去栈顶的位置时就会自动取消广播接收器的注册
     @Override
     protected void onPause() {
         super.onPause();
@@ -49,7 +51,7 @@ public class DynBroadcastActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent("com.example.broadcastbestpractice.FORCE_OFFLINE");
+        Intent intent = new Intent("com.example.projectdemo.FORCE_OFFLINE");
         sendBroadcast(intent);
     }
 
