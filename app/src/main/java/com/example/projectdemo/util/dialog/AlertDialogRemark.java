@@ -55,6 +55,7 @@ public class AlertDialogRemark extends AlertDialog implements View.OnClickListen
                     Log.d("0825", "输入框内容："+mEtPasswd.getText().toString());
                     // 获取输入框内容并存储本地
                     PreferenceUtil.get().putCacheString("processDesc", mEtPasswd.getText().toString());
+                    mCallBack.onStart();
                     mCallBack.onSuccess();
                 }
                 break;

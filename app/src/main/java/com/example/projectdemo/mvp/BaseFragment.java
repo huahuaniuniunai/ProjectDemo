@@ -1,6 +1,7 @@
 package com.example.projectdemo.mvp;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,6 +16,8 @@ import androidx.lifecycle.ViewModelProvider;
 //import com.ctq.eqc.util.avoid.AvoidOnResult;
 
 import com.example.projectdemo.R;
+import com.example.projectdemo.util.tool.ResourceUtils;
+import com.example.projectdemo.view.progressbar.funny.ACProgressDialog;
 import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.components.ImmersionFragment;
 
@@ -32,6 +35,7 @@ public class BaseFragment<V extends BasePresenter> extends ImmersionFragment {
 //    private AvoidOnResult mActivityForResult;
 
     private CompositeDisposable mCompositeDisposable;
+    private ACProgressDialog progressdialog;
 
     private V mPresenter;
 
@@ -138,6 +142,32 @@ public class BaseFragment<V extends BasePresenter> extends ImmersionFragment {
                 .fitsSystemWindows(true)// 设置解决状态栏和布局重叠问题
                 .navigationBarColor(R.color.gray)// 设置导航栏颜色
                 .init();
+    }
+
+    public void showProgressDialog(String str) {
+        String text = str;
+        if (TextUtils.isEmpty(text))
+            text = ResourceUtils.getString(R.string.loading);
+        if (progressdialog != null && progressdialog.isShowing()) {
+            progressdialog.dismiss();
+            progressdialog = null;
+        }
+        progressdialog = new ACProgressDialog(getActivity(), text);
+        progressdialog.setCanceledOnTouchOutside(false);
+        progressdialog.setCancelable(false);
+        progressdialog.show();
+    }
+
+
+    public ACProgressDialog getProgressdialog() {
+        return progressdialog;
+    }
+
+    public void dismissProgressDialog() {
+        if (progressdialog != null && progressdialog.isShowing()) {
+            progressdialog.dismiss();
+            progressdialog = null;
+        }
     }
 
 //    public AvoidOnResult getActivityForResult() {

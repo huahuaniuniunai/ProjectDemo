@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -247,23 +248,31 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 DynBroadcastActivity.actionStart(getActivity());
                 break;
             case R.id.bt_25:
-                new AlertDialogRemark(getActivity(), new CallbackFunction() {
+                showProgressDialog("模拟网络延迟...");
+                Handler mHandler = new Handler();
+                mHandler.postDelayed(new Runnable() {
                     @Override
-                    public void onStart() {
-                        new BaseActivity().showProgressDialog("加载中...");
+                    public void run() {
+                        dismissProgressDialog();
+                        new AlertDialogRemark(getActivity(), new CallbackFunction() {
+                            @Override
+                            public void onStart() {
+
+                            }
+                            @Override
+                            public void onSuccess() {
+                                // 获取已存储本地输入框内容
+                                String processDesc = PreferenceUtil.get().getCacheString("processDesc", "");
+                                toast("获取输入框的内容："+processDesc);
+                            }
+                            @Override
+                            public void onFailed(String msg) {
+                                // 获取失败
+                                toast("获取失败！");
+                            }
+                        }).show();// 弹框
                     }
-                    @Override
-                    public void onSuccess() {
-                        // 获取已存储本地输入框内容
-                        String processDesc = PreferenceUtil.get().getCacheString("processDesc", "");
-                        toast("获取输入框的内容："+processDesc);
-                    }
-                    @Override
-                    public void onFailed(String msg) {
-                        // 获取失败
-                        toast("获取失败！");
-                    }
-                }).show();// 弹框
+                },3000); // 延时3秒
             default:
                 break;
         }
