@@ -22,10 +22,12 @@ import android.widget.TextView;
 
 import com.example.projectdemo.R;
 
-
+/**
+ * 加载进度条工具类
+ */
 public class MyProgressDialog extends ProgressDialog {
 
-	private String message;
+	private final String message;
 
 	private TextView define_progress_msg;
 

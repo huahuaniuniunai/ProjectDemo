@@ -66,7 +66,7 @@ public class ContactSortAdapter extends RecyclerView.Adapter<ContactSortAdapter.
     }
 
     private Boolean compareSection(int position) {
-        return (position == 0) ? false : (getSectionForPosition(position) == getSectionForPosition(position - 1));
+        return (position != 0) && (getSectionForPosition(position) == getSectionForPosition(position - 1));
     }
 
     private int getSectionForPosition(int position) {

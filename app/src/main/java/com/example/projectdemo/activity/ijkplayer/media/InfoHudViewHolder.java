@@ -16,8 +16,8 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 import tv.danmaku.ijk.media.player.MediaPlayerProxy;
 
 public class InfoHudViewHolder {
-    private TableLayoutBinder mTableLayoutBinder;
-    private SparseArray<View> mRowMap = new SparseArray<View>();
+    private final TableLayoutBinder mTableLayoutBinder;
+    private final SparseArray<View> mRowMap = new SparseArray<View>();
     private IMediaPlayer mMediaPlayer;
     private long mLoadCost = 0;
     private long mSeekCost = 0;
@@ -100,7 +100,7 @@ public class InfoHudViewHolder {
     }
 
     private static final int MSG_UPDATE_HUD = 1;
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {

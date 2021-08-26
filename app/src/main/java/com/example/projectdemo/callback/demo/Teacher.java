@@ -7,7 +7,7 @@ import com.example.projectdemo.util.log.LogUtil;
  */
 class Teacher implements Callback {
 
-    private Student mStudent;
+    private final Student mStudent;
     public Teacher(Student student) {
         this.mStudent = student;
     }

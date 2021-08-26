@@ -19,7 +19,7 @@ import java.util.Random;
 public class CollapsbleToolbarActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
     private SwipeRefreshLayout swipeRefresh;
-    private Fruit[] fruits = {new Fruit("Apple", R.drawable.apple_pic)
+    private final Fruit[] fruits = {new Fruit("Apple", R.drawable.apple_pic)
             , new Fruit("Banana", R.drawable.banana_pic)
             , new Fruit("Orange", R.drawable.orange_pic)
             , new Fruit("Watermelon", R.drawable.watermelon_pic)

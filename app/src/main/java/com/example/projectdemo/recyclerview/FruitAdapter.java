@@ -14,7 +14,7 @@ import com.example.projectdemo.R;
 import java.util.List;
 
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> {
-    private List<Fruit> mFruitList;
+    private final List<Fruit> mFruitList;
 
     // 把需要展示的数据源传进来并赋值给mFruitList
     public FruitAdapter(List<Fruit> fruitList) {

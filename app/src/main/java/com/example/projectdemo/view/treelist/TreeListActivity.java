@@ -20,7 +20,7 @@ import java.util.List;
 
 public class TreeListActivity extends AppCompatActivity {
     private TreeListView mTreeListView;
-    private List<TreeNode> treeNodeList = new ArrayList<>();
+    private final List<TreeNode> treeNodeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -38,7 +38,7 @@ public class TxlChangeActivity extends AppCompatActivity implements View.OnClick
     private Button mButton3;
     private Button mButton4;
     private Activity mContext;
-    private List<HashMap<String, String>> mContactList = new ArrayList<>();
+    private final List<HashMap<String, String>> mContactList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

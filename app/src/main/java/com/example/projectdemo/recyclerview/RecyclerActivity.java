@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerActivity extends AppCompatActivity {
-    private List<Fruit> fruitList = new ArrayList<Fruit>();
+    private final List<Fruit> fruitList = new ArrayList<Fruit>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

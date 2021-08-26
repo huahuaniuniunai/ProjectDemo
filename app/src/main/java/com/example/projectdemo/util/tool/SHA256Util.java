@@ -1,6 +1,7 @@
 package com.example.projectdemo.util.tool;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -15,11 +16,9 @@ public class SHA256Util {
         String encodeStr = "";
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(str.getBytes("UTF-8"));
+            messageDigest.update(str.getBytes(StandardCharsets.UTF_8));
             encodeStr = byte2Hex(messageDigest.digest());
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return encodeStr;

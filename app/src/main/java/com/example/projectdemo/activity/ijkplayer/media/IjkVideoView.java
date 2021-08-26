@@ -62,7 +62,7 @@ import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 import tv.danmaku.ijk.media.player.misc.IjkMediaFormat;
 
 public class IjkVideoView extends FrameLayout implements MediaController.MediaPlayerControl {
-    private String TAG = "IjkVideoView";
+    private final String TAG = "IjkVideoView";
     // settable by the client
     private Uri mUri;
     private Map<String, String> mHeaders;
@@ -100,9 +100,9 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
     private IMediaPlayer.OnErrorListener mOnErrorListener;
     private IMediaPlayer.OnInfoListener mOnInfoListener;
     private int mSeekWhenPrepared;  // recording the seek position while preparing
-    private boolean mCanPause = true;
-    private boolean mCanSeekBack = true;
-    private boolean mCanSeekForward = true;
+    private final boolean mCanPause = true;
+    private final boolean mCanSeekBack = true;
+    private final boolean mCanSeekForward = true;
 
     /** Subtitle rendering widget overlaid on top of the video. */
     // private RenderingWidget mSubtitleWidget;
@@ -467,7 +467,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         }
     };
 
-    private IMediaPlayer.OnCompletionListener mCompletionListener =
+    private final IMediaPlayer.OnCompletionListener mCompletionListener =
             new IMediaPlayer.OnCompletionListener() {
                 public void onCompletion(IMediaPlayer mp) {
                     mCurrentState = STATE_PLAYBACK_COMPLETED;
@@ -481,7 +481,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                 }
             };
 
-    private IMediaPlayer.OnInfoListener mInfoListener =
+    private final IMediaPlayer.OnInfoListener mInfoListener =
             new IMediaPlayer.OnInfoListener() {
                 public boolean onInfo(IMediaPlayer mp, int arg1, int arg2) {
                     if (mOnInfoListener != null) {
@@ -532,7 +532,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                 }
             };
 
-    private IMediaPlayer.OnErrorListener mErrorListener =
+    private final IMediaPlayer.OnErrorListener mErrorListener =
             new IMediaPlayer.OnErrorListener() {
                 public boolean onError(IMediaPlayer mp, int framework_err, int impl_err) {
                     Log.d(TAG, "Error: " + framework_err + "," + impl_err);
@@ -584,14 +584,14 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                 }
             };
 
-    private IMediaPlayer.OnBufferingUpdateListener mBufferingUpdateListener =
+    private final IMediaPlayer.OnBufferingUpdateListener mBufferingUpdateListener =
             new IMediaPlayer.OnBufferingUpdateListener() {
                 public void onBufferingUpdate(IMediaPlayer mp, int percent) {
                     mCurrentBufferPercentage = percent;
                 }
             };
 
-    private IMediaPlayer.OnSeekCompleteListener mSeekCompleteListener = new IMediaPlayer.OnSeekCompleteListener() {
+    private final IMediaPlayer.OnSeekCompleteListener mSeekCompleteListener = new IMediaPlayer.OnSeekCompleteListener() {
 
         @Override
         public void onSeekComplete(IMediaPlayer mp) {
@@ -600,7 +600,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         }
     };
 
-    private IMediaPlayer.OnTimedTextListener mOnTimedTextListener = new IMediaPlayer.OnTimedTextListener() {
+    private final IMediaPlayer.OnTimedTextListener mOnTimedTextListener = new IMediaPlayer.OnTimedTextListener() {
         @Override
         public void onTimedText(IMediaPlayer mp, IjkTimedText text) {
             if (text != null) {
@@ -937,7 +937,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
     public static final int RENDER_SURFACE_VIEW = 1;
     public static final int RENDER_TEXTURE_VIEW = 2;
 
-    private List<Integer> mAllRenders = new ArrayList<Integer>();
+    private final List<Integer> mAllRenders = new ArrayList<Integer>();
     private int mCurrentRenderIndex = 0;
     private int mCurrentRender = RENDER_NONE;
 
@@ -1038,7 +1038,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                 IjkMediaPlayer ijkMediaPlayer = null;
                 if (mUri != null) {
                     ijkMediaPlayer = new IjkMediaPlayer();
-                    ijkMediaPlayer.native_setLogLevel(IjkMediaPlayer.IJK_LOG_DEBUG);
+                    IjkMediaPlayer.native_setLogLevel(IjkMediaPlayer.IJK_LOG_DEBUG);
 
                     if (mSettings.getUsingMediaCodec()) {
                         ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec", 1);
@@ -1133,7 +1133,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
         builder.appendRow2(R.string.mi_resolution, buildResolution(mVideoWidth, mVideoHeight, mVideoSarNum, mVideoSarDen));
         builder.appendRow2(R.string.mi_length, buildTimeMilli(mMediaPlayer.getDuration()));
 
-        ITrackInfo trackInfos[] = mMediaPlayer.getTrackInfo();
+        ITrackInfo[] trackInfos = mMediaPlayer.getTrackInfo();
         if (trackInfos != null) {
             int index = -1;
             for (ITrackInfo trackInfo : trackInfos) {

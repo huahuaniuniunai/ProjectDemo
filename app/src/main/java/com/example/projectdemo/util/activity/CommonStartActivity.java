@@ -83,7 +83,7 @@ public class CommonStartActivity extends Activity implements View.OnClickListene
      */
     public static boolean isTodayFirstStartApp(Context context) {
         try {
-            SharedPreferences preferences = context.getSharedPreferences("NB_TODAY_FIRST_START_APP", context.MODE_PRIVATE);
+            SharedPreferences preferences = context.getSharedPreferences("NB_TODAY_FIRST_START_APP", MODE_PRIVATE);
             String svaeTime = preferences.getString("startAppTime", "2020-01-08");
             String todayTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 

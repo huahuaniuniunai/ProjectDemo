@@ -23,7 +23,7 @@ public class RunHorseLampActivity extends AppCompatActivity {
     private SwitchTextView switchTextView;
     private static final int msgKey1 = 1;
 //    private static final int msgKey2 = 2;
-    private List<String> datas = new ArrayList<>();
+    private final List<String> datas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,7 @@ public class RunHorseLampActivity extends AppCompatActivity {
         }
     }
 
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage (Message msg) {
             super.handleMessage(msg);

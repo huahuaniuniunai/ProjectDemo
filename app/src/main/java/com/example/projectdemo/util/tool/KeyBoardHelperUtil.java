@@ -11,9 +11,9 @@ import com.example.projectdemo.R;
 
 public class KeyBoardHelperUtil {
 
-    private Activity activity;
+    private final Activity activity;
     private OnKeyBoardStatusChangeListener onKeyBoardStatusChangeListener;
-    private int screenHeight;
+    private final int screenHeight;
     // 空白高度 = 屏幕高度 - 当前 Activity 的可见区域的高度
     // 当 blankHeight 不为 0 即为软键盘高度。
     private int blankHeight = 0;
@@ -51,7 +51,7 @@ public class KeyBoardHelperUtil {
     }
 
     //当在一个视图树中全局布局发生改变或者视图树中的某个视图的可视状态发生改变时
-    private ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
+    private final ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
 
         @Override
         public void onGlobalLayout() {

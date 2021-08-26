@@ -40,8 +40,8 @@ public class Utils {
     /**
      * 通用回调函数接口
      */
-    public static interface Callback {
-        public Object onCallback(Object args);
+    public interface Callback {
+        Object onCallback(Object args);
     }
 
     private static int versioncode;
@@ -107,7 +107,7 @@ public class Utils {
 
     public static String encodeBase64(String str) {
 
-        byte[] result = Base64.decode(str.toString(), Base64.DEFAULT);
+        byte[] result = Base64.decode(str, Base64.DEFAULT);
 
         return new String(result);
 

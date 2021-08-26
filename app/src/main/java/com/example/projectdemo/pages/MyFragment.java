@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,10 @@ import com.example.projectdemo.activity.DownRefreshActivity;
 import com.example.projectdemo.activity.SeeMoreActivity;
 import com.example.projectdemo.activity.TimeActivity;
 import com.example.projectdemo.broadcast.DynBroadcastActivity;
+import com.example.projectdemo.callback.CallbackFunction;
+import com.example.projectdemo.mvp.BaseActivity;
+import com.example.projectdemo.util.dialog.AlertDialogRemark;
+import com.example.projectdemo.util.preference.PreferenceUtil;
 import com.example.projectdemo.view.cardviewdemo.CollapsbleToolbarActivity;
 import com.example.projectdemo.activity.ijkplayer.IjkplayerActivity;
 import com.example.projectdemo.activity.vitamio.VitamioActivity;
@@ -72,9 +77,10 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private Button button22;
     private Button button23;
     private Button button24;
+    private Button button25;
 
     private View view;
-    private String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
+    private final String mUpdateUrl = "https://70c99477-5c4c-4335-ad32-d9d6f47cf09d.mock.pstmn.io/server";
 
     @Nullable
     @Override
@@ -117,6 +123,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button22 = view.findViewById(R.id.bt_22);
         button23 = view.findViewById(R.id.bt_23);
         button24 = view.findViewById(R.id.bt_24);
+        button25 = view.findViewById(R.id.bt_25);
     }
 
     private void initEvent() {
@@ -144,6 +151,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         button22.setOnClickListener(this);
         button23.setOnClickListener(this);
         button24.setOnClickListener(this);
+        button25.setOnClickListener(this);
 
         et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -238,6 +246,24 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.bt_24:
                 DynBroadcastActivity.actionStart(getActivity());
                 break;
+            case R.id.bt_25:
+                new AlertDialogRemark(getActivity(), new CallbackFunction() {
+                    @Override
+                    public void onStart() {
+                        new BaseActivity().showProgressDialog("加载中...");
+                    }
+                    @Override
+                    public void onSuccess() {
+                        // 获取已存储本地输入框内容
+                        String processDesc = PreferenceUtil.get().getCacheString("processDesc", "");
+                        toast("获取输入框的内容："+processDesc);
+                    }
+                    @Override
+                    public void onFailed(String msg) {
+                        // 获取失败
+                        toast("获取失败！");
+                    }
+                }).show();// 弹框
             default:
                 break;
         }

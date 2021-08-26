@@ -29,7 +29,7 @@ import com.example.projectdemo.R;
 
 
 public class TableLayoutBinder {
-    private Context mContext;
+    private final Context mContext;
     public ViewGroup mTableView;
     public TableLayout mTableLayout;
 

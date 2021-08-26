@@ -2,6 +2,8 @@ package com.example.projectdemo.util.tool;
 
 import android.util.Base64;
 
+import java.nio.charset.StandardCharsets;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -66,13 +68,13 @@ public class AESUtils {
         try {
             byte[] encrypted1 = Base64.decode(data, Base64.DEFAULT);//先用base64解密
             Cipher cipher = Cipher.getInstance(transformation);
-            SecretKeySpec keyspec = new SecretKeySpec(key.getBytes("utf-8"), "AES");
+            SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "AES");
             IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
 
             cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
 
             byte[] original = cipher.doFinal(encrypted1);
-            String originalString = new String(original, "utf-8");
+            String originalString = new String(original, StandardCharsets.UTF_8);
             return originalString.trim();
         } catch (Exception e) {
             e.printStackTrace();

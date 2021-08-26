@@ -80,7 +80,7 @@ public class DateUtil {
     public static String getMonth(String day) {
         if (day == null) return "0";
         if (day.length() < 8) return "0";
-        int m = day.indexOf("-", 0);
+        int m = day.indexOf("-");
         int n = day.lastIndexOf("-");
         String temp = day.substring(m + 1, n);
         if (temp.length() == 1) temp = "0" + temp;
@@ -460,7 +460,7 @@ public class DateUtil {
      * @param curday
      */
     public static String[] getallweekdate(String curday) {
-        String pandy[] = new String[7];
+        String[] pandy = new String[7];
         int day = getCurWeekDayByStr(curday) - 1;
         String firstday = getAllowPreDay(curday, day);
         for (int i = 0; i < 7; i++) {
@@ -476,7 +476,7 @@ public class DateUtil {
      * @param curday
      */
     public static String[] getallweekdateCn(String curday) {
-        String pandy[] = new String[7];
+        String[] pandy = new String[7];
         int day = getCurWeekDayByStr(curday) - 1;
         String firstday = getAllowPreDay(curday, day);
         for (int i = 0; i < 7; i++) {
@@ -500,7 +500,7 @@ public class DateUtil {
         if (getCurWeekDayByStr(startdate) > getCurWeekDayByStr(enddate)) {
             weekc++;
         }
-        String pandy[][] = new String[weekc][2];
+        String[][] pandy = new String[weekc][2];
         String tempdate = startdate;
         for (int i = 0; i < weekc; i++) {
             pandy[i][0] = getallweekdate(tempdate)[0];
@@ -524,7 +524,7 @@ public class DateUtil {
         if (getCurWeekDayByStr(startdate) > getCurWeekDayByStr(enddate)) {
             weekc++;
         }
-        String pandy[][] = new String[weekc][2];
+        String[][] pandy = new String[weekc][2];
         String tempdate = startdate;
         for (int i = 0; i < weekc; i++) {
             pandy[i][0] = getallweekdate(tempdate)[0];
@@ -546,7 +546,7 @@ public class DateUtil {
         Vector pandy = new Vector();
         String tempdate = getCurMonthDayStr(startdate);
         while (tempdate.compareTo(enddate) <= 0) {
-            String pan[] = new String[2];
+            String[] pan = new String[2];
             pan[0] = tempdate;
             pan[1] = getPreDayStr(getNextMonthDayStr(tempdate));
             pandy.add(pan);
@@ -564,14 +564,14 @@ public class DateUtil {
     public static Vector getmonthfl1(String startdate, String enddate) {
         Vector pandy = new Vector();
         String tempdate = getCurMonthDayStr(startdate);
-        String temp[] = new String[2];
+        String[] temp = new String[2];
         temp[0] = startdate;
         temp[1] = getPreDayStr(getNextMonthDayStr(tempdate));
         if(startdate.substring(0,7).compareTo(DateUtil.getToday().substring(0,7)) <0)
             pandy.add(temp);
         while (getNextMonthDayStr(tempdate).compareTo(enddate) <= 0 && !getNextMonthDayStr(tempdate).equals(getCurMonthDayStr(enddate)))
         {
-            String pan[] = new String[2];
+            String[] pan = new String[2];
             tempdate = getNextMonthDayStr(tempdate);
             pan[0] = tempdate;
             pan[1] = getPreDayStr(getNextMonthDayStr(tempdate));
@@ -606,7 +606,7 @@ public class DateUtil {
      */
     public static String getMulweekday(String startdate, String enddate) {
         String pandy = "";
-        String tempdate[][] = getweekfl(startdate, enddate);
+        String[][] tempdate = getweekfl(startdate, enddate);
         for (int i = 0; i < tempdate.length; i++) {
             pandy += tempdate[i][0] + "--" + tempdate[i][1] + ",";
         }
@@ -624,7 +624,7 @@ public class DateUtil {
     public static String getMulmonthday(String startdate, String enddate) {
         String pandy = "";
         Vector tempdate = getmonthfl(startdate, enddate);
-        String temp[] = new String[2];
+        String[] temp = new String[2];
         for (int i = 0; i < tempdate.size(); i++) {
             temp = (String[]) tempdate.get(i);
             pandy += temp[0] + "--" + temp[1] + ",";
@@ -734,7 +734,7 @@ public class DateUtil {
      */
     public static String[] getMonthDays(String curday) {
         int counts = getMonthDaysCounts(curday);
-        String pandy[] = new String[counts];
+        String[] pandy = new String[counts];
         String day = getCurMonthDayStr(curday);
         pandy[0] = getCurMonthDayStr(curday);
         for (int i = 1; i < counts; i++) {
@@ -798,10 +798,7 @@ public class DateUtil {
      * @param date
      */
     public static boolean isWeekend(String date) {
-        if (getCurWeekDayByStr(date) == 1 || getCurWeekDayByStr(date) == 7) {
-            return true;
-        }
-        return false;
+        return getCurWeekDayByStr(date) == 1 || getCurWeekDayByStr(date) == 7;
     }
 
     /**
@@ -814,10 +811,7 @@ public class DateUtil {
         String strRi = date.substring(8);
         int yue = Integer.parseInt(strYue);
         int ri = Integer.parseInt(strRi);
-        if ((yue == 5 || yue == 10) && ri <= 7) {
-            return true;
-        }
-        return false;
+        return (yue == 5 || yue == 10) && ri <= 7;
     }
 
     /**
@@ -847,10 +841,7 @@ public class DateUtil {
      * @param date
      */
     public static boolean isChunjie(String date) {
-        if (initChunJie().containsKey(date)) {
-            return true;
-        }
-        return false;
+        return initChunJie().containsKey(date);
     }
 
     /**
@@ -963,8 +954,8 @@ public class DateUtil {
     //返回两个日期之间的年月，格式如下：YYYY-MM
     public static String[] getYYYYMM(String startDate, String endDate) {
         String a = (String) DateUtil.getMulmonthday(startDate, endDate);
-        String temp[] = a.split(",");
-        String str[] = new String[temp.length];
+        String[] temp = a.split(",");
+        String[] str = new String[temp.length];
         for (int i = 0; i < temp.length; i++) {
             str[i] = temp[i].substring(0, 7);
         }

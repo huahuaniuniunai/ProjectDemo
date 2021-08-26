@@ -25,7 +25,7 @@ import com.example.projectdemo.R;
 
 public class ACProgressDialog extends ProgressDialog {
 	
-	private String message;
+	private final String message;
 	
 	private TextView define_progress_msg;
 	

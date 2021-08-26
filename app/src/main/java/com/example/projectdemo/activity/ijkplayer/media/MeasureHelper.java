@@ -28,7 +28,7 @@ import java.lang.ref.WeakReference;
 
 
 public final class MeasureHelper {
-    private WeakReference<View> mWeakView;
+    private final WeakReference<View> mWeakView;
 
     private int mVideoWidth;
     private int mVideoHeight;

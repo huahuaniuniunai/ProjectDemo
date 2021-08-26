@@ -15,7 +15,7 @@ public class DatabaseUtil {
     private static Context mContext;
 
     public DatabaseUtil(Context mContext) {
-        this.mContext = mContext;
+        DatabaseUtil.mContext = mContext;
     }
 
     /**

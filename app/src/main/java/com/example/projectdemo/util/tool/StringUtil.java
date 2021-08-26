@@ -1,6 +1,7 @@
 package com.example.projectdemo.util.tool;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Vector;
@@ -15,7 +16,7 @@ public class StringUtil {
     public static String getGBKFromISO(String str) {
         try {
             if (str == null) str = "";
-            byte[] buf = str.getBytes("iso-8859-1");
+            byte[] buf = str.getBytes(StandardCharsets.ISO_8859_1);
             byte[] buf2 = str.getBytes("gbk");
             if (!str.equals(new String(buf2, "gbk"))) {
                 str = new String(buf, "gbk");
@@ -55,9 +56,9 @@ public class StringUtil {
         try {
             if (str == null) str = "";
             byte[] buf = str.getBytes("gbk");
-            byte[] buf2 = str.getBytes("iso-8859-1");
-            if (!str.equals(new String(buf2, "iso-8859-1"))) {
-                str = new String(buf, "iso-8859-1");
+            byte[] buf2 = str.getBytes(StandardCharsets.ISO_8859_1);
+            if (!str.equals(new String(buf2, StandardCharsets.ISO_8859_1))) {
+                str = new String(buf, StandardCharsets.ISO_8859_1);
             }
         }
         catch (UnsupportedEncodingException e) {
@@ -101,7 +102,7 @@ public class StringUtil {
      * @param repStr
      */
     public static String replace(String handleStr, String pointStr, String repStr) {
-        String str = new String();
+        String str = "";
         int pos1, pos2;
         try {
             if (handleStr.length() > 0) {
@@ -575,7 +576,7 @@ public class StringUtil {
      * @param names
      * @return String
      */
-    public static String getStrByArr(String names[], String split) {
+    public static String getStrByArr(String[] names, String split) {
         if (names == null || names.length == 0) return "";
         String result = "";
         for (int i = 0; i < names.length; i++) {
@@ -600,9 +601,9 @@ public class StringUtil {
 	        Hashtable<String, String> returnHT = new Hashtable<String, String>();
 //	        System.out.println(tempStr);
 	        if(!"".equals(tempStr.trim())){
-	        	String sxs[]=tempStr.split("jsonsplit");
+	        	String[] sxs =tempStr.split("jsonsplit");
 		        for(int i=0;i<sxs.length;i++){
-		        	String sx[] = sxs[i].split("sxsplit");
+		        	String[] sx = sxs[i].split("sxsplit");
 		        	if(sx.length==2){
 		        		returnHT.put(sx[0], sx[1]);
 		        	}

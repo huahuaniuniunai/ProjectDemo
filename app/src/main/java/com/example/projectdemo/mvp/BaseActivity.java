@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -15,8 +16,11 @@ import androidx.lifecycle.Lifecycle;
 //import com.ctq.eqc.util.avoid.AvoidOnResult;
 //import com.example.projectdemo.statusbar.StatusBarHelper;
 
+import com.example.projectdemo.R;
 import com.example.projectdemo.lztx.statusbar.StatusBarHelper;
 import com.example.projectdemo.util.activity.ActivityManager;
+import com.example.projectdemo.util.tool.ResourceUtils;
+import com.example.projectdemo.view.progressbar.funny.ACProgressDialog;
 import com.gyf.immersionbar.ImmersionBar;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -32,6 +36,8 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
     public static final String EXTRA_RESULT = "t_extra_result";
 
 //    private AvoidOnResult mActivityForResult;
+
+    private ACProgressDialog progressdialog;
 
     private CompositeDisposable mCompositeDisposable;
 
@@ -184,6 +190,32 @@ public class BaseActivity<V extends BasePresenter> extends FragmentActivity {
 
     public boolean isActivityValid() {
         return !this.isFinishing();
+    }
+
+    public void showProgressDialog(String str) {
+        String text = str;
+        if (TextUtils.isEmpty(text))
+            text = ResourceUtils.getString(R.string.loading);
+        if (progressdialog != null && progressdialog.isShowing()) {
+            progressdialog.dismiss();
+            progressdialog = null;
+        }
+        progressdialog = new ACProgressDialog(this, text);
+        progressdialog.setCanceledOnTouchOutside(false);
+        progressdialog.setCancelable(false);
+        progressdialog.show();
+    }
+
+
+    public ACProgressDialog getProgressdialog() {
+        return progressdialog;
+    }
+
+    public void dismissProgressDialog() {
+        if (progressdialog != null && progressdialog.isShowing()) {
+            progressdialog.dismiss();
+            progressdialog = null;
+        }
     }
 
 }

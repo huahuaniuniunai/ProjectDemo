@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 
 import com.example.projectdemo.application.MyApplication;
 
+/**
+ * SharedPreferences本地存储工具类
+ */
 public class PreferenceUtil {
 
 	// 用户文件 preference 名称
@@ -12,7 +15,7 @@ public class PreferenceUtil {
 
 	private static PreferenceUtil mInstance;
 	
-	private SharedPreferences cache ;
+	private final SharedPreferences cache ;
 	
 	private PreferenceUtil(){
 		cache = MyApplication.getContext().getSharedPreferences(SHARED_PREFERENCE_USER_INFO, Context.MODE_PRIVATE);

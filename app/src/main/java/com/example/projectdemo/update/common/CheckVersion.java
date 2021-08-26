@@ -38,7 +38,7 @@ public class CheckVersion implements Runnable{
     private static final String DOWNURL = "http://www.dothantech.com/app/android/SYDY.apk";
     private static final int HAVE_NEW_VERSION = 0;
     private static final int ALREADY_NEW_VERSION = 1;
-    private Context context;
+    private final Context context;
     private UpdateInfo updateInfo;
 
     public CheckVersion(Context context) {
@@ -46,7 +46,7 @@ public class CheckVersion implements Runnable{
     }
 
     //获取到主线程的looper,对UI操作
-    private Handler mHandler = new Handler(Looper.getMainLooper()) {
+    private final Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {

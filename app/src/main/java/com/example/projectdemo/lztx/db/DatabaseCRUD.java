@@ -19,7 +19,7 @@ public class DatabaseCRUD {
     private static Context mContext;
 
     public DatabaseCRUD(Context context) {
-        this.mContext = context;
+        mContext = context;
     }
 
     /**

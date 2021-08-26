@@ -136,9 +136,9 @@ public class TextureRenderView extends TextureView implements IRenderView {
     }
 
     private static final class InternalSurfaceHolder implements IRenderView.ISurfaceHolder {
-        private TextureRenderView mTextureView;
-        private SurfaceTexture mSurfaceTexture;
-        private ISurfaceTextureHost mSurfaceTextureHost;
+        private final TextureRenderView mTextureView;
+        private final SurfaceTexture mSurfaceTexture;
+        private final ISurfaceTextureHost mSurfaceTextureHost;
 
         public InternalSurfaceHolder(@NonNull TextureRenderView textureView,
                                      @Nullable SurfaceTexture surfaceTexture,
@@ -223,8 +223,8 @@ public class TextureRenderView extends TextureView implements IRenderView {
         private boolean mWillDetachFromWindow = false;
         private boolean mDidDetachFromWindow = false;
 
-        private WeakReference<TextureRenderView> mWeakRenderView;
-        private Map<IRenderCallback, Object> mRenderCallbackMap = new ConcurrentHashMap<IRenderCallback, Object>();
+        private final WeakReference<TextureRenderView> mWeakRenderView;
+        private final Map<IRenderCallback, Object> mRenderCallbackMap = new ConcurrentHashMap<IRenderCallback, Object>();
 
         public SurfaceCallback(@NonNull TextureRenderView renderView) {
             mWeakRenderView = new WeakReference<TextureRenderView>(renderView);

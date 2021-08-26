@@ -397,10 +397,10 @@ public class CircleProgressBar extends ImageView {
 
 
     private class OvalShadow extends OvalShape {
-        private RadialGradient mRadialGradient;
-        private int mShadowRadius;
-        private Paint mShadowPaint;
-        private int mCircleDiameter;
+        private final RadialGradient mRadialGradient;
+        private final int mShadowRadius;
+        private final Paint mShadowPaint;
+        private final int mCircleDiameter;
 
         public OvalShadow(int shadowRadius, int circleDiameter) {
             super();

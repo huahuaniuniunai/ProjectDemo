@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -221,8 +222,8 @@ public class MTInfoUtil {
 		 int index=innerSpace.indexOf(".");
 			if(index>-1){
 				innerSpace=innerSpace.substring(0, index+2);
-			};
-		 return innerSpace.trim();
+			}
+        return innerSpace.trim();
 	}
 
 	// 获取外部存储空间
@@ -248,9 +249,9 @@ public class MTInfoUtil {
 					int index=externalSpace.indexOf(".");
 					if(index>-1){
 						externalSpace=externalSpace.substring(0, index+2);
-					};
+					}
 
-				}
+                }
 			}
 		} catch (NoSuchMethodException e1) {
 			e1.printStackTrace();
@@ -328,7 +329,7 @@ public class MTInfoUtil {
 		MessageDigest md5= MessageDigest.getInstance("MD5");
 		BASE64Encoder base64en = new BASE64Encoder();
 		//加密后的字符串
-		String newstr=base64en.encode(md5.digest(str.getBytes("utf-8")));
+		String newstr=base64en.encode(md5.digest(str.getBytes(StandardCharsets.UTF_8)));
 		return newstr.trim();
 	 }
 

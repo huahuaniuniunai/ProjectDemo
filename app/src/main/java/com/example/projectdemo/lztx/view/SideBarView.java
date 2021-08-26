@@ -14,13 +14,15 @@ import androidx.annotation.Nullable;
 import com.example.projectdemo.R;
 
 public class SideBarView extends View {
-    private Paint mPaint;
-    private int mWidth, mHeight, textSize;
+    private final Paint mPaint;
+    private int mWidth;
+    private int mHeight;
+    private final int textSize;
     private int index;
     private int choose = -1;
     private boolean mFlag;// 默认未选中
     private LetterTouchListener mTouchListener;
-    private String[] str = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+    private final String[] str = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
             "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",
             "X", "Y", "Z", "#"};
 

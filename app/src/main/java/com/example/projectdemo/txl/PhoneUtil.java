@@ -17,9 +17,9 @@ public class PhoneUtil {
     public final static String NAME = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME;
 
     //上下文对象
-    private Context context;
+    private final Context context;
     //联系人提供者的uri
-    private Uri phoneUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+    private final Uri phoneUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
 
     public PhoneUtil(Context context){
         this.context = context;

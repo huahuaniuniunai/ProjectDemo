@@ -23,8 +23,8 @@ public class SeeMoreActivity extends BaseActivity implements View.OnClickListene
     private TextView txtOpen;
     private TextView txtYinying;
     private SeeMoreAdapter mSeeMoreAdapter;
-    private List<CityBean> mCityList = new ArrayList<>();
-    private List<CityBean> HideList = new ArrayList<>();
+    private final List<CityBean> mCityList = new ArrayList<>();
+    private final List<CityBean> HideList = new ArrayList<>();
 
     @Override
     protected void setBar() {

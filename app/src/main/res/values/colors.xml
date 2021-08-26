@@ -10,6 +10,7 @@
     <color name="line">#D8D9D9</color>
     <color name="page">#F5F5F5</color>
     <color name="gray">#DBDBDD</color>
+    <color name="light_grey">#DCDCDC</color>
     <color name="letter">#EDEDED</color>
     <color name="black">#000000</color>
     <color name="light_black">#393A3F</color>

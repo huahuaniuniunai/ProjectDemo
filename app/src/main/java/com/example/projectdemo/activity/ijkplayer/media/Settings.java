@@ -25,8 +25,8 @@ import com.example.projectdemo.R;
 
 
 public class Settings {
-    private Context mAppContext;
-    private SharedPreferences mSharedPreferences;
+    private final Context mAppContext;
+    private final SharedPreferences mSharedPreferences;
 
     public static final int PV_PLAYER__Auto = 0;
     public static final int PV_PLAYER__AndroidMediaPlayer = 1;

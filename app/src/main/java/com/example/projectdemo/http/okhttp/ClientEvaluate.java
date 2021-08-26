@@ -31,9 +31,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ClientEvaluate {
-    private Activity activity;
+    private final Activity activity;
     private String userId;
-    private String token;
+    private final String token;
     private String questionDesc;
     private String userName;
     private String orgId;
@@ -42,7 +42,7 @@ public class ClientEvaluate {
     private String password;
     private String ip;
     private String sn;
-    private CallbackFunction askCallback;
+    private final CallbackFunction askCallback;
     private String evaluationOpinion;
     private String questionId;
     private int totalEvaluation;

@@ -45,7 +45,7 @@ public class HandlerActivity extends AppCompatActivity {
      * 1、通过弱引用的方式，创建静态内部类Handler
      */
     static class MyHandler extends Handler {
-        private WeakReference<HandlerActivity> activityWeakReference;
+        private final WeakReference<HandlerActivity> activityWeakReference;
         public MyHandler(HandlerActivity activity){
             activityWeakReference = new WeakReference<>(activity);
         }

@@ -19,7 +19,7 @@ import java.util.List;
 
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> {
     private Context mContext;
-    private List<Fruit> mFruitList;
+    private final List<Fruit> mFruitList;
 
     @NonNull
     @Override

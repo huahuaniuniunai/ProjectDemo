@@ -52,7 +52,7 @@ public class SeeMoreAdapter extends RecyclerView.Adapter<SeeMoreAdapter.ViewHold
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private Button name;
+        private final Button name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

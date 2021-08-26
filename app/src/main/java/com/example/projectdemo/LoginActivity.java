@@ -93,7 +93,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         });
     }
 
-    private KeyBoardHelperUtil.OnKeyBoardStatusChangeListener onKeyBoardStatusChangeListener = new KeyBoardHelperUtil.OnKeyBoardStatusChangeListener() {
+    private final KeyBoardHelperUtil.OnKeyBoardStatusChangeListener onKeyBoardStatusChangeListener = new KeyBoardHelperUtil.OnKeyBoardStatusChangeListener() {
         @Override
         public void OnKeyBoardPop(int keyBoardheight) {
 

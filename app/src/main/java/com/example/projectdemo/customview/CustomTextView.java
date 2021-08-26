@@ -28,7 +28,7 @@ import com.example.projectdemo.R;
 @SuppressLint("AppCompatCustomView")
 public class CustomTextView extends TextView {
     private Paint mTextPaint;
-    private String mText;
+    private final String mText;
     private int mTextColor = Color.BLACK;
     private int mTextSize = 15;// 像素px
 

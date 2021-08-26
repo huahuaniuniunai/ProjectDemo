@@ -1,8 +1,8 @@
 package com.example.projectdemo.recyclerview;
 
 public class Fruit {
-    private int imageId;
-    private String name;
+    private final int imageId;
+    private final String name;
 
     public Fruit(int imageId, String name) {
         this.imageId = imageId;

@@ -36,8 +36,8 @@ public class LoadingView extends View {
     private int borderWidth = 8;
     //圆形的矩形轮廓
     private RectF rectF;
-    private int maxProgress = 100;
-    private int minProgress = 0;
+    private final int maxProgress = 100;
+    private final int minProgress = 0;
     //中间的图片
     private Bitmap centerImg;
     private Bitmap scaleImg;

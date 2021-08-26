@@ -76,10 +76,10 @@ public class PlayerManager {
     private boolean playerSupport;
     private boolean isLive = false;//是否为直播
     private boolean fullScreenOnly;
-    private boolean portrait;
+    private final boolean portrait;
 
     private final int mMaxVolume;
-    private int screenWidthPixels;
+    private final int screenWidthPixels;
     private int currentPosition;
     private int status=STATUS_IDLE;
     private long pauseTime;
@@ -634,7 +634,7 @@ public class PlayerManager {
      * @return
      */
     public boolean isPlaying() {
-        return videoView!=null?videoView.isPlaying():false;
+        return videoView != null && videoView.isPlaying();
     }
 
     public void stop(){
@@ -646,10 +646,7 @@ public class PlayerManager {
     }
 
     public IjkVideoView getVideoView(){
-        if (videoView != null){
-            return videoView;
-        }
-        return null;
+        return videoView;
     }
 
     /**

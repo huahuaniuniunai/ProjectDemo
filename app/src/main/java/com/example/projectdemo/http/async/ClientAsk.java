@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.ByteArrayEntity;
@@ -23,9 +24,9 @@ import cz.msebera.android.httpclient.message.BasicHeader;
 import cz.msebera.android.httpclient.protocol.HTTP;
 
 public class ClientAsk {
-    private Activity activity;
+    private final Activity activity;
     private String userId;
-    private String token;
+    private final String token;
     private String questionDesc;
     private String userName;
     private String orgId;
@@ -34,7 +35,7 @@ public class ClientAsk {
     private String password;
     private String ip;
     private String sn;
-    private CallbackFunction askCallback;
+    private final CallbackFunction askCallback;
     private String evaluationOpinion;
     private String questionId;
     private int totalEvaluation;
@@ -94,12 +95,8 @@ public class ClientAsk {
             e.printStackTrace();
         }
         ByteArrayEntity entity = null;
-        try {
-            entity = new ByteArrayEntity(jsonObject.toString().getBytes("UTF-8"));
-            entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        entity = new ByteArrayEntity(jsonObject.toString().getBytes(StandardCharsets.UTF_8));
+        entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
         url = HttpInterfacesUrl.EVALUATE_COMMIT;
         AsyncHttpClient client = new AsyncHttpClient();
         client.addHeader("token", token);
@@ -262,12 +259,8 @@ public class ClientAsk {
             e.printStackTrace();
         }
         ByteArrayEntity entity = null;
-        try {
-            entity = new ByteArrayEntity(jsonObject.toString().getBytes("UTF-8"));
-            entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        entity = new ByteArrayEntity(jsonObject.toString().getBytes(StandardCharsets.UTF_8));
+        entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
         url = HttpInterfacesUrl.ASK_QUESTION;
         AsyncHttpClient client = new AsyncHttpClient();
         client.addHeader("token", token);

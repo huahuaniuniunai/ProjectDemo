@@ -24,16 +24,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class ContactsView extends FrameLayout implements SideBarView.LetterTouchListener {
-    private LinearLayout ll_top_title;
-    private TextView tv_letter;
-    private SideBarView sideBarView;
-    private RecyclerView recycler_View;
-    private TextView tv_letter_show;
+    private final LinearLayout ll_top_title;
+    private final TextView tv_letter;
+    private final SideBarView sideBarView;
+    private final RecyclerView recycler_View;
+    private final TextView tv_letter_show;
     private int mLetterHeight = 0;
     private int mCurrentPosition = 0;
     private LinearLayoutManager mLayoutManager = null;
-    private List<SortModel> mData = new ArrayList<>();
-    private CharacterParser mParser = CharacterParser.getInstance();
+    private final List<SortModel> mData = new ArrayList<>();
+    private final CharacterParser mParser = CharacterParser.getInstance();
 
     public ContactsView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);

@@ -13,11 +13,11 @@ public class OkHttpUtil {
         return Singleton.INSTANCE.getInstance();
     }
 
-    private static enum Singleton {
+    private enum Singleton {
         INSTANCE;
-        private OkHttpClient singleton;
+        private final OkHttpClient singleton;
 
-        private Singleton() {
+        Singleton() {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             builder.connectTimeout(6L, TimeUnit.SECONDS);
             builder.readTimeout(6L, TimeUnit.SECONDS);

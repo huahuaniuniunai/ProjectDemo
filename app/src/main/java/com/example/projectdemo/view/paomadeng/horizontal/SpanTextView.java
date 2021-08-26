@@ -65,7 +65,7 @@ public class SpanTextView extends TextView implements View.OnClickListener {
     private boolean mLinkHit;  //是否点击了局部链接
 
     //记录图片和文本的点击事件
-    private Map<String, ClickImageSpan> mClickImageSpan;
+    private final Map<String, ClickImageSpan> mClickImageSpan;
 
 
     public final static int FRONT_IMAGE = 0x1;         //在文字之前
@@ -872,13 +872,9 @@ public class SpanTextView extends TextView implements View.OnClickListener {
     public void onClick(View v) {
 
         //注意这里不能用文本equals，如果文本设置了Span会导致不相等
-        if (mAllText.length() == getText().length()) {
-            //收缩
-            reSetOmit(true);
-        } else {
-            //伸展
-            reSetOmit(false);
-        }
+        //收缩
+        //伸展
+        reSetOmit(mAllText.length() == getText().length());
     }
 
 
@@ -960,7 +956,7 @@ public class SpanTextView extends TextView implements View.OnClickListener {
         private String sign = "";  //标识
         private int position = -1;  //起始位置
 
-        private String text = "";  // 替换的文本
+        private final String text = "";  // 替换的文本
 
         ClickImageListener(int position) {
             this.position = position;
@@ -999,7 +995,7 @@ public class SpanTextView extends TextView implements View.OnClickListener {
      */
     class ClickTextSpan extends ClickableSpan {
 
-        private ClickTextListener clickListener; //点击监听器
+        private final ClickTextListener clickListener; //点击监听器
         private int textColor = 0;           //文本颜色
         private boolean isUnderLineVisiable = true;  //是否显示下划线
 
@@ -1038,7 +1034,7 @@ public class SpanTextView extends TextView implements View.OnClickListener {
 
     class ClickImageSpan extends ClickableSpan {
 
-        private ClickImageListener clickListener; //点击监听器
+        private final ClickImageListener clickListener; //点击监听器
 
         ClickImageSpan(OnClickListener listener) {
             this.clickListener = (ClickImageListener) listener;
@@ -1069,8 +1065,8 @@ public class SpanTextView extends TextView implements View.OnClickListener {
      */
     @SuppressLint({"ParcelCreator"})
     class RadiusBackgroundSpan extends ReplacementSpan {
-        private int mColor;
-        private int mRadius;
+        private final int mColor;
+        private final int mRadius;
         private int mSize;
 
         public RadiusBackgroundSpan(@ColorInt int color, int radius) {

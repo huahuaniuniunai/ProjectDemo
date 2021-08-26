@@ -18,7 +18,7 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 public class CoreModuleActivity extends AppCompatActivity {
 
     private IjkVideoView mVideoView;
-    private String url = "rtmp://58.200.131.2:1935/livetv/hunantv";
+    private final String url = "rtmp://58.200.131.2:1935/livetv/hunantv";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

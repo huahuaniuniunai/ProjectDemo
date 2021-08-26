@@ -44,9 +44,9 @@ public class VitamioActivity extends BaseActivity implements View.OnClickListene
     private Uri uri;
     boolean isPortrait = false;
     private long mPosition = 0;
-    private String path1 = "rtmp://58.200.131.2:1935/livetv/hunantv";
-    private String path2 = "rtmp://58.200.131.2:1935/livetv/hunantv";
-    private String path3 = "rtmp://58.200.131.2:1935/livetv/hunantv";
+    private final String path1 = "rtmp://58.200.131.2:1935/livetv/hunantv";
+    private final String path2 = "rtmp://58.200.131.2:1935/livetv/hunantv";
+    private final String path3 = "rtmp://58.200.131.2:1935/livetv/hunantv";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
