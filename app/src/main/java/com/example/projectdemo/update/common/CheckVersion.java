@@ -8,11 +8,14 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
+
+import androidx.core.content.FileProvider;
 
 import com.example.projectdemo.application.MyApplication;
 import com.example.projectdemo.util.log.LogUtil;
@@ -28,6 +31,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 检查更新
@@ -62,12 +67,17 @@ public class CheckVersion implements Runnable{
         }
     };
 
+    String desc = "\n" +
+            "1.新增app下发及更新功能；\n" +
+            "2.性能优化；\n" +
+            "3.修复已知问题。\n";//更新内容
+
     private void openUpdateDialog() {
         LogUtil.d("demo", "来了老弟！");
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("版本有更新");
         builder.setCancelable(false);
-        builder.setMessage(updateInfo.data.versionExplain);// 版本描述
+        builder.setMessage(desc);// 版本描述
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -98,8 +108,8 @@ public class CheckVersion implements Runnable{
             public void run() {
                 //这里完成下载
                 try {
-                    URL downloadUrl = new URL(updateInfo.data.downloadUrl);// apk下载地址
-//                    URL downloadUrl = new URL(DOWNURL);// 测试下载正常
+//                    URL downloadUrl = new URL(updateInfo.data.downloadUrl);// apk下载地址
+                    URL downloadUrl = new URL(DOWNURL);// 测试下载正常
                     HttpURLConnection connection = (HttpURLConnection) downloadUrl.openConnection();
                     connection.setConnectTimeout(8000);
                     connection.setReadTimeout(8000);
@@ -110,7 +120,9 @@ public class CheckVersion implements Runnable{
                     is = connection.getInputStream();
                     bis = new BufferedInputStream(is);
 
-                    File file = new File(Environment.getExternalStorageDirectory(), "newversion.apk");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    String nowTime = sdf.format(new Date());
+                    File file = new File(Environment.getExternalStorageDirectory(), nowTime+".apk");
                     fos = new FileOutputStream(file);
 
                     byte[] buffer = new byte[1024];
@@ -144,63 +156,86 @@ public class CheckVersion implements Runnable{
 
     /**
      * 安装apk
+     *
+     * 文件Uri暴露异常：当你的应用把file:// Uri暴露给其他App的时候就会出现这种异常，因为接收方可能不具备访问该共享资源的权限，
+     * 所以应该用content:// Url来拓展临时权限。在Android7.0版本以下仍然是好用的，但是到了7.0以上的版本就不行了，这也是Google在安全性方面的考虑。
+     *
+     * 优化：
+     * 1、在AndroidManifest.xml文件的application中添加provider；
+     *  android:name="android.support.v4.content.FileProvider"/android:name="androidx.core.content.FileProvider"
+     * 2、在res的xml包中创建provider_paths.xml文件；
+     * 3、调用installApk()，使用FileProvider解决高于Android7.0版本的兼容性问题；
+     * 4、在AndroidManifest.xml文件中添加必要的权限。
      * @param file
      */
     private void installApk(File file) {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        if (!file.exists()){
+            Toast.makeText(context,"安装包文件不存在。",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        //安装完成后，启动app
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri uri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", file);//第二个参数要和Mainfest中<provider>内的android:authorities 保持一致
+            intent.setDataAndType(uri, "application/vnd.android.package-archive");
+        } else {
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        }
         context.startActivity(intent);
     }
 
     @Override
     public void run() {
-        try {
-            String s = VERSIONINFO_URL;
-            URL url = new URL(s);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(8000);
-            connection.setReadTimeout(8000);
-
-            InputStream is = connection.getInputStream();
-            InputStreamReader isr = new InputStreamReader(is);
-            BufferedReader br = new BufferedReader(isr);
-
-            Gson gson = new Gson();
-            updateInfo = gson.fromJson(br, UpdateInfo.class);
+//        try {
+//            String s = VERSIONINFO_URL;
+//            URL url = new URL(s);
+//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//            connection.setConnectTimeout(8000);
+//            connection.setReadTimeout(8000);
+//
+//            InputStream is = connection.getInputStream();
+//            InputStreamReader isr = new InputStreamReader(is);
+//            BufferedReader br = new BufferedReader(isr);
+//
+//            Gson gson = new Gson();
+//            updateInfo = gson.fromJson(br, UpdateInfo.class);
             //后台版本
-            int serverVersionCode = updateInfo.data.version.charAt(0);
+            int serverVersionCode = 2;
             LogUtil.d("demo", "后台版本号：" + serverVersionCode);
 
             //本地版本获取
-            int localVersionCode = getLocalVersionCode();
-            LogUtil.d("demo", "本地版本号：" + localVersionCode);
-
-            if ("200".equals(updateInfo.code)) {
-                if (serverVersionCode > localVersionCode) {
-                    //后台版本新！所以弹框提醒用户有新版本，让用户操作dialog更新
-                    Message msg = new Message();
-                    msg.what = HAVE_NEW_VERSION;
-                    mHandler.sendMessage(msg);
-
-                } else {
-                    //后台没有新版本，所以在界面反馈用户不用更新
-                    Message msg = new Message();
-                    msg.what = ALREADY_NEW_VERSION;
-                    mHandler.sendMessage(msg);
-                }
-            } else {
-                Toast.makeText(context, "验证失败！", Toast.LENGTH_SHORT).show();
-            }
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        int localVersionCode = 0;
+        try {
+            localVersionCode = getLocalVersionCode();
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-    }
+        LogUtil.d("demo", "本地版本号：" + localVersionCode);
+//            if ("200".equals(updateInfo.code)) {
+                Message msg = new Message();
+                if (serverVersionCode > localVersionCode) {
+                    //后台版本新！所以弹框提醒用户有新版本，让用户操作dialog更新
+                    msg.what = HAVE_NEW_VERSION;
+                } else {
+                    //后台没有新版本，所以在界面反馈用户不用更新
+                    msg.what = ALREADY_NEW_VERSION;
+                }
+                mHandler.sendMessage(msg);
+            }
+//            else {
+//                Toast.makeText(context, "验证失败！", Toast.LENGTH_SHORT).show();
+//            }
+
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (PackageManager.NameNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private int getLocalVersionCode() throws PackageManager.NameNotFoundException {
         PackageManager pm = context.getPackageManager();
