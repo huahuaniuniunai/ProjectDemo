@@ -118,6 +118,7 @@ public class CommonStartActivity extends Activity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.bt_send:
                 /**
+                 *
                  * 1、启动另一个activity，把要传回的数据放到Intent里，并设置标志。
                  */
                 Intent intent = new Intent(this, MoonActivity.class);
